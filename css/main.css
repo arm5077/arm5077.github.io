@@ -1,3 +1,135 @@
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+
+html, body {
+	padding: 0;
+	margin: 0;
+	color: #222;
+//	background-color: #fcfcfc;
+}
+
 body {
-	background-color: seagreen;
+	font-family: Lora, Georgia, serif;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 60px;
+	margin: 0;
+	line-height: 1.1em;
+}
+
+	h1 strong {
+//		color: #EE2A24;
+	}
+
+.content {
+	width: 100%;
+	max-width: 670px;
+	margin: auto;
+}
+
+.banner {
+	padding-bottom: 30px;
+	margin-bottom: 40px;
+	margin-top: 10vh;
+	border-bottom: 1px solid #aaa;
+}
+
+.intro {
+	margin-top: 10px;
+	width: 100%;
+	font-family: Lora, serif;
+	font-size: 30px;
+	font-weight: 300;
+	color: #555;
+	line-height: 1.25em;
+}
+
+.intro a {
+	color: inherit;
+	text-decoration: none;
+//	border-bottom: 1px solid #EE2A24;
+	color: #EE2A24;
+
+}
+
+.intro a:hover {
+	border-bottom: 1px solid #EE2A24;
+}
+
+.banner .icons {
+	margin-top: 10px;
+	color: #EE2A24;
+	font-size: 25px;
+	text-align: center;
+	display: none;
+}
+
+	.banner .icons .fa {
+		display: inline-block;
+		margin-right: 3px;
+		opacity: 1;
+		transition: .25s all;
+	}
+	
+	.banner .icons .fa:last-child {
+		margin-right: 0px;
+	}
+	
+	.banner .icons .fa:hover {
+		opacity: 1;
+		cursor: pointer;
+	}
+	
+.posts {
+	font-family: Lora, Georgia;
+}
+
+
+.posts ul {
+	list-style: none;
+	padding: 0;
+}
+
+.posts li {
+	position: relative;
+}
+
+.posts h2 {
+	font-family: Lora, cursive;
+	margin: 0;
+	font-size: 30px;
+	margin-bottom: 10px;
+	display: block;
+	line-height: 1.1em;
+}
+
+	.posts h2:hover {
+		text-decoration: underline;
+	}
+
+.posts a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.posts .date {
+	position: absolute;
+	text-align: right;
+	font-size: 14px;
+	    width: 87px;
+	    left: -122px;
+	    top: 1px;
+	    font-weight: 300;
+	    /* border-bottom: 1px solid black; */
+	   // border-right: 1px solid #aaa;
+	    padding-right: 15px;
+	    color: #888;
+	    font-family: lora;
+	    text-transform: uppercase;
+}
+
+.posts p {
+	font-size: 18px;
+	line-height: 1.4em;
 }
