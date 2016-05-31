@@ -1,0 +1,283 @@
+---
+---
+
+
+$highlight: #EE2A24;
+$text_color: #222;
+$medium_width: 670px;
+
+%red_links {
+	color: inherit;
+	text-decoration: none;
+	color: $highlight;
+	border-bottom: 1px solid rgba(0,0,0, 0);
+	
+	&:hover {
+		border-bottom: 1px solid $highlight;
+	}
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+
+html, body {
+	padding: 0;
+	margin: 0;
+	color: $text_color;
+  font-family: Lora, Georgia, serif;
+	overflow-x: hidden;
+}
+
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: .25s all;
+	display: inline-block;
+	
+	p & { 
+		@extend %red_links;
+	}
+}
+
+%h_normalize {
+  	margin: 0;
+  	padding: 0;
+    line-height: 1.1em;
+}
+
+h1 {
+	@extend %h_normalize;
+	font-weight: 300;
+	font-size: 60px;
+}
+	
+h2 {
+	@extend %h_normalize;
+	font-size: 30px;
+	margin-bottom: 10px;
+
+	.posts &:hover{
+		text-decoration: underline;
+		
+	}
+
+	&.line-below {
+		padding-bottom: 10px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #ccc;
+		margin-top: 10vh;
+	
+		.social {
+			display: inline-block;
+			float: right;
+		
+			a {
+				margin-right: 3px;
+				
+				&:last-child {
+					margin-right: 0px;
+				}
+				
+				&:hover {
+					color: $highlight;					
+				}				
+			}
+		}
+		
+	}
+	
+}
+
+p {
+	font-size: 20px;
+	line-height: 1.45em;
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+}
+
+.date {
+	display: block;
+	color:#888;
+	font-weight: normal;
+	text-transform: uppercase;	
+	position: relative;
+}
+
+.home, .page-body {
+	width: 100%;
+	margin: 0px auto;
+}
+	
+.home {
+	margin-bottom: 50px;
+	max-width: $medium_width;
+	
+	
+	img {
+		max-width: 100%;
+		margin: 15px auto;
+	}
+	
+	.banner {
+		padding-bottom: 30px;
+		margin-top: 10vh;
+		border-bottom: 1px solid #aaa;
+		
+		.intro {
+			margin-top: 10px;
+			font-size: 30px;
+			color: #555;
+			line-height: 1.25em;
+		
+			a {
+				@extend %red_links;
+			}
+		
+		}
+		
+	}
+	
+	.posts {
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 40px 0px 30px;
+
+			li {
+				position: relative;
+				margin-bottom: 40px;
+				
+				&:last-child {
+					margin-bottom: 0px;
+				}
+				
+				h2 {
+					margin-bottom: 15px;
+					
+					a:hover {
+						text-decoration: underline;
+					}
+					
+				}
+			}
+		}
+
+		.date {
+			position: absolute;
+			text-align: right;
+			font-size: 14px;
+			width: 87px;
+			left: -113px;
+			top: 1px;
+			padding-right: 15px;
+		}
+
+	}
+	
+}		
+
+.page {
+	
+	position: relative;
+	
+	.page-body {
+		margin-top: 15px;
+	
+		h1, h2, .date, .navigation, p {
+//		h1, .block, .date, .navigation, p {
+			max-width: $medium_width;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	
+		h1 {
+			margin-bottom: 20px;
+		}
+		
+		img {
+			max-width: 100vw;
+			margin: 10px 0px;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+			
+	}
+	
+	.date {
+	    margin-bottom: 5px;
+	    margin-right: 6px;
+	    margin-top: 3px;
+	    top: 3px;
+	}
+	
+	
+	.navigation {
+		margin-bottom: 30px;
+		margin-top: 20px;
+		
+		a {
+			max-width: 48%;
+			font-size: 20px;
+			text-decoration: underline;
+			
+			&.next {
+				float: left;
+			}
+			
+			&.back {
+				float: right;
+			}
+		}
+	}
+	
+	.footer {
+		background-color: #eee;
+		padding-top: 50px;
+		margin-top: 50px;
+		padding-bottom: 50px;
+	}
+		
+}
+
+.footer {
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+	
+	.icons {
+		width: 100%;
+		text-align: center;
+		margin: auto;
+		font-size: 30px;
+		
+		a:hover {
+			color: $highlight;
+		}
+	}
+	
+	.bio {
+		
+		max-width: $medium_width;
+		margin: auto;
+		
+		p {
+			font-size: 30px;
+		}
+	}
+	
+}
+
+@media screen and (max-width: 670px) {
+	body {
+
+	}
+}
+

@@ -1,5 +1,62 @@
---
+---
 layout: default
---
-<h1>{{ page.title }}</h1>
-{{content}}
+---
+<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>{{ page.title }}</h1>
+		
+		
+		<div class="date">
+			{% assign d = page.date | date: "%-d" %} 
+			{% assign m = page.date | date: "%B" %} 
+
+			{% case m %}
+			  {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
+			  {% when 'September' %}Sept.
+			  {% else %}{{ page.date | date: "%b" }}.
+			  {% endcase %}
+			{{d}},
+			{{ page.date | date: "%Y" }}
+		</div>
+
+		{{content}}
+	
+		{% if page.next.url or page.previous.url %}
+		<div class="navigation">
+			{% if page.next.url %}
+			<a class="next" href="{{page.next.url}}">&laquo; {{page.next.title}}</a>
+			{% endif %} 
+
+			{% if page.previous.url %}
+			<a class="back" href="{{page.previous.url}}">{{page.previous.title}} &raquo;</a>
+			{% endif %}
+			<div style="clear:both"></div>
+		</div>
+		{% endif %}
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="{{ site.github.url }}/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+

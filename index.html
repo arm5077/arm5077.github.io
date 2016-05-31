@@ -2,46 +2,49 @@
 layout: default
 title: Testing a terrible website
 ---
-<div class="banner">
-	<h1>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</h1>
+<div class="home">
+	<div class="banner">
+		<h1>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</h1>
 
-	<div class="intro">
-		I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="#">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a>
-	</div>
-	
-	<div class="icons">
-		<i class="fa fa-twitter-square" aria-hidden="true"></i>
-		<i class="fa fa-envelope-square" aria-hidden="true"></i>
-		<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+		<div class="intro">
+			I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="{{ site.github.url }}/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a>
+		</div>
 	</div>
 
-</div>
+	<div class="posts">
 
-<div class="posts">
+		<ul>
+		  {% for post in site.posts %}
+		    <li>
+				<h2>
+					<div class="date">
+						{% assign d = post.date | date: "%-d" %} 
+						{% assign m = post.date | date: "%B" %} 
 
-	<ul class="posts">
-	  {% for post in site.posts %}
-	    <li>
-			<h2>
-				<div class="date">
-					{% assign d = post.date | date: "%-d" %} 
-					{% assign m = post.date | date: "%B" %} 
-
-					{% case m %}
-					  {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
-					  {% when 'September' %}Sept.
-					  {% else %}{{ post.date | date: "%b" }}.
-					  {% endcase %}
-					{{d}},
-					{{ post.date | date: "%Y" }}
-				</div>
+						{% case m %}
+						  {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
+						  {% when 'September' %}Sept.
+						  {% else %}{{ post.date | date: "%b" }}.
+						  {% endcase %}
+						{{d}},
+						{{ post.date | date: "%Y" }}
+					</div>
 
 
-				<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-			</h2>
-			<div>{{ post.excerpt }}</div>
+					<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+				</h2>
+				<div>{{ post.excerpt }}</div>
 			
-		</li>
-	  {% endfor %}
-	</ul>
+			</li>
+		  {% endfor %}
+		</ul>
+	</div>
+
+	<div class="footer">
+		<div class="icons">
+			<a href="//twitter.com/andrewmcgill"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+			<a href="//github.com/arm5077"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+			<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+		</div>
+	</div>
 </div>
