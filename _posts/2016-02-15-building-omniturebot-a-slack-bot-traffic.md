@@ -18,10 +18,10 @@ Using it, getting my most recent stats is as easy as chatting @omniturebot and a
 
 Omniturebot is written in Node.js and can easily be deployed via Heroku or any SaaS provider. (You can also easily run it in your local environment, if you’d prefer.) It’s written to handle multiple users, though admittedly I haven’t tested against a ton of concurrent requests.
 
-```
+{% highlight javascript %}
 for( i=0; i<=12; i++ ){
   console.log("yoyoyoyo");
 }
-````
+{% endhighlight %}
 
 I hope it makes pulling traffic numbers as easy and enjoyable as it has for me!
