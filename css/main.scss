@@ -90,7 +90,7 @@ h2 {
 
 p {
 	font-size: 20px;
-	line-height: 1.45em;
+	line-height: 1.55em;
 
 	&:first-of-type {
 		margin-top: 0;
@@ -275,9 +275,69 @@ p {
 	
 }
 
+code.highlighter-rouge {
+	background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 3px 4px;
+    font-size: 15px;
+    position: relative;
+    top: -2px;
+}
+
+pre {
+	max-width:670px;
+	margin: auto;
+	background-color: #eee;
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+
+
 @media screen and (max-width: 670px) {
 	body {
-
+		padding: 10px 20px;
 	}
+	
+	h1 {
+		font-size: 40px;
+	}
+	
+	.intro {
+		font-size: 25pt;
+	}
+	
+	.page {
+		
+		.page-body {
+			
+			h2.line-below {
+				margin-top:20px;
+			}
+		
+			p {
+				font-size: 17px;
+				line-height:1.55em
+			}
+			
+		}
+		
+		.navigation {
+			a {
+				display: block;
+				max-width: 100%;
+				margin-bottom: 10px;
+			}
+
+		}
+		
+		.footer {
+			margin: 20px auto;
+			padding: 20px;
+			
+			p {
+				font-size: 25px;
+			}
+		}
+	}	
 }
 

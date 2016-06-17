@@ -2,9 +2,18 @@
 <html>
 <head>
 	<title>{{ page.title }}</title>
+
+	{% if page.desc %}
+	<meta name="description" content="{{ page.desc }}" />
+	{% else %}
+	<meta name="description" content="I'm a journalist and web developer from Philadelphia who hopes to die happy." />
+	{% endif %}
+
+
 	<link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css">
 	<link rel="stylesheet" type="text/css" href="{{ site.url }}/css/syntax.css">
 	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 	
 <body>

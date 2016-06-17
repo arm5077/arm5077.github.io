@@ -10,18 +10,12 @@ At The Atlantic, we use [Omniture](http://www.adobe.com/marketing-cloud/web-anal
 
 After a day of one too many segment-selections and filter-applications, I asked myself, couldn’t a robot do this better?
 
-Enter Omniturebot. It’s a Slack bot that uses your Omniture credentials to pull traffic stats at a moment’s notice, accepting a keyword and a timespan and returning the relevant stats.
+Enter [Omniturebot](https://github.com/arm5077/omniture-slackbot). It’s a Slack bot that uses your Omniture credentials to pull traffic stats at a moment’s notice, accepting a keyword and a timespan and returning the relevant stats.
 
 Using it, getting my most recent stats is as easy as chatting @omniturebot and asking `"andrew mcgill" (1 month)`. It’ll happily return:
 
 ![Slackbot's output]({{site.url}}/assets/omniturebot-output.jpg)
 
 Omniturebot is written in Node.js and can easily be deployed via Heroku or any SaaS provider. (You can also easily run it in your local environment, if you’d prefer.) It’s written to handle multiple users, though admittedly I haven’t tested against a ton of concurrent requests.
-
-{% highlight javascript %}
-for( i=0; i<=12; i++ ){
-  console.log("yoyoyoyo");
-}
-{% endhighlight %}
 
 I hope it makes pulling traffic numbers as easy and enjoyable as it has for me!
