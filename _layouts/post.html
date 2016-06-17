@@ -31,7 +31,7 @@ layout: default
 			{{ page.date | date: "%Y" }}
 		</div>
 
-		{{content}}
+		{{page.content | markdownify}}
 	
 		{% if page.next.url or page.previous.url %}
 		<div class="navigation">

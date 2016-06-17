@@ -2,3 +2,5 @@ name: Andrew McGill, friendly neighborhood journalist
 paginate: 5
 markdown: kramdown
 highlighter: rouge
+kramdown: 
+  parse_block_html: true

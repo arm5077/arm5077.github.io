@@ -1,7 +1,6 @@
 ---
 ---
 
-
 $highlight: #EE2A24;
 $text_color: #222;
 $medium_width: 670px;
@@ -44,6 +43,7 @@ a {
   	padding: 0;
     line-height: 1.1em;
 }
+
 
 h1 {
 	@extend %h_normalize;
@@ -276,7 +276,7 @@ p {
 }
 
 code.highlighter-rouge {
-	background-color: #eee;
+    background-color: #eee;
     border: 1px solid #ddd;
     padding: 3px 4px;
     font-size: 15px;
@@ -287,9 +287,14 @@ code.highlighter-rouge {
 pre {
 	max-width:670px;
 	margin: auto;
-	background-color: #eee;
+	background-color: #eee !important;
 	border: 1px solid #ddd;
 	padding: 10px;
+  overflow: scroll; 
+}
+
+.twitter-tweet {
+  margin: auto;
 }
 
 
@@ -302,9 +307,34 @@ pre {
 		font-size: 40px;
 	}
 	
-	.intro {
-		font-size: 25pt;
+	.home {
+	  
+	  .banner {
+  	 
+  	  .intro {
+    		font-size: 25px;
+    	}
+  	
+  	} 
+  	
+  	
+  	.posts {
+  	  
+  	  .date {
+  	    position: static;
+  	    padding: 0;
+  	    width: auto;
+        text-align: left;
+        line-height: 1em;
+        margin-bottom: 5px;
+  	  }
+  	  
+  	  
+  	} 
+	
 	}
+	
+	
 	
 	.page {
 		

@@ -8,10 +8,10 @@ Or rather, they tried to.
 
 State directed reporters to download the emails from the department’s [“virtual reading room”](http://foia.state.gov/Search/Results.aspx?collection=Clinton_Email) (one of many government silos of FOIA data that really should be cataloged on [data.gov](http://www.data.gov/)). But given the world’s intense interest in former Secretary Clinton’s communications, the site slowed to a crawl.
 
-<blockquote class="twitter-tweet" lang="en">
+<blockquote class="twitter-tweet" lang="en" style="margin: auto">
 <p dir="ltr" lang="en">So far, State Dept.&#8217;s FOIA response time is faster than the load time for the Clinton email website</p>
 <p>— Timothy Cama (@Timothy_Cama) <a href="https://twitter.com/Timothy_Cama/status/601789439879294977">May 22, 2015</a></p></blockquote>
-<p><script src="//platform.twitter.com/widgets.js" async="" charset="utf-8"></script>
+<p><script src="//platform.twitter.com/widgets.js" async="" charset="utf-8"></script></p>
 
 After hitting refresh about a million times and finally getting the first 20 results, it became clear the conventional route wasn’t going to work.
 
@@ -27,19 +27,23 @@ Since it’s publicly exposed (the request wasn’t made using server-side code)
 
 Here’s the original:
 
-`http://foia.state.gov/searchapp/Search/SubmitSimpleQuery?_dc=1433123130101&searchText=*&beginDate=false&endDate=false&collectionMatch=Clinton_Email&postedBeginDate=false&postedEndDate=false&caseNumber=false&page=1&start=0&limit=20`
+```
+http://foia.state.gov/searchapp/Search/SubmitSimpleQuery?_dc=1433123130101&searchText=*&beginDate=false&endDate=false&collectionMatch=Clinton_Email&postedBeginDate=false&postedEndDate=false&caseNumber=false&page=1&start=0&limit=20
+````
 
 Aha! There’s a “limit” parameter at the end that’s set to 20. Let’s just bump that up to, say, 1,000.
 
-`http://foia.state.gov/searchapp/Search/SubmitSimpleQuery?_dc=1433123130101&searchText=*&beginDate=false&endDate=false&collectionMatch=Clinton_Email&postedBeginDate=false&postedEndDate=false&caseNumber=false&page=1&start=0&limit=1000`
+```
+http://foia.state.gov/searchapp/Search/SubmitSimpleQuery?_dc=1433123130101&searchText=*&beginDate=false&endDate=false&collectionMatch=Clinton_Email&postedBeginDate=false&postedEndDate=false&caseNumber=false&page=1&start=0&limit=1000
+```
 
 Yes! The State Department’s server just returned me a JSON file with 296 results — every email I’m looking for. What’s more, it looks like each object includes a property containing the direct URL to a PDF of the individual email.
 
-##Scrape scrape scrape
+## Scrape scrape scrape
 
-With this JSON file saved safely to my computer, I wrote a [quick Node.js] script that loops through and downloads each PDF, saving it to my hard drive.
+With this JSON file saved safely to my computer, I wrote a [quick Node.js](http://arm5077.github.io/2015/05/31/how-i-scraped-hillary-clintons-benghazi-emails.html) script that loops through and downloads each PDF, saving it to my hard drive.
 
-(If I was a complete coding boss, I would’ve used a PDF library to combine these files programmatically. Instead, running close to deadline, I used Adobe Acrobat.__
+(If I was a complete coding boss, I would’ve used a PDF library to combine these files programmatically. Instead, running close to deadline, I used Adobe Acrobat.)
 
 And boom — we had a 850-page PDF of every email the State Department was currently failing to load.
 
