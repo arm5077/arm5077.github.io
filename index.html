@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Testing a terrible website
+title: Andrew McGill, journalist and developer
 ---
 <div class="home">
 	<div class="banner">
@@ -33,7 +33,13 @@ title: Testing a terrible website
 
 					<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 				</h2>
-				<div>{{ post.excerpt }}</div>
+				<div>
+					{% if post.desc %}
+					{{ post.desc }}
+					{% else %}
+					{{ post.excerpt }}
+					{% endif %}
+				</div>
 			
 			</li>
 		  {% endfor %}

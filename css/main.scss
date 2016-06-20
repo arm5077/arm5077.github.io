@@ -102,6 +102,13 @@ p {
 
 }
 
+ul {
+  font-size: 20px;
+  line-height: 1.55em;
+  width: $medium_width;
+  margin: auto;
+}
+
 .date {
 	display: block;
 	color:#888;
@@ -174,8 +181,8 @@ p {
 			position: absolute;
 			text-align: right;
 			font-size: 14px;
-			width: 87px;
-			left: -113px;
+			width: 95px;
+			left: -118px;
 			top: 1px;
 			padding-right: 15px;
 		}
