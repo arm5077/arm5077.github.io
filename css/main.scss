@@ -36,6 +36,8 @@ a {
 	p & { 
 		@extend %red_links;
 	}
+	
+
 }
 
 %h_normalize {
@@ -107,6 +109,7 @@ ul {
   line-height: 1.55em;
   width: $medium_width;
   margin: auto;
+    
 }
 
 .date {
@@ -196,8 +199,8 @@ ul {
 	position: relative;
 	
 	.page-body {
-		margin-top: 15px;
-	
+    margin-top: 15px;
+    
 		h1, h2, .date, .navigation, p {
 //		h1, .block, .date, .navigation, p {
 			max-width: $medium_width;
