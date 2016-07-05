@@ -1,8 +1,14 @@
 <!doctype html>
 <html>
 <head>
-	<title>{{ page.title }}</title>
-
+	<title>
+		{% if page.desc %}
+			{{ page.title }} | Andrew McGill
+		{% else %} 
+			Andrew McGill | journalist and developer
+		{% endif %}
+	</title>
+		
 	{% if page.desc %}
 	<meta name="description" content="{{ page.desc }}" />
 	{% else %}
