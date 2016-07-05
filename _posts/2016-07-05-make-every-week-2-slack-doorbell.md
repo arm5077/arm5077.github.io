@@ -107,6 +107,6 @@ payload: '{"username": "doorbellbot", "icon_emoji": ":bellhop_bell:", "text": "<
 
 All that remained was to post the IoT button by our office door. I attached near the fob reader and left it mysterious for now... maybe I'll add a fun sign later.
 
-![The posted doorbell](/assets/doorbell3.jpg)
+![The posted doorbell](/assets/doorbell3.JPG)
 
 That's it for week 2! Here's the [whole code.](https://gist.github.com/arm5077/1b9b32b0cca815dfce4d8bcef1d78472)
