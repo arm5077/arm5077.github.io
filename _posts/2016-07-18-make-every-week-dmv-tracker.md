@@ -1,7 +1,7 @@
 ---
 title: "Make Every Week, Part 3: How crowded is the Washington, D.C. DMV?"
 layout: post
-desc: "Combining the helpful webcams at the Department of Motor Vehicles and a bit of computer vision to estimate how long you'd have to wait for a drivers license."
+desc: "Using a bit of computer vision and the helpful webcams at the Department of Motor Vehicles to estimate how long you'd have to wait for a drivers license."
 ---
 _**First off, an apology:** In the aftermath of the July 4th holiday, I took the week off last week. So you'll see a double #MakeEveryWeek feature coming up soon._
 
