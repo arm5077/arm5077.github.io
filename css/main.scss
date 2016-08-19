@@ -6,7 +6,6 @@ $text_color: #222;
 $medium_width: 670px;
 
 %red_links {
-	color: inherit;
 	text-decoration: none;
 	color: $highlight;
 	border-bottom: 1px solid rgba(0,0,0, 0);
@@ -33,9 +32,10 @@ a {
 	transition: .25s all;
 	display: inline-block;
 	
-	p & { 
+	p &, .page_body li & { 
 		@extend %red_links;
 	}
+	
 	
 
 }
@@ -229,6 +229,14 @@ ul {
 	    top: 3px;
 	}
 	
+	ul {
+	  
+	  li { 
+	    a {
+			  @extend %red_links;
+		  }
+	  }
+  }
 	
 	.navigation {
 		margin-bottom: 30px;
