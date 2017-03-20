@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			How to track license plate cameras tracking you | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="Pittsburgh's parking authority was using license plate scanners to find scofflaws. But they also were keeping the data." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>How to track license plate cameras tracking you</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Dec.
+			  
+			23,
+			2013
+		</div>
+
+		<p>I never suspected the meter maid.</p>
+
+<p>Sure, we take constant, unblinking (if mostly uninterested) surveillance for granted these days, but I blame the usual suspects: the FBI, ATM cameras and those not-so-discreet bubbles above cashiers at the grocery store.</p>
+
+<p>Then I read an <a href="https://www.aclu.org/alpr">ACLU report</a> on automatic license plate readers, <a href="http://en.wikipedia.org/wiki/Automatic_number_plate_recognition">an emerging class of high-speed cameras</a> that can scan and identify thousands (millions?) of passing cars per hour. The idea is that a computer can run photographed plates instantly through a carjacking database and alert police if a stolen vehicle drives by, but the ACLU found that many police agencies were keeping all the non-hits as well, building massive databases of when and where people were driving.</p>
+
+<p>After looking through <a href="https://www.aclu.org/maps/automatic-license-plate-reader-documents-interactive-map">the ACLU’s online map of records-request responses,</a> I realized one unexpected Pittsburgh agency was very interested in the technology: Our municipal parking authority.</p>
+
+<p>Yep, the folks who ticket you for pulling too close to the hydrant.</p>
+
+<p>Apparently, the PPA was using the cameras to find folks who had amassed obscenely high fines, stopping as they passed by on the street and booting their cars. Through Pennsylvania’s open records laws, I obtained from the authority a database of every car scanned in August 2013 by the PPA’s two boot trucks, who toodle throughout Pittsburgh most weekdays.</p>
+
+<p>Turns out those two trucks are really freakin’ efficient, scooping up between 150,000-200,000 license plates every month. And sure enough, they weren’t deleting the licenses plates that DIDN’T have fines.</p>
+
+<p>Filter that database by a certain plate number, voila: You can track a car’s location through the city. For example, here’s a screenshot of all the locations license plate HYN8398 had been scanned. (That plate belongs to a shuttle van, so it chills downtown a lot.)</p>
+
+<p><img src="http://localhost:4000/assets/license-plate-1.jpg" alt="A map of a number of scanned plate locations" /></p>
+
+<p>Kind of freaky, huh?</p>
+
+<p>I ended up writing <a href="http://www.post-gazette.com/neighborhoods-city/2013/09/22/Pittsburgh-s-parking-authority-snaps-200K-motorists-a-month/stories/201309220010">this story</a> about the practice, highlighting a lady from the city’s Beechview neighborhood who had unwittingly been photographed all around town. The Parking Authority eventually responded, <a href="http://www.post-gazette.com/neighborhoods-city/2013/10/17/Pittsburgh-license-plate-data-on-lockdown/stories/201310170254">promising to clear out its database daily.</a></p>
+
+<h2 id="how-i-did-it">How I did it</h2>
+
+<p>This data came on two USB drives in a collection of wonky, 40,000-entry HTML tables. Concatenating those together using Notepad++, I opened the combined file in Excel and converted it so a CSV (it was only about 150,000 lines, so not a problem for Excel 2007 and up). Dumped that file in Access.</p>
+
+<p>I quickly figured out that some of the reads were duplicates — the camera would have two separate images at the same location and the same time. To get rid of those, I used Access’s “find duplicates” wizard <a href="http://www.techrepublic.com/article/eliminate-duplicate-records-with-this-built-in-access-query/">along with this method,</a> using the timestamp (which was unique) as my primary key.</p>
+
+<p>The database would also use a regular expressions-like syntax for a license plate’s number if the camera didn’t get a full read. I want those included when querying for the count of unique plates, so I made sure to include a <code class="highlighter-rouge">NOT LIKE “*[[]*”</code> clause in my SQL.</p>
+
+<p>That gave me a reasonably clean list of unique moments a license plate had been photographed. But now I wanted a good example for my story — a person who had been photographed multiple times at disparate locations in Pittsburgh.</p>
+
+<p>Standard deviation to the rescue. Calculating the standard deviation between any given plate’s various scanned latitudes and longitudes let me pick out vehicles that had been photographed multiple times and in different places.</p>
+
+<p>At the same time, I had to actually find these cars, too. So I looked within the set for plate numbers that also had modest clusters of records very close together in a residential neighborhoods, wagering that might be where its owner lived. That’s how I found Donna Scuilli: Here’s what a portion of her records looked like mapped out.</p>
+
+<p><img src="http://localhost:4000/assets/gbs-car-detail.jpg" alt="The view of Donna's street from above" /></p>
+
+<p>I also built uploaded the database to a mySQL server and built a <a href="http://newsinteractive.post-gazette.com/tracking/">simple web tool empowering people to search for their own license plates.</a> It wouldn’t show them where they had been scanned — what if a guy put in his ex-wife’s plate number and found her new house? — but it would show them how many times they’d been photographed and when.</p>
+
+<p>Take me: I was scanned 3 times (all while parked on my street).</p>
+
+<p><img src="http://localhost:4000/assets/scan-app-closeup.jpg" alt="A screenshot of the tool." /></p>
+
+<p>I’ve uploaded the cleaned dataset (no duplicates but still ambiguous plate numbers) <a href="https://github.com/arm5077/pgh-ALPR-records">to Github.</a></p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2014/01/12/mike-tomline-steelers-obviously.html">&laquo; Measuring how often Steelers coach Mike Tomlin says "obviously," his weird verbal tic</a>
+			 
+
+			
+			<a class="back" href="/2012/04/19/in-which-i-meet-my-journalistic-doppelganger.html">In which I meet my journalistic doppelganger &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

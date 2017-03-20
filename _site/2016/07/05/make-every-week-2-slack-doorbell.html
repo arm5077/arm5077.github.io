@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Make Every Week, Part 2: A Slack-powered doorbell | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="Using Amazon's IoT Dash button, I made a doorbell that pings a Slack channel." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Make Every Week, Part 2: A Slack-powered doorbell</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			July
+			  
+			5,
+			2016
+		</div>
+
+		<p>These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At <em>The Atlantic</em>, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.</p>
+
+<p>At least once a week, I find myself awkwardly lurking in the hallway after a trip to the restroom, waiting for someone to leave the office, all because I left my fob at my desk. <em><em>Hm,</em></em> I think, pretending to look at my phone. <em>Would my health insurance cover the surgery to implant a chip into my body?</em></p>
+
+<p>After a while, things get <em>really</em> desperate: I knock on the glass door, and someone bemusedly comes over and opens it for me.</p>
+
+<p><img src="https://media.giphy.com/media/3KBdUGGkVgRxu/giphy.gif" alt="Bill Murray, as me" /></p>
+
+<h2 id="the-doorbell">The Doorbell</h2>
+
+<p>What we needed was a doorbell. Not the “Westminister Chimes” type — that would get annoying fast — but something more subtle.</p>
+
+<p>Amazon just released a <a href="https://aws.amazon.com/iot/button/">programmable version</a> of its “Dash” buttons, the little $5 doohickeys that order new paper towels with one tap. It connects to a local WiFi network and executes code through Amazon’s Lambda service, so it’s pretty easy to set up.</p>
+
+<p>An idea formed. What if the Dash was connected to a channel in Slack, our work chat client? Folks could opt into the group and receive notifications whenever someone needed help with the door. That way, it wouldn’t bother the whole office.</p>
+
+<p><strong>The first step was setting up the Slack integration.</strong> This was pretty simple, just a matter of telling Slack the name of the “bot” and specifying the channel where it would post messages. Slack then gave an API endpoint to use to send data.</p>
+
+<p><strong>Next, Lambda.</strong> I wrote this code in Node.js, though you can use another language if you’d like. Lambda lets you write the code in-browser if it’s a single script, but since I needed to send HTTP POST requests as per <a href="https://api.slack.com/incoming-webhooks">Slack’s incoming webhooks standard</a>, I chose to use the popular <a href="https://github.com/request/request">request</a> library and upload a zipped folder instead.</p>
+
+<p>Lambda expects everything to be contained in a module export, so laying that out came first:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Then came the actual call to the Slack endpoint, which was a pretty simple POST request: Just the bot’s username, an emoji to use for the bot’s userpic and the message to post.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">slack_endpoint</span><span class="p">,</span> 
+  <span class="p">{</span>
+    <span class="na">form</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">payload</span><span class="p">:</span> <span class="s1">'{"username": "doorbellbot", "icon_emoji": ":bellhop_bell:", "text": "&lt;!group&gt; Someone is at the door! Let \'em in"}'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre>
+</div>
+
+<p>You’ll notice that I’m using <code class="highlighter-rouge">&lt;!group&gt;</code> to simulate a “@group” string in the message, which pings everyone in the channel. Just typing “@group” doesn’t work—you’ll need to use that code.</p>
+
+<p>It worked!</p>
+
+<p><img src="/assets/doorbell1.png" alt="Slack's doorbell reply" /></p>
+
+<p>That wrapped up quicker than I thought, so I added a bit of fun. Every time the doorbell rang, I wanted the bot to print a random quote about opening doors. I found a few online and encoded them as JSON, writing a command to pick a random one:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">quotes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"Good manners will open doors that the best education cannot."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Clarence Thomas"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"I think there are influences that you open the door to, and influences that come under the door."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Harrison Birtwistle"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"We must open the doors of opportunity. But we must also equip our people to walk through those doors."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Lyndon B. Johnson"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"I find that when you open the door toward openness and transparency, a lot of people will follow you through."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Kirsten Gillibrand"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"Not knowing when the dawn will come\nI open every door."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Emily Dickinson"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"In life sometimes, in the universe, you have to close some doors to have others open."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Gene Ween"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"Knowledge of what is does not open the door directly to what should be."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Albert Einstein"</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="na">quote</span><span class="p">:</span> <span class="s2">"When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one which has opened for us."</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"Alexander Graham Bell"</span>
+  <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kd">var</span> <span class="nx">this_quote</span> <span class="o">=</span> <span class="nx">quotes</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">quotes</span><span class="p">.</span><span class="nx">length</span><span class="p">)];</span>
+
+</code></pre>
+</div>
+
+<p>I then rewrote my POST payload to this:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">payload</span><span class="err">:</span> <span class="s1">'{"username": "doorbellbot", "icon_emoji": ":bellhop_bell:", "text": "&lt;!group&gt; Someone is at the door! Let \'em in.\n&gt;\\"'</span> <span class="o">+</span> <span class="nx">this_quote</span><span class="p">.</span><span class="nx">quote</span> <span class="o">+</span> <span class="s1">'\\" \n&gt;- '</span> <span class="o">+</span> <span class="nx">this_quote</span><span class="p">.</span><span class="nx">author</span> <span class="o">+</span> <span class="s1">'"}'</span>
+</code></pre>
+</div>
+
+<p>… and tada!</p>
+
+<p><img src="/assets/doorbell2.png" alt="Slack's doorbell reply" /></p>
+
+<p>All that remained was to post the IoT button by our office door. I attached near the fob reader and left it mysterious for now… maybe I’ll add a fun sign later.</p>
+
+<p><img src="/assets/doorbell3.JPG" alt="The posted doorbell" /></p>
+
+<p>That’s it for week 2! Here’s the <a href="https://gist.github.com/arm5077/1b9b32b0cca815dfce4d8bcef1d78472">whole code.</a></p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/07/18/make-every-week-dmv-tracker.html">&laquo; Make Every Week, Part 3: How crowded is the Washington, D.C. DMV?</a>
+			 
+
+			
+			<a class="back" href="/2016/06/26/a-summer-of-make-every-week.html">Make Every Week, Part 1: A bikeshare smartwatch app &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

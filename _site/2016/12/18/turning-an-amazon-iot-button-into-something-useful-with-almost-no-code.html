@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Turning an Amazon IoT button into something actually useful with (almost) no code | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="Figuring out Amazon's WiFi button is tough for beginners. Here's an easy away to connect your to IFTTT.com (and thereby the world!!)." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Turning an Amazon IoT button into something actually useful with (almost) no code</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Dec.
+			  
+			18,
+			2016
+		</div>
+
+		<p>I’m pretty nuts for <a href="https://aws.amazon.com/iotbutton/">Amazon’s internet-of-things button.</a> I’ve already made a <a href="http://www.andrewmcgill.me/2016/07/05/make-every-week-2-slack-doorbell.html">Slack doorbell</a> for my office and a <a href="http://www.andrewmcgill.me/2016/08/19/make-every-week-sweetgreen-salad-button.html">push-to-order Sweetgreen button.</a> But both of these projects required a fair amount of programming.</p>
+
+<p>Why is this button interesting? Gooood question. I mean, you can’t do much with it, besides press it. But:</p>
+
+<ul>
+  <li><strong>It combined a mechanical sensor with built-in WiFi, in a package that costs $20.</strong> That’s actually pretty incredible. Even the cheapest DIY setup would easily clock in at $30 or more, and would mostly likely be a great deal more bulky.</li>
+  <li>
+    <p><strong>It ties into Amazon’s <em>Lambda</em> service.</strong> A few years ago, to do anything on the internet, you had to rent a server. They weren’t necessarily <em>expensive</em> — Amazon’s been in the server game for a decade — but they could be knowledge-intensive. You still had to do all the annoying initializing/maintenance stuff that many coders didn’t care for.</p>
+
+    <p>Services like Lamda abstract this aaway — you pop in your code, and Amazon worries about the rest.</p>
+  </li>
+</ul>
+
+<p>So it’s a pretty neat little button!</p>
+
+<h2 id="that-said">That said…</h2>
+
+<p>It’s not terribly useful if you don’t know how to program a computer. Amazon doesn’t hold your hand. You basically get a box to write code in, some weird parameters, and Lambda bids you good luck. For a novice, that’s pretty intimidating.</p>
+
+<p><img src="/assets/lambda_example.gif" alt="Eeek! My Sweetgreen app, as it appears in Lambda." /></p>
+
+<p>On the other end of the spectrum is <a href="http://www.ifttt.com">IFTTT.com</a>, an automation website that does a really good job of abstracting code into something easier to understand. The site (it stands for <strong>If This, Then That</strong>) links together completely separate services — Twitter, Hue lightbulbs, thermostats — and allows events from one to trigger actions in another.</p>
+
+<p>Combinations that sound very complicated — <em>hmm, can I send a</em> 🙄 <em>tweet whenever I receive an email from my crazy uncle?</em> — become a matter of clicking and dragging various services together.</p>
+
+<p><img src="/assets/ifttt_example.gif" alt="Ahhhh. Sweet automation." /></p>
+
+<p>If only Amazon’s IoT service could be so intuitive…</p>
+
+<h2 id="but-it-can-be">But it can be!</h2>
+<p><strong>It just takes a bit of boilerplate code,</strong> thanks to IFTTT’s <a href="https://ifttt.com/maker">Maker </a> extension. Maker is sort of a general-purpose receiver, allowing people to trigger an action by sending a ping from an outside server through a humble POST request. (If you’re not familiar with HTTP protocol, a POST request is one of the four or five simplest messages servers use to talk to each other.)</p>
+
+<p>Programmatically, sending an HTTP request is super easy — pretty much any server can do it. And since you can write code to send the POST message yourself, it frees you from needing a device that already has a partnership with IFTTT.</p>
+
+<p>So you could have a motion detector, hooked up to a Raspberry Pi, that tells IFTTT to text you every time someone walks past your desk. Or a water sensor, also connected to a Raspberry Pi, that pings IFTTT every time the cat’s water bowl gets low. In both cases, the Pi would take care of sending the ping.</p>
+
+<p>In this case, Amazon’s Lambda service will take the place of the Pi (remember, we don’t need servers anymore?), pinging IFTTT every time we press the IoT button. For this demonstration, I’m going to make my button do something simple: <strong>tweet “Man, it’s a hot one” from my Twitter account.</strong></p>
+
+<h2 id="setting-up-ifttt">Setting up IFTTT</h2>
+
+<p>Let’s do the easy bit first: Making our Twitter IFTTT action.</p>
+
+<ul>
+  <li>Head to IFTTT and make a <a href="https://ifttt.com/create">new applet.</a> (You’ll have to sign up for an account if you haven’t already.)</li>
+  <li>
+    <p>Click <strong>“+this”</strong> to make a new trigger. It’ll give a wide array of options, but filter for <strong>“Maker.”</strong>
+<img src="/assets/ifttt_maker_option.png" alt="The Maker option on IFTTT's website." /></p>
+  </li>
+  <li>
+    <p>Choose the <strong>“Recieve a web request”</strong> option. It’ll prompt you to give the trigger a name. I’m calling mine <code class="highlighter-rouge">santana-button-pressed</code>.</p>
+  </li>
+  <li>
+    <p>Now, we’ll choose the action: sending a tweet. Click <strong>“+that”</strong> and filter to Twitter, selecting <strong>“Post a tweet.”</strong></p>
+  </li>
+  <li>
+    <p>Write your preferred tweet text. Here’s mine:</p>
+
+    <p><img src="/assets/iot-tweet-text.png" alt="Man, it's a hot one tweet text" /></p>
+  </li>
+  <li>
+    <p>After I saved the applet, I had a bit of trouble finding the URL I was supposed to use to send a POST request to Maker. If you click “Maker” in the breadcrumb menu in the upper-left, and then click “Settings” on the main Maker page, you’ll get a URL under “Account info.” Following <em>that</em> takes you to your credential page. Whew!</p>
+
+    <p>Now you have the URL you’ll need to POST — a combination of your trigger name and your Maker key. For instance, mine starts <code class="highlighter-rouge">https://maker.ifttt.com/trigger/santana-button-pressed/with/key/</code> (followed by my key). Save this!</p>
+  </li>
+</ul>
+
+<h2 id="writing-the-node-code-to-upload-to-lambda">Writing the Node code to upload to Lambda</h2>
+
+<p>Now, we have to write a simple script for Lambda that sends a POST request every time the button is pushed. The POST request itself doesn’t even have to contain any information — we’ve already told IFTTT what to tweet.</p>
+
+<p>Here’s my walk-through in Node. (If you’re not interested, here’s the <a href="https://github.com/arm5077/ifttt-button/archive/master.zip">code</a> you’ll need for the next part, when we upload our code to Lambda.)</p>
+
+<ul>
+  <li>
+    <p>Start a new project folder. We’ll use the <strong>requests</strong> module to send the POST ping, so install that using <code class="highlighter-rouge">npm install requests --save</code>.</p>
+  </li>
+  <li>
+    <p>Make a main file for your code — <code class="highlighter-rouge">index.js</code> works fine.</p>
+  </li>
+  <li>
+    <p>All Lambda Node scripts are written as modules, meaning we’ll have to encase our code in a function and include it as a <code class="highlighter-rouge">export</code> property. So let’s start off with this:</p>
+
+    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">exports</span><span class="p">.</span><span class="nx">ifttt</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">){</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+
+    <p>Everything else will go inside here.</p>
+  </li>
+  <li>
+    <p>Now let’s import the <strong>request</strong> library and make the actual request.</p>
+
+    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">exports</span><span class="p">.</span><span class="nx">ifttt</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IFTTT_KEY</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sent ping to IFTTT!"</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+</code></pre>
+    </div>
+
+    <p>Pretty simple. We make a POST request to our IFTTT endpoint, throw an error if one returns, and otherwise print that all is well. You’ll note that we don’t actually include the endpoint in the code — we’re telling Node to pull it from an environmental variable, which we’ll specify when we set up Lambda. This is better for security… you don’t wnat your private key floating around on Github.</p>
+  </li>
+</ul>
+
+<p>Once you’ve got that written, select all the files (<code class="highlighter-rouge">index.js</code>, <code class="highlighter-rouge">node_modules</code>, etc.) and compress into a zip archive.</p>
+
+<h2 id="setting-up-iot-button-and-uploading-code-to-lambda">Setting up IoT button and uploading code to Lambda</h2>
+
+<p>I’m presuming that you’re staring at a new IoT button in your hand and wondering what to do. Skip ahead if you’ve already done some of these steps.</p>
+
+<ul>
+  <li>
+    <p>Log into <a href="the Amazon Web Service console.">https://aws.amazon.com</a> Once there, select the <strong>“AWS IoT”</strong> service. Clicking <strong>“Connect”</strong> on the left rail will give you a new spread of menu options, one of which is <strong>“AWS IoT Button.”</strong></p>
+
+    <p><img src="/assets/iot-opener.png" alt="The IoT config opening screen." /></p>
+  </li>
+  <li>
+    <p>Scroll down and click <strong>“Go to Configuration Wizard.”</strong> You’ll have to type in your serial number, which is printed on the back of the button. <strong>Make sure you click “Generate certificate and keys” before you move on!</strong> You’ll be given two files to download, and I don’t know how to get these otherwise. Also note the endpoint and region.</p>
+  </li>
+  <li>
+    <p>Also make sure you click <strong>“Enable trigger”</strong> before you click “Next.” Then (finally!) click “Next.”</p>
+  </li>
+  <li>
+    <p>We’re now at the “Configure function” section. Type <code class="highlighter-rouge">ifttt</code> into <strong>Name</strong>, and write whatever description you’d like. Down at <strong>Lambda function code,</strong> change “Code entry type” to “Upload a .ZIP file.” You’ll then upload the zip archive we compressed a few steps ago.</p>
+
+    <p>(Why aren’t we just copying-and-pasting our code? It’s that pesky <strong>requests</strong> library — the meat of it is included in the <strong>node_modules</strong> folder, so we need to include everything.)</p>
+  </li>
+  <li>
+    <p>Make sure you add an environmental variable, named <code class="highlighter-rouge">IFTTT_KEY</code>, that lists the Maker URL you took from IFTTT.</p>
+  </li>
+  <li>
+    <p>Lastly, give the button code a descriptive <strong>role name</strong> — I did <code class="highlighter-rouge">ifttt_button</code>. Click “Next,” and then “Create function.”</p>
+  </li>
+  <li>
+    <p>OK! Your code <em>should</em> be uploaded. Only thing left to do is connect your IoT button to your home or office WiFi. Amazon has a <a href="http://docs.aws.amazon.com/iot/latest/developerguide/configure-iot.html">pretty good set of directions here,</a> so I’ll let them explain. Just remember that you’ll need those credentials you downloaded earlier! (And if you missed them, you’ll find your endpoint by clicking “Settngs” at the <a href="https://console.aws.amazon.com/iot/home?region=us-east-1#/dashboard/help">AWS IoT console.</a>)</p>
+  </li>
+</ul>
+
+<p>Give it a shot. Boom!</p>
+
+<blockquote class="twitter-tweet" data-lang="en">
+  <p lang="en" dir="ltr">Man, it’s a hot one— Andrew McGill (@andrewmcgill) <a href="https://twitter.com/andrewmcgill/status/810657716947587072">December 19, 2016</a></p>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>The button will now do your bidding.</p>
+
+<h2 id="final-notes">Final notes</h2>
+<p>You can obviously set up your IFTTT account to do whatever you want, which is the beauty of this hack. I will note that I had a tough time getting my button to connect to my apartment WiFi until I realized it only can communicate with 2.4 GHz networks. If you’re running into connectivity issues (hint: the button’s LED will flash red three times), try poking around in your router settings.</p>
+
+<p>Other than that, happy button-pushing!</p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2017/03/18/finding-serendipity-at-the-atlantic.html">&laquo; Can a Slack bot inspire serendipity at work?</a>
+			 
+
+			
+			<a class="back" href="/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html">Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

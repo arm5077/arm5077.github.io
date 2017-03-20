@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			How to code a virtual Internet of Things device to tempt hackers | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="The Mirai botnet contained thousands of computers, many embedded within internet-connected gadgets. How long could the average IoT device last before being compromised?" />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>How to code a virtual Internet of Things device to tempt hackers</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Nov.
+			  
+			2,
+			2016
+		</div>
+
+		<p>Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out <a href="https://github.com/jgamblin/Mirai-Source-Code">the worm that recruited the botnet</a> targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.</p>
+
+<p>Scanning the internet for open ports, the Mirai worm connected to unsecured servers and ran through a common dictionary of passwords, including <code class="highlighter-rouge">xc3511</code>, which unlocked the webcams. (There’s a good writeup on the mechanics of the bot <a href="https://www.incapsula.com/blog/malware-analysis-mirai-ddos-botnet.html">here.</a>)</p>
+
+<p>Let me first say that <a href="https://www.wired.com/2016/10/internet-outage-webcam-dvr-botnet/">this didn’t affect many residential users.</a> Very few people plug their devices directly into their modem; pretty much everyone filters their traffic through a router, which has ample safeguards. Plus, many of the devices targeted by Mirai were super old.</p>
+
+<p>All the same, I wondered if this was really a big deal. The internet is huge—there are <em>so many</em> IPv4 addresses out there. Even if I had been playing fast and loose with security, weren’t the odds astronomically small that a hacker would randomly happen across my server and take notice?</p>
+
+<p>So I devised an experiment.</p>
+
+<h2 id="my-fake-web-toaster">My fake web toaster</h2>
+<p>I decided to set up a honeypot—a purposefully unsecured server that would give hackers the illusion of control, but would actually record their keystrokes and IP addresses. I could have used a Raspberry Pi and connected it to my home router (using port forwarding to bypass security), but in the interest of time, I ended up running a virtual server through Amazon’s EC2 service.</p>
+
+<p>I wrote <a href="https://github.com/arm5077/mirai-honeypot/blob/master/index.js">a Node script</a> that mimicked a Telnet login on port 23, asking for a username and password, and delivering a faux shell prompt. To a hacker’s scanning script, it would look like a real Telnet server. In honor of one of the internet’s <a href="http://www.livinginternet.com/i/ia_myths_toast.htm">first connected devices,</a> I had it masquerade as a web-connected toaster. Here’s what the hacker would have seen when they tried to log in:</p>
+
+<p><img src="/assets/intro-cli.gif" alt="The fake command line interface." /></p>
+
+<p>I set the thing up and stepped away, expecting to wait a while before recording a hacking attempt. Wrong. The first unauthorized login came within an hour, using <code class="highlighter-rouge">root:root</code> as login credentials.</p>
+
+<p><img src="/assets/hack-attempt.gif" alt="The fake command line interface." /></p>
+
+<p>Over the course of the next 12 hours, the server registered around 300 attempted hacks. I wrote about this experiment for <em>The Atlantic</em> <a href="https://www.theatlantic.com/technology/archive/2016/10/we-built-a-fake-web-toaster-and-it-was-hacked-in-an-hour/505571/">here</a> (and talked about it on <a href="http://www.npr.org/sections/alltechconsidered/2016/11/01/500253637/an-experiment-shows-how-quickly-the-internet-of-things-can-be-hacked"><em>All Things Considered</em>!</a>)</p>
+
+<h2 id="what-does-this-tell-us">What does this tell us?</h2>
+<p>I admit that this project is flawed in a few ways:</p>
+
+<ul>
+  <li><strong>It wasn’t a real IoT device.</strong> This doesn’t bother me quite as much; the Mirai bot doesn’t seem to exploit any device-specific security bugs, so a generic server with an open port fills the role fine. But there’s no doubt that <em>other</em> worms take advantage of weaknesses inherent to specific IoT gadgets, so it would be interesting to more closely simulate them.</li>
+  <li><strong>I didn’t conduct the test over residential wireless.</strong> I bet hackers closely monitor Amazon’s IP range, looking for unsecured server instances spun up by rookies. If I had run my script through my apartment’s internet connection, I probably would have seen fewer login attempts. That said, the security folks I spoke with agreed any unsecured server would have eventually been breached, probably within a day to a week.</li>
+  <li><strong>Most consumer IoT devices don’t connect to the internet directly.</strong> Like I said above, most routers will kill the most obvious routes hackers use to gain control of computers. So the average person hooking up a webcam to their WiFi is probably OK. It would be interesting to simulate the security defects of older routers, and try to get a sense of how many of those exist in the wild.</li>
+  <li><strong>IPv6 might solve these problems.</strong> The new protocol allows for <em>way</em> more possible addresses—like, 7.9x10<sup>28</sup>. Assuming addresses were randomly distributed (and I have no idea if they will be, or anything about this protocol beyond what I’ve read on Wikipedia, to be honest), the sheer amount of territory hackers would have to cover might give me the effective anonymity I thought I already had.</li>
+</ul>
+
+<p>I did get a few tweets that linked to this <a href="https://xkcd.com/350/">xkcd comic</a>, the thought being that my experiment is nothing new: Security folks have been setting out unsecured honeypots for years.</p>
+
+<p>That said, I think this story illustrates a few things that most people didn’t know:</p>
+
+<ul>
+  <li><strong>The Internet isn’t that big (not yet), and it’s packed with hacking scripts.</strong> Bots scan the IPv4 space frequently enough that nearly every computer that’s not behind a firewall can count on being recorded in less than a day.</li>
+  <li><strong>The Mirai bot is still out in force.</strong> Many of the hack attempts used the same sequence of password (and shell commands) outlined in the Mirai botnet’s code. It appears other folks have spun up multiple copies of the bot and are busy recruiting unsuspecting servers.</li>
+</ul>
+
+<p>My toaster experiment isn’t a situation most consumers will face. But it’s an accurate analog to the plight of the kinds of unsecured devices harnessed by the Mirai botnet, and shows how quickly they can be pulled into a hacker’s thrall.</p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html">&laquo; Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition</a>
+			 
+
+			
+			<a class="back" href="/2016/08/19/make-every-week-sweetgreen-salad-button.html">Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

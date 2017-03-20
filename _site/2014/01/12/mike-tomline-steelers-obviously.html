@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Measuring how often Steelers coach Mike Tomlin says "obviously," his weird verbal tic | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="An analysis of whether the football coach's famous verbal tic has any connection to how well the Steelers played the week before." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Measuring how often Steelers coach Mike Tomlin says "obviously," his weird verbal tic</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Jan.
+			  
+			12,
+			2014
+		</div>
+
+		<p>I’m not a sportswriter, and it shows. When I interviewed a veteran NFL broadcaster last week, he mentioned how some newsroom bosses couldn’t tell you “if a football was blown up or stuffed.”</p>
+
+<p>Uh oh. I thought. It’s blown up, right? (<a href="http://en.wikipedia.org/wiki/Football_(ball)">Yep.</a>)</p>
+
+<p>Despite that, I had a great time writing a <a href="http://www.post-gazette.com/sports/steelers/2014/01/12/Tomlin-used-the-adverb-obviously-seven-times-in-2010-322-times-in-2013/stories/201401120075">lexical analysis of Steelers head coach Mike Tomlin’s press conferences,</a> which proved something many sports reporters already knew: The guy reflexively says “obviously” more than any human should. He uttered it 322 times over the course of the 2013 season,  more often than “football.”</p>
+
+<p>Who cares? For one, I work in Pittsburgh. In this city, a story about the Steelers outweighs pretty much everything else on the table (with the possible exception of news about the Pirates or the Penguins).</p>
+
+<p>Secondly, this gave me a chance to learn a bit more about how humans tick, putting a famous face to a bit of everyday psychology that I thought folks might enjoy reading about.</p>
+
+<p>Thirdly, turn on talk radio. <a href="http://www.dve.com/media/podcast-morning-show-bits-MorningShowBits/mike-tomlin-obviously-23763665/">Everyone’s been talking about “obviously” the whole season.</a></p>
+
+<p>And lastly — well, I just thought it would be fun.</p>
+
+<h2 id="how-i-did-it">How I did it</h2>
+
+<p><strong>First, I needed transcripts of Tomlin’s press conferences.</strong> Fortunately, the Steelers franchise provides write-ups of all the head coach’s speaking engagements (though you need media credentials).</p>
+
+<p>These transcripts weren’t perfect — whoever writes them tends to clean up the coach’s language — but they kept in enough “obviouslys” to make them a good option.</p>
+
+<p><a href="http://www.scribd.com/doc/199133619/Steelers-Coach-Mike-Tomlin-Press-12-30-13-Press-Conference-Transcript">Steelers Coach Mike Tomlin Press 12/30/13 Press Conference Transcript</a></p>
+
+<p style=" margin: 12px auto 6px auto; font-family: Helvetica,Arial,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; display: block;">   <a title="View Steelers Coach Mike Tomlin Press 12&#x2F;30&#x2F;13 Press Conference Transcript on Scribd" href="https://www.scribd.com/doc/199133619/Steelers-Coach-Mike-Tomlin-Press-12-30-13-Press-Conference-Transcript" style="text-decoration: underline;">Steelers Coach Mike Tomlin Press 12/30/13 Press Conference Transcript</a> by <a title="View Andrew McGill's profile on Scribd" href="https://www.scribd.com/user/64208719/Andrew-McGill" style="text-decoration: underline;">Andrew McGill</a></p>
+<iframe class="scribd_iframe_embed" src="https://www.scribd.com/embeds/199133619/content?start_page=1&amp;view_mode=scroll&amp;access_key=key-1t7z6r3zl1d43xcn9xsd&amp;show_recommendations=true" data-auto-height="false" data-aspect-ratio="0.7729220222793488" scrolling="no" id="doc_1921" width="100%" height="600" frameborder="0"></iframe>
+
+<p>I copied the transcripts to Notepad++ and did some formatting, taking out smart quotes and enclosing reporter’s questions in parenthesis.</p>
+
+<p>Then I dumped them all back into a spreadsheet, <a href="https://docs.google.com/spreadsheet/ccc?key=0AkboXcg2bVe7dE16RExMdk5haHF4dk5TSm1VQ1ctYkE&amp;usp=drive_web#gid=0">which I’ve posted online.</a> (I got the win/loss records from the <a href="http://www.steelers.com/schedule-and-events/season-schedule.html">Steelers schedule page.</a>) I also converted that spreadsheet to a JSON file using convertcsv.com.</p>
+
+<p>Next, I needed to calculate the Tomlin’s word frequencies across multiple years. Now, you could do this manually in Notepad++ or another text editor, opening each transcript individually and running the “Count” function. But I wanted to build a system I could re-run quickly if I had to alter or add new transcripts.</p>
+
+<p>So I wrote a short PHP script that takes the JSON file, strips out the reporter’s questions from the text of each press conference, splits Tomlin’s part into an array and increments through the result, tallying counts for each word. It’s written so it can do a larger n-gram analysis, which counts the incidence of phrases instead of words.</p>
+
+<p>Here’s the most important part:</p>
+
+<div class="language-php highlighter-rouge">
+  <pre class="highlight"><code><span class="cp">&lt;?</span><span class="nx">PHP</span>
+<span class="c1">// For this example, $ngram = 1, meaning we're only looking at one word at a time and not phrases
+</span><span class="nv">$textArray</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span> <span class="s2">" "</span><span class="p">,</span> <span class="nv">$formatted</span> <span class="p">);</span> <span class="c1">// $formatted is the text sample with most punctuation removed
+</span>	
+<span class="k">for</span> <span class="p">(</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span> <span class="nv">$textArray</span> <span class="p">)</span> <span class="o">-</span> <span class="nv">$ngram</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$chunk</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>  
+  
+  <span class="k">for</span> <span class="p">(</span> <span class="nv">$j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nv">$ngram</span><span class="p">;</span> <span class="nv">$j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$chunk</span> <span class="o">.=</span> <span class="nv">$textArray</span><span class="p">[</span> <span class="nv">$i</span> <span class="o">+</span> <span class="nv">$j</span> <span class="p">]</span> <span class="o">.</span> <span class="s2">" "</span><span class="p">;</span> <span class="c1">// keep adding words to chunk until ngram length is reached
+</span>  <span class="p">}</span>
+
+  <span class="nv">$chunk</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span> <span class="nv">$chunk</span> <span class="p">);</span> <span class="c1">//get rid of extra space at the end of chunk
+</span>  <span class="k">if</span> <span class="p">(</span> <span class="nv">$ngramArray</span><span class="p">[</span> <span class="nv">$chunk</span> <span class="p">]</span> <span class="o">==</span> <span class="s2">""</span> <span class="p">)</span>
+    <span class="nv">$ngramArray</span><span class="p">[</span> <span class="nv">$chunk</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
+  <span class="k">else</span>
+    <span class="nv">$ngramArray</span><span class="p">[</span> <span class="nv">$chunk</span> <span class="p">]</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+</div>
+
+<p>I’ve posted that script to <a href="https://github.com/arm5077/ngram-analyzer">a Github repo.</a></p>
+
+<p>I then stuck the resulting CSV into <a href="https://docs.google.com/spreadsheet/ccc?key=0AkboXcg2bVe7dFpLM1QyMDZ0Mk9SNENIa2RiZUtYWlE&amp;usp=drive_web#gid=0">this Google Spreadsheet</a> and made it filterable.</p>
+
+<p>That’s it! For fun, I increased the n-gram count a bit and looked to see if there were whole phrases Tomlin uses often. It wasn’t too conclusive, but here’s a short list:</p>
+
+<ul>
+  <li>“the early portions of the week”: <strong>53</strong></li>
+  <li>“They do a nice job”: <strong>28</strong></li>
+  <li>“[We have] [I have] [I’ve got] a great deal of respect for …” <strong>24</strong></li>
+  <li>“Such is life”: <strong>22</strong></li>
+  <li>“to be quite honest with you”: <strong>18</strong></li>
+  <li>“We will have to see where the week takes us”: <strong>14</strong></li>
+  <li>“[So-and-so is] playing really good football”: <strong>12</strong></li>
+  <li>“We have a lot of work to do”/”We have our work cut out for us”: <strong>4</strong></li>
+</ul>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2014/03/06/the-case-of-the-fallen-cloud.html">&laquo; The Case of the Fallen Cloud</a>
+			 
+
+			
+			<a class="back" href="/2013/12/23/how-to-track-license-plate-cameras-tracking-you.html">How to track license plate cameras tracking you &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

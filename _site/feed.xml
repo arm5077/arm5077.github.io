@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-19T21:27:30-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Can a Slack bot inspire serendipity at work?</title><link href="http://localhost:4000/2017/03/18/finding-serendipity-at-the-atlantic.html" rel="alternate" type="text/html" title="Can a Slack bot inspire serendipity at work?" /><published>2017-03-18T00:00:00-04:00</published><updated>2017-03-18T00:00:00-04:00</updated><id>http://localhost:4000/2017/03/18/finding-serendipity-at-the-atlantic</id><content type="html" xml:base="http://localhost:4000/2017/03/18/finding-serendipity-at-the-atlantic.html">&lt;p&gt;At any given moment, people are doing some pretty neat stuff at &lt;em&gt;The Atlantic.&lt;/em&gt; Just last week, my coworkers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Wrote a story about &lt;a href=&quot;https://www.theatlantic.com/science/archive/2017/03/snake-vs-snake/519696/&quot;&gt;snakes that are good at killing other snakes;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Experimented with how to hype a magazine story &lt;a href=&quot;https://www.instagram.com/p/BReEOpLD8zm/&quot;&gt;in a really cool way on Instagram;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compiled a &lt;a href=&quot;https://www.theatlantic.com/photo/2017/03/mount-etna-europes-most-active-volcano/519681/&quot;&gt;crazy photo essay on Mount Etna,&lt;/a&gt; Europe’s most active volcano.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But here’s the sad truth: I  only see a tiny percentage of the things my officemates make. I just don’t have enough time in the day to read through every story on &lt;a href=&quot;https://theatlantic.com&quot;&gt;theatlantic.com.&lt;/a&gt; And even if I could, I’d still miss all the things our events staffers are planning, or what the product team is coding, or what the graphic artists are cooking up…&lt;/p&gt;
+
+&lt;p&gt;We all work in the same building, but I know very little about what people outside my own team (politics) do on a daily basis. And although I don’t really &lt;em&gt;need&lt;/em&gt; to, I wondered if there was a way to introduce some serendipity into our working lives.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Why is serendipity even important?&lt;/strong&gt; &lt;br /&gt;
+This probably deserves a longer answer, and at some point, I’ll write a standalone post.&lt;/p&gt;
+  &lt;p&gt;For now, here’s my best shot: Encouraging serendipity at an organization makes room for happy accidents, where something unexpected results from the collision of two separate things. Some of my favorite projects have come from chance conversations — and they’re usually something neither me nor my conversation partner would have developed alone.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;enter-serendipitybot&quot;&gt;Enter SerendipityBot&lt;/h2&gt;
+&lt;p&gt;They say that if &lt;a href=&quot;https://en.wiktionary.org/wiki/if_all_you_have_is_a_hammer,_everything_looks_like_a_nail&quot;&gt;all you have is a hammer, everything looks like a nail.&lt;/a&gt; I’m trying to be more careful about jumping to a technical solution when something might just need a simple conversation — or might not be a problem at all.&lt;/p&gt;
+
+&lt;p&gt;But in this case, I felt pretty confident about my idea: &lt;strong&gt;What if we had a Slack bot that unobtrusively asked random staffers about what’s energizing them this week, and then shared that with the office at large?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here was my idea:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’d make a Slack #serendipity channel where people who are interested in learning about what their coworkers do — and telling their own stories — could join and engage in conversation;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’d code a Slack bot that would randomly ping people from that channel to share what they’re passionate about at that moment, at an interval of no more than once every two weeks or so.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Every day, the bot would ping coworkers during working hours until it had three responses. And at a set time, it would post all three to the #serendipity channel as a small blog post.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Would anyone even want to participate? I floated a trial balloon:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-pitch.png&quot; alt=&quot;i’m considering an experiment: i enjoy learning via serendipity what my non-political coworkers are working on and wondered if there was a way to find out more intentionally. i’m rigging up a slackbot that would a) ping random dot-com folks at non-annoying intervals (every few weeks?) to ask what they’re writing/coding/videoing about and b) distill that into a occasional digest on a special slack channel. could be a neat place to get some ideas or offer suggestions. if you’re interested in being a part of the beta, throw me a robot emoji here!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OK, so I wasn’t crazy! Those 25 people became my beta testers.&lt;/p&gt;
+
+&lt;p&gt;First job was figuring out what the bot would say to people. I wanted it to be chill and non-threatening, and give people the option of ducking out — but also be fairly direct.&lt;/p&gt;
+
+&lt;p&gt;Here’s what I ended up with:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-intro.png&quot; alt=&quot;Hi! I'm SerendipityBot, created by @andrewmcgill. I ask random Atlantic people what they're working on this week that excites them, and share a brief digest every day in #serendipity. It's a fun way to get an idea of the cool things your coworkers are doing. Want to partipate? If so, tell me something you're working on this week that you'd like to share, in the form of &amp;quot;I am *building a rocket,*&amp;quot; or &amp;quot;I'm *writing about Capt. Jean-Luc Picard*.&amp;quot; If you don't want me to bug you right now, reply *&amp;quot;snooze.&amp;quot;* If you never want to hear from me again (:sob:), type *&amp;quot;I hate you.&amp;quot;*&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The bot waits a while for an answer. If it doesn’t get one, it nudges politely: “I’ll ask one more time before leaving you alone: Any chance you want to share a cool thing you’re working on this week?”&lt;/p&gt;
+
+&lt;p&gt;It’s key, by the way, to give people a way to let the bot know they don’t really have anything they want to share. Sometimes, you’re just not working on anything exciting at the moment. Or maybe you’re too busy. In that case, the bot happily accepts &lt;code class=&quot;highlighter-rouge&quot;&gt;snooze&lt;/code&gt; and leaves the person alone for two weeks.&lt;/p&gt;
+
+&lt;p&gt;Right now, I have the bot pinging a random employee every 10 minutes, from 11 a.m. to 2 p.m., Monday through Friday. Once it gets three responses, it stops for the day. (Of course, sometimes people respond a few hours late, after the quota has already been filled, so we’ll occasionally have four or even five responses in a single day.)&lt;/p&gt;
+
+&lt;p&gt;At the stroke of 2:30 p.m. — I originally set it for the next morning, but people didn’t like waiting a whole day to see their responses go up — the bot posts in #serendipity.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-example.png&quot; alt=&quot;A slack conversation initated by the bot that culminates in a picture of a panther with a breathing mask.&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-has-this-experiment-turned-out&quot;&gt;How has this experiment turned out?&lt;/h2&gt;
+&lt;p&gt;Pretty well. More than 70 people have joined the #serendipity channel — somewhere around a quarter of the entire &lt;em&gt;Atlantic&lt;/em&gt; Slack community. SerendipityBot had some hiccups: It spammed a bunch of people on Martin Luther King Jr. Day, which is on a Monday, when the bot thought everyone would be working. But overall, I think it has made each day a teensy bit more delightful.&lt;/p&gt;
+
+&lt;p&gt;What’s the long term impact? I don’t know. So far, I haven’t seen The Next Big Atlantic Idea bubble up from a conversation in #serendipity. But that’s not really the point. Getting to know your coworkers better is a worthy goal on its own — and I think SerendipityBot has helped with that.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you’d like to look at the code powering SerendipityBot, &lt;a href=&quot;https://github.com/arm5077/sup-slackbot&quot;&gt;it’s available here.&lt;/a&gt; Tldr: It’s a Node app that lives on Heroku and stores user information in a MongoDB database.&lt;/em&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">At any given moment, people are doing some pretty neat stuff at The Atlantic. Just last week, my coworkers:</summary></entry><entry><title type="html">Turning an Amazon IoT button into something actually useful with (almost) no code</title><link href="http://localhost:4000/2016/12/18/turning-an-amazon-iot-button-into-something-useful-with-almost-no-code.html" rel="alternate" type="text/html" title="Turning an Amazon IoT button into something actually useful with (almost) no code" /><published>2016-12-18T00:00:00-05:00</published><updated>2016-12-18T00:00:00-05:00</updated><id>http://localhost:4000/2016/12/18/turning-an-amazon-iot-button-into-something%20useful-with-almost-no-code</id><content type="html" xml:base="http://localhost:4000/2016/12/18/turning-an-amazon-iot-button-into-something-useful-with-almost-no-code.html">&lt;p&gt;I’m pretty nuts for &lt;a href=&quot;https://aws.amazon.com/iotbutton/&quot;&gt;Amazon’s internet-of-things button.&lt;/a&gt; I’ve already made a &lt;a href=&quot;http://www.andrewmcgill.me/2016/07/05/make-every-week-2-slack-doorbell.html&quot;&gt;Slack doorbell&lt;/a&gt; for my office and a &lt;a href=&quot;http://www.andrewmcgill.me/2016/08/19/make-every-week-sweetgreen-salad-button.html&quot;&gt;push-to-order Sweetgreen button.&lt;/a&gt; But both of these projects required a fair amount of programming.&lt;/p&gt;
+
+&lt;p&gt;Why is this button interesting? Gooood question. I mean, you can’t do much with it, besides press it. But:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;It combined a mechanical sensor with built-in WiFi, in a package that costs $20.&lt;/strong&gt; That’s actually pretty incredible. Even the cheapest DIY setup would easily clock in at $30 or more, and would mostly likely be a great deal more bulky.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;It ties into Amazon’s &lt;em&gt;Lambda&lt;/em&gt; service.&lt;/strong&gt; A few years ago, to do anything on the internet, you had to rent a server. They weren’t necessarily &lt;em&gt;expensive&lt;/em&gt; — Amazon’s been in the server game for a decade — but they could be knowledge-intensive. You still had to do all the annoying initializing/maintenance stuff that many coders didn’t care for.&lt;/p&gt;
+
+    &lt;p&gt;Services like Lamda abstract this aaway — you pop in your code, and Amazon worries about the rest.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So it’s a pretty neat little button!&lt;/p&gt;
+
+&lt;h2 id=&quot;that-said&quot;&gt;That said…&lt;/h2&gt;
+
+&lt;p&gt;It’s not terribly useful if you don’t know how to program a computer. Amazon doesn’t hold your hand. You basically get a box to write code in, some weird parameters, and Lambda bids you good luck. For a novice, that’s pretty intimidating.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/lambda_example.gif&quot; alt=&quot;Eeek! My Sweetgreen app, as it appears in Lambda.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the other end of the spectrum is &lt;a href=&quot;http://www.ifttt.com&quot;&gt;IFTTT.com&lt;/a&gt;, an automation website that does a really good job of abstracting code into something easier to understand. The site (it stands for &lt;strong&gt;If This, Then That&lt;/strong&gt;) links together completely separate services — Twitter, Hue lightbulbs, thermostats — and allows events from one to trigger actions in another.&lt;/p&gt;
+
+&lt;p&gt;Combinations that sound very complicated — &lt;em&gt;hmm, can I send a&lt;/em&gt; 🙄 &lt;em&gt;tweet whenever I receive an email from my crazy uncle?&lt;/em&gt; — become a matter of clicking and dragging various services together.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ifttt_example.gif&quot; alt=&quot;Ahhhh. Sweet automation.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If only Amazon’s IoT service could be so intuitive…&lt;/p&gt;
+
+&lt;h2 id=&quot;but-it-can-be&quot;&gt;But it can be!&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;It just takes a bit of boilerplate code,&lt;/strong&gt; thanks to IFTTT’s &lt;a href=&quot;https://ifttt.com/maker&quot;&gt;Maker &lt;/a&gt; extension. Maker is sort of a general-purpose receiver, allowing people to trigger an action by sending a ping from an outside server through a humble POST request. (If you’re not familiar with HTTP protocol, a POST request is one of the four or five simplest messages servers use to talk to each other.)&lt;/p&gt;
+
+&lt;p&gt;Programmatically, sending an HTTP request is super easy — pretty much any server can do it. And since you can write code to send the POST message yourself, it frees you from needing a device that already has a partnership with IFTTT.&lt;/p&gt;
+
+&lt;p&gt;So you could have a motion detector, hooked up to a Raspberry Pi, that tells IFTTT to text you every time someone walks past your desk. Or a water sensor, also connected to a Raspberry Pi, that pings IFTTT every time the cat’s water bowl gets low. In both cases, the Pi would take care of sending the ping.&lt;/p&gt;
+
+&lt;p&gt;In this case, Amazon’s Lambda service will take the place of the Pi (remember, we don’t need servers anymore?), pinging IFTTT every time we press the IoT button. For this demonstration, I’m going to make my button do something simple: &lt;strong&gt;tweet “Man, it’s a hot one” from my Twitter account.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-ifttt&quot;&gt;Setting up IFTTT&lt;/h2&gt;
+
+&lt;p&gt;Let’s do the easy bit first: Making our Twitter IFTTT action.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Head to IFTTT and make a &lt;a href=&quot;https://ifttt.com/create&quot;&gt;new applet.&lt;/a&gt; (You’ll have to sign up for an account if you haven’t already.)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click &lt;strong&gt;“+this”&lt;/strong&gt; to make a new trigger. It’ll give a wide array of options, but filter for &lt;strong&gt;“Maker.”&lt;/strong&gt;
+&lt;img src=&quot;/assets/ifttt_maker_option.png&quot; alt=&quot;The Maker option on IFTTT's website.&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Choose the &lt;strong&gt;“Recieve a web request”&lt;/strong&gt; option. It’ll prompt you to give the trigger a name. I’m calling mine &lt;code class=&quot;highlighter-rouge&quot;&gt;santana-button-pressed&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now, we’ll choose the action: sending a tweet. Click &lt;strong&gt;“+that”&lt;/strong&gt; and filter to Twitter, selecting &lt;strong&gt;“Post a tweet.”&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Write your preferred tweet text. Here’s mine:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/iot-tweet-text.png&quot; alt=&quot;Man, it's a hot one tweet text&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;After I saved the applet, I had a bit of trouble finding the URL I was supposed to use to send a POST request to Maker. If you click “Maker” in the breadcrumb menu in the upper-left, and then click “Settings” on the main Maker page, you’ll get a URL under “Account info.” Following &lt;em&gt;that&lt;/em&gt; takes you to your credential page. Whew!&lt;/p&gt;
+
+    &lt;p&gt;Now you have the URL you’ll need to POST — a combination of your trigger name and your Maker key. For instance, mine starts &lt;code class=&quot;highlighter-rouge&quot;&gt;https://maker.ifttt.com/trigger/santana-button-pressed/with/key/&lt;/code&gt; (followed by my key). Save this!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;writing-the-node-code-to-upload-to-lambda&quot;&gt;Writing the Node code to upload to Lambda&lt;/h2&gt;
+
+&lt;p&gt;Now, we have to write a simple script for Lambda that sends a POST request every time the button is pushed. The POST request itself doesn’t even have to contain any information — we’ve already told IFTTT what to tweet.&lt;/p&gt;
+
+&lt;p&gt;Here’s my walk-through in Node. (If you’re not interested, here’s the &lt;a href=&quot;https://github.com/arm5077/ifttt-button/archive/master.zip&quot;&gt;code&lt;/a&gt; you’ll need for the next part, when we upload our code to Lambda.)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Start a new project folder. We’ll use the &lt;strong&gt;requests&lt;/strong&gt; module to send the POST ping, so install that using &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install requests --save&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make a main file for your code — &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt; works fine.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;All Lambda Node scripts are written as modules, meaning we’ll have to encase our code in a function and include it as a &lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt; property. So let’s start off with this:&lt;/p&gt;
+
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ifttt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;Everything else will go inside here.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now let’s import the &lt;strong&gt;request&lt;/strong&gt; library and make the actual request.&lt;/p&gt;
+
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ifttt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;IFTTT_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Sent ping to IFTTT!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;Pretty simple. We make a POST request to our IFTTT endpoint, throw an error if one returns, and otherwise print that all is well. You’ll note that we don’t actually include the endpoint in the code — we’re telling Node to pull it from an environmental variable, which we’ll specify when we set up Lambda. This is better for security… you don’t wnat your private key floating around on Github.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you’ve got that written, select all the files (&lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt;, etc.) and compress into a zip archive.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-iot-button-and-uploading-code-to-lambda&quot;&gt;Setting up IoT button and uploading code to Lambda&lt;/h2&gt;
+
+&lt;p&gt;I’m presuming that you’re staring at a new IoT button in your hand and wondering what to do. Skip ahead if you’ve already done some of these steps.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Log into &lt;a href=&quot;the Amazon Web Service console.&quot;&gt;https://aws.amazon.com&lt;/a&gt; Once there, select the &lt;strong&gt;“AWS IoT”&lt;/strong&gt; service. Clicking &lt;strong&gt;“Connect”&lt;/strong&gt; on the left rail will give you a new spread of menu options, one of which is &lt;strong&gt;“AWS IoT Button.”&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/iot-opener.png&quot; alt=&quot;The IoT config opening screen.&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Scroll down and click &lt;strong&gt;“Go to Configuration Wizard.”&lt;/strong&gt; You’ll have to type in your serial number, which is printed on the back of the button. &lt;strong&gt;Make sure you click “Generate certificate and keys” before you move on!&lt;/strong&gt; You’ll be given two files to download, and I don’t know how to get these otherwise. Also note the endpoint and region.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Also make sure you click &lt;strong&gt;“Enable trigger”&lt;/strong&gt; before you click “Next.” Then (finally!) click “Next.”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We’re now at the “Configure function” section. Type &lt;code class=&quot;highlighter-rouge&quot;&gt;ifttt&lt;/code&gt; into &lt;strong&gt;Name&lt;/strong&gt;, and write whatever description you’d like. Down at &lt;strong&gt;Lambda function code,&lt;/strong&gt; change “Code entry type” to “Upload a .ZIP file.” You’ll then upload the zip archive we compressed a few steps ago.&lt;/p&gt;
+
+    &lt;p&gt;(Why aren’t we just copying-and-pasting our code? It’s that pesky &lt;strong&gt;requests&lt;/strong&gt; library — the meat of it is included in the &lt;strong&gt;node_modules&lt;/strong&gt; folder, so we need to include everything.)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure you add an environmental variable, named &lt;code class=&quot;highlighter-rouge&quot;&gt;IFTTT_KEY&lt;/code&gt;, that lists the Maker URL you took from IFTTT.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lastly, give the button code a descriptive &lt;strong&gt;role name&lt;/strong&gt; — I did &lt;code class=&quot;highlighter-rouge&quot;&gt;ifttt_button&lt;/code&gt;. Click “Next,” and then “Create function.”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OK! Your code &lt;em&gt;should&lt;/em&gt; be uploaded. Only thing left to do is connect your IoT button to your home or office WiFi. Amazon has a &lt;a href=&quot;http://docs.aws.amazon.com/iot/latest/developerguide/configure-iot.html&quot;&gt;pretty good set of directions here,&lt;/a&gt; so I’ll let them explain. Just remember that you’ll need those credentials you downloaded earlier! (And if you missed them, you’ll find your endpoint by clicking “Settngs” at the &lt;a href=&quot;https://console.aws.amazon.com/iot/home?region=us-east-1#/dashboard/help&quot;&gt;AWS IoT console.&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Give it a shot. Boom!&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
+  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Man, it's a hot one— Andrew McGill (@andrewmcgill) &lt;a href=&quot;https://twitter.com/andrewmcgill/status/810657716947587072&quot;&gt;December 19, 2016&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The button will now do your bidding.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-notes&quot;&gt;Final notes&lt;/h2&gt;
+&lt;p&gt;You can obviously set up your IFTTT account to do whatever you want, which is the beauty of this hack. I will note that I had a tough time getting my button to connect to my apartment WiFi until I realized it only can communicate with 2.4 GHz networks. If you’re running into connectivity issues (hint: the button’s LED will flash red three times), try poking around in your router settings.&lt;/p&gt;
+
+&lt;p&gt;Other than that, happy button-pushing!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I’m pretty nuts for Amazon’s internet-of-things button. I’ve already made a Slack doorbell for my office and a push-to-order Sweetgreen button. But both of these projects required a fair amount of programming.</summary></entry><entry><title type="html">Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition</title><link href="http://localhost:4000/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html" rel="alternate" type="text/html" title="Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition" /><published>2016-11-22T00:00:00-05:00</published><updated>2016-11-22T00:00:00-05:00</updated><id>http://localhost:4000/2016/11/22/real-life-harry-potter-lumos-spell-snowboy</id><content type="html" xml:base="http://localhost:4000/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html">&lt;p&gt;I don’t think of myself as a &lt;em&gt;Harry Potter&lt;/em&gt; fan, but I somehow know a crapload of magic spells from the famous book series. &lt;em&gt;Alohomora&lt;/em&gt; was useful for unlocking doors; &lt;em&gt;Expelliarmus&lt;/em&gt; would disarm an opponent of her wand. But one of the simplest was &lt;em&gt;Lumos&lt;/em&gt;, which lit the tip of a wizard’s wand, along with its counterpart &lt;em&gt;Nox&lt;/em&gt;, which extinguished the light.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/lumos_harry_potter.jpg&quot; alt=&quot;Severus Snape uses the Lumos spell.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Speech recognition has always seemed a bit like magic to me, too. But as I poked around &lt;a href=&quot;https://github.com/alexa/alexa-avs-sample-app&quot;&gt;the open-source work&lt;/a&gt; being done using the Amazon Alexa Voice Service platform (which powers the Amazon Echo, Dot, etc.), I found &lt;a href=&quot;https://github.com/Kitt-AI/snowboy&quot;&gt;Snowboy&lt;/a&gt;. It’s a pretty neat “wake-word-as-service” library that’s free for hackers (real apps have to pay money), and uses machine learning to recognize the desired phrase. It’s especially nice because it doesn’t need the internet to work — after you train the algorithm online using your own voice, Snowboy gives you a downloadable file that hooks up with its library offline.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Hmm&lt;/em&gt;, I thought. &lt;em&gt;Could Snowboy help me achieve my dream of becoming an actual wizard?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Voila:&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
+  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Last week needed some Raspberry Pi-powered ACTUAL HARRY POTTER MAGIC. Explainer post coming soon &lt;a href=&quot;https://t.co/u5AK25e3MG&quot;&gt;pic.twitter.com/u5AK25e3MG&lt;/a&gt;— Andrew McGill (@andrewmcgill) &lt;a href=&quot;https://twitter.com/andrewmcgill/status/798237324043816965&quot;&gt;November 14, 2016&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;building-the-lumos-lamp&quot;&gt;Building the Lumos Lamp&lt;/h2&gt;
+&lt;p&gt;The goal was to turn on a lamp (or several) by saying “Lumos!” out loud. Since I’m not comfortable enough with electrical engineering to hardwire a lamp’s power supply directly through my Raspberry Pi, I ended up buying the &lt;a href=&quot;https://www.adafruit.com/product/268&quot;&gt;Powerswitch Tail 2&lt;/a&gt;, essentially an extension cord that can be powered on and off programmatically by a micontroller.&lt;/p&gt;
+
+&lt;p&gt;Here are the materials I used:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Raspberry Pi 2 (Model B in my case) with Raspbian installed&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/gp/product/B00IR8R7WQ/ref=oh_aui_detailpage_o01_s00?ie=UTF8&amp;amp;psc=1&quot;&gt;A USB microphone&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.adafruit.com/product/268&quot;&gt;Powerswitch Tail 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.adafruit.com/products/826&quot;&gt;A bunch of male-female jumper wires&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/AmazonBasics-6-Outlet-Surge-Protector-2-Pack/dp/B014EKQ5AA/ref=zg_bs_10967801_1?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=G27MRDKAWFC2Q66CR6H0&quot;&gt;Generic power strip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;First, set up the Raspberry Pi.&lt;/strong&gt; (Snowboy has &lt;a href=&quot;http://docs.kitt.ai/snowboy/#quick-start&quot;&gt;some good documentation here.&lt;/a&gt;) Presuming you’ve booted up the Pi and connected it to the internet, plug in your USB microphone. You’ll need to install some audio dependencies from the command line:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-pyaudio python3-pyaudio sox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can check to see if that worked by running &lt;code class=&quot;highlighter-rouge&quot;&gt;rec test.wav&lt;/code&gt;, speaking into the microphone for a few seconds, and then &lt;code class=&quot;highlighter-rouge&quot;&gt;aplay test.wav&lt;/code&gt;. (You may need to do some more fiddling — &lt;a href=&quot;http://docs.kitt.ai/snowboy/#running-on-pi&quot;&gt;troubleshooting advice here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;At this point, it’s probably best to set up your project folder. I used Node.js to code this project, so we need to initiate NPM and install a &lt;code class=&quot;highlighter-rouge&quot;&gt;snowboy&lt;/code&gt;, which will run our Pi’s speech recognition, &lt;code class=&quot;highlighter-rouge&quot;&gt;onoff&lt;/code&gt;, which handles switching the power source, and &lt;code class=&quot;highlighter-rouge&quot;&gt;node-record-lpcm16&lt;/code&gt;, a Node-specific audio recording library.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm init
+npm install snowboy --save
+npm install onoff --save
+npm install node-record-lpcm16 --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Now, train Snowboy to understand your voice.&lt;/strong&gt; I’d do this one a laptop with a built-in microphone, not your Pi. Visit &lt;a href=&quot;https://snowboy.kitt.ai/&quot;&gt;Snowboy’s site&lt;/a&gt; (Firefox seemed to work better for me), make an account and create a new hotword. After you repeat the word three times, Snowboy will give you a &lt;code class=&quot;highlighter-rouge&quot;&gt;.pmdl&lt;/code&gt; file — that’s the key. Transfer it over to your Pi; I emailed it to myself and just downloaded it from the Pi’s web browser. I ended up making two hotwords — “lumos,” to turn the light on, and “nox,” to turn it off.&lt;/p&gt;
+
+&lt;p&gt;Drop the .pmdl file into your project folder, and make &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;, which will contain your main code. &lt;a href=&quot;https://gist.github.com/arm5077/ef498a7e31e4d799431d5ce734898907&quot;&gt;Here’s what I ended up putting together,&lt;/a&gt; initializing a detector and adding two hotword models. The &lt;code class=&quot;highlighter-rouge&quot;&gt;detector.on('hotword')&lt;/code&gt; function fires whenever I say “lumos” or “nox,” so that’s where I’ve stuck the pin logic.&lt;/p&gt;
+
+&lt;p&gt;Speaking of pins…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Time to wire this together.&lt;/strong&gt; Here’s my setup:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/lumos wiring diagram.JPG&quot; alt=&quot;The wiring setup between the Powerswitch and the Pi.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I got some basic wiring advice from &lt;a href=&quot;https://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control/overview&quot;&gt;this tutorial&lt;/a&gt;, but essentially, the purple wire connects to one of the Pi’s ground pins, and the blue wire connects to pin 15. You’ll see that I unscrewed the Powertail’s casing — the terminals were a bit hard to reach with the male end of the wire otherwise.&lt;/p&gt;
+
+&lt;p&gt;With finished, you’re probably ready to give this a shot! I connected the Powertail to an extension cord that plugged into the wall outlet, and then linked the other end of the Powertail with a regular power strip. I ended up plugging three lights into the strip — my floor lamp, a desk lamp and my architect light.&lt;/p&gt;
+
+&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;node index.js&lt;/code&gt;, you should hear a click as the Powertail switches off. (The red LED indicator stays on, so you know it’s working.) Stand back, and authoritatively say “Lumos!”&lt;/p&gt;
+
+&lt;p&gt;With any luck, the light will switch on — and you’ll officially be a member of the wizarding world.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ron_fail.gif&quot; alt=&quot;Ron Weasley failing at being a wizard.&quot; /&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I don’t think of myself as a Harry Potter fan, but I somehow know a crapload of magic spells from the famous book series. Alohomora was useful for unlocking doors; Expelliarmus would disarm an opponent of her wand. But one of the simplest was Lumos, which lit the tip of a wizard’s wand, along with its counterpart Nox, which extinguished the light.</summary></entry><entry><title type="html">How to code a virtual Internet of Things device to tempt hackers</title><link href="http://localhost:4000/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet.html" rel="alternate" type="text/html" title="How to code a virtual Internet of Things device to tempt hackers" /><published>2016-11-02T00:00:00-04:00</published><updated>2016-11-02T00:00:00-04:00</updated><id>http://localhost:4000/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet</id><content type="html" xml:base="http://localhost:4000/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet.html">&lt;p&gt;Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out &lt;a href=&quot;https://github.com/jgamblin/Mirai-Source-Code&quot;&gt;the worm that recruited the botnet&lt;/a&gt; targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.&lt;/p&gt;
+
+&lt;p&gt;Scanning the internet for open ports, the Mirai worm connected to unsecured servers and ran through a common dictionary of passwords, including &lt;code class=&quot;highlighter-rouge&quot;&gt;xc3511&lt;/code&gt;, which unlocked the webcams. (There’s a good writeup on the mechanics of the bot &lt;a href=&quot;https://www.incapsula.com/blog/malware-analysis-mirai-ddos-botnet.html&quot;&gt;here.&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Let me first say that &lt;a href=&quot;https://www.wired.com/2016/10/internet-outage-webcam-dvr-botnet/&quot;&gt;this didn’t affect many residential users.&lt;/a&gt; Very few people plug their devices directly into their modem; pretty much everyone filters their traffic through a router, which has ample safeguards. Plus, many of the devices targeted by Mirai were super old.&lt;/p&gt;
+
+&lt;p&gt;All the same, I wondered if this was really a big deal. The internet is huge—there are &lt;em&gt;so many&lt;/em&gt; IPv4 addresses out there. Even if I had been playing fast and loose with security, weren’t the odds astronomically small that a hacker would randomly happen across my server and take notice?&lt;/p&gt;
+
+&lt;p&gt;So I devised an experiment.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-fake-web-toaster&quot;&gt;My fake web toaster&lt;/h2&gt;
+&lt;p&gt;I decided to set up a honeypot—a purposefully unsecured server that would give hackers the illusion of control, but would actually record their keystrokes and IP addresses. I could have used a Raspberry Pi and connected it to my home router (using port forwarding to bypass security), but in the interest of time, I ended up running a virtual server through Amazon’s EC2 service.&lt;/p&gt;
+
+&lt;p&gt;I wrote &lt;a href=&quot;https://github.com/arm5077/mirai-honeypot/blob/master/index.js&quot;&gt;a Node script&lt;/a&gt; that mimicked a Telnet login on port 23, asking for a username and password, and delivering a faux shell prompt. To a hacker’s scanning script, it would look like a real Telnet server. In honor of one of the internet’s &lt;a href=&quot;http://www.livinginternet.com/i/ia_myths_toast.htm&quot;&gt;first connected devices,&lt;/a&gt; I had it masquerade as a web-connected toaster. Here’s what the hacker would have seen when they tried to log in:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/intro-cli.gif&quot; alt=&quot;The fake command line interface.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I set the thing up and stepped away, expecting to wait a while before recording a hacking attempt. Wrong. The first unauthorized login came within an hour, using &lt;code class=&quot;highlighter-rouge&quot;&gt;root:root&lt;/code&gt; as login credentials.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/hack-attempt.gif&quot; alt=&quot;The fake command line interface.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Over the course of the next 12 hours, the server registered around 300 attempted hacks. I wrote about this experiment for &lt;em&gt;The Atlantic&lt;/em&gt; &lt;a href=&quot;https://www.theatlantic.com/technology/archive/2016/10/we-built-a-fake-web-toaster-and-it-was-hacked-in-an-hour/505571/&quot;&gt;here&lt;/a&gt; (and talked about it on &lt;a href=&quot;http://www.npr.org/sections/alltechconsidered/2016/11/01/500253637/an-experiment-shows-how-quickly-the-internet-of-things-can-be-hacked&quot;&gt;&lt;em&gt;All Things Considered&lt;/em&gt;!&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;what-does-this-tell-us&quot;&gt;What does this tell us?&lt;/h2&gt;
+&lt;p&gt;I admit that this project is flawed in a few ways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;It wasn’t a real IoT device.&lt;/strong&gt; This doesn’t bother me quite as much; the Mirai bot doesn’t seem to exploit any device-specific security bugs, so a generic server with an open port fills the role fine. But there’s no doubt that &lt;em&gt;other&lt;/em&gt; worms take advantage of weaknesses inherent to specific IoT gadgets, so it would be interesting to more closely simulate them.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I didn’t conduct the test over residential wireless.&lt;/strong&gt; I bet hackers closely monitor Amazon’s IP range, looking for unsecured server instances spun up by rookies. If I had run my script through my apartment’s internet connection, I probably would have seen fewer login attempts. That said, the security folks I spoke with agreed any unsecured server would have eventually been breached, probably within a day to a week.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Most consumer IoT devices don’t connect to the internet directly.&lt;/strong&gt; Like I said above, most routers will kill the most obvious routes hackers use to gain control of computers. So the average person hooking up a webcam to their WiFi is probably OK. It would be interesting to simulate the security defects of older routers, and try to get a sense of how many of those exist in the wild.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IPv6 might solve these problems.&lt;/strong&gt; The new protocol allows for &lt;em&gt;way&lt;/em&gt; more possible addresses—like, 7.9x10&lt;sup&gt;28&lt;/sup&gt;. Assuming addresses were randomly distributed (and I have no idea if they will be, or anything about this protocol beyond what I’ve read on Wikipedia, to be honest), the sheer amount of territory hackers would have to cover might give me the effective anonymity I thought I already had.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I did get a few tweets that linked to this &lt;a href=&quot;https://xkcd.com/350/&quot;&gt;xkcd comic&lt;/a&gt;, the thought being that my experiment is nothing new: Security folks have been setting out unsecured honeypots for years.&lt;/p&gt;
+
+&lt;p&gt;That said, I think this story illustrates a few things that most people didn’t know:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;The Internet isn’t that big (not yet), and it’s packed with hacking scripts.&lt;/strong&gt; Bots scan the IPv4 space frequently enough that nearly every computer that’s not behind a firewall can count on being recorded in less than a day.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The Mirai bot is still out in force.&lt;/strong&gt; Many of the hack attempts used the same sequence of password (and shell commands) outlined in the Mirai botnet’s code. It appears other folks have spun up multiple copies of the bot and are busy recruiting unsuspecting servers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My toaster experiment isn’t a situation most consumers will face. But it’s an accurate analog to the plight of the kinds of unsecured devices harnessed by the Mirai botnet, and shows how quickly they can be pulled into a hacker’s thrall.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out the worm that recruited the botnet targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.</summary></entry><entry><title type="html">Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button</title><link href="http://localhost:4000/2016/08/19/make-every-week-sweetgreen-salad-button.html" rel="alternate" type="text/html" title="Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button" /><published>2016-08-19T00:00:00-04:00</published><updated>2016-08-19T00:00:00-04:00</updated><id>http://localhost:4000/2016/08/19/make-every-week-sweetgreen-salad-button</id><content type="html" xml:base="http://localhost:4000/2016/08/19/make-every-week-sweetgreen-salad-button.html">&lt;p&gt;Eesh! So far, #MakeEveryWeek has been more like #MakeEveryThreeWeeks. My apologies. Sometimes the making is a lot easier than the blogging.&lt;/p&gt;
+
+&lt;p&gt;This week’s projects focuses on a (sort of) healthy addiction of mine: salads from &lt;a href=&quot;http://www.sweetgreen.com/&quot;&gt;Sweetgreen&lt;/a&gt;, a restaurant chain from D.C. that serves up a mean quinoa-and-kale. Though technically fast food, Sweetgreen doesn’t feel or taste like your regular rushed-lunch fare. It’s my go-to place to pick up lunch if I didn’t bring left overs from home, and it doesn’t hurt that their Foggy Bottom location is a nice walk from &lt;em&gt;The Atlantic&lt;/em&gt;’s offices.&lt;/p&gt;
+
+&lt;p&gt;But a lot of people feel the same way. The line around noon can get verrrrry long.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
+  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Unknowingly showed up to sweetgreen in the middle of lunch hour. Now I'm stuck in this long ass line.— Sextina Aquafina (@yosoymichael) &lt;a href=&quot;https://twitter.com/yosoymichael/status/765229537756061696&quot;&gt;August 15, 2016&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
+  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;There was barely anyone in line today at &lt;a href=&quot;https://twitter.com/sweetgreen&quot;&gt;@sweetgreen&lt;/a&gt;. &lt;a href=&quot;https://twitter.com/hashtag/SignOfTheApocalypse?src=hash&quot;&gt;#SignOfTheApocalypse&lt;/a&gt;— Heather Benjamin (@Heather_Benj) &lt;a href=&quot;https://twitter.com/Heather_Benj/status/764160904825036800&quot;&gt;August 12, 2016&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;One remedy to this is Sweetgreen’s online ordering system, which signals the kitchen to make a salad at a certain time and leave it on a shelf for pick-up. That way, you can pop in, grab and leave, instead of waiting for the salad to be made in front of you.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/salad1.jpg&quot; alt=&quot;Delicious, pick-up-able salad.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Last week, I got my second Amazon IoT button—they’re finally back in stock. Then the thought struck me. &lt;strong&gt;Is there a way to hook into Sweetgreen’s ordering system and buy a salad with a simple button press?&lt;/strong&gt; Could my dream of seamless, on-demand salad delivery come true? Granted, if I had such a device, I’d probably spend entirely too much on salads. But it was too neat of an idea to pass up.&lt;/p&gt;
+
+&lt;p&gt;Since Sweetgreen doesn’t publish a documented ordering API (and who does?), I had to dive deep into the network traffic of the average salad order.&lt;/p&gt;
+
+&lt;h2 id=&quot;figuring-out-how-sweetgreen-works&quot;&gt;Figuring out how Sweetgreen works&lt;/h2&gt;
+
+&lt;p&gt;To complete a Sweetgreen transaction, I need to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;log in using my email and password, saving the resulting cookie;&lt;/li&gt;
+  &lt;li&gt;add a salad to my shopping bag;&lt;/li&gt;
+  &lt;li&gt;complete the order with my credit card information.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fortunately, Sweetgreen has a relatively simple (though undocumented) API, accessible through &lt;a href=&quot;https://order.sweetgreen.com/api/&quot;&gt;https://order.sweetgreen.com/api/&lt;/a&gt;. After poking around the website (and adding/removing quite a few salads from my shopping bag), it looks like this is the workflow I’ll have to follow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Send a &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/customers/login_or_register&lt;/code&gt; with my username and password;&lt;/li&gt;
+  &lt;li&gt;Add the salad to my bag with a &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/line_items&lt;/code&gt;, along with a JSON object describing the order;&lt;/li&gt;
+  &lt;li&gt;Get the “order” JSON by sending a &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/session&lt;/code&gt;, saving the &lt;code class=&quot;highlighter-rouge&quot;&gt;order&lt;/code&gt; object and my billing information;&lt;/li&gt;
+  &lt;li&gt;Send a &lt;code class=&quot;highlighter-rouge&quot;&gt;PUT&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/orders/[order id]&lt;/code&gt;, packaging my combined order+billing object.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m writing this code in Node.js using the &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt; module, so I’m going to start off my script by including the library and setting up the jar where I’ll store the session cookie (so my authentication will stick once I log in.)&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;jar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Next up, I’ll log in with my Sweetgreen credentials.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Log in&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/customers/login_or_register&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INSERT_SWEETGREEN_EMAIL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INSERT_SWEETGREEN_PASSWORD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Rest of code goes here&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That call returns a massive JSON object, holding previous orders, current shopping status, and billing account info. Since the final package I send to Sweetgreen to complete the order needs some of this account info, I’m going to grab it now.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_account_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_accounts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;We’re now set to add salads to my shopping bag.&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-items-and-completing-the-order&quot;&gt;Adding items and completing the order&lt;/h2&gt;
+
+&lt;p&gt;Each salad object is actually pretty simple. At its most basic, it just needs a &lt;code class=&quot;highlighter-rouge&quot;&gt;quantity&lt;/code&gt;, a &lt;code class=&quot;highlighter-rouge&quot;&gt;product_id&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;restaurant_id&lt;/code&gt;. The Foggy Bottom ID is &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;, so I’ll use that for every order. Here’s the object for a Harvest Bowl:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;harvest_bowl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;line_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;139&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;restaurant_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But! Things get more complicated if you want to modify a base recipe. For example, I love the Guacamole Greens salad—but only if I can replace the red onion with corn. In the API, you need to drop these changes as a series of &lt;code class=&quot;highlighter-rouge&quot;&gt;options&lt;/code&gt; objects. Here’s an object for my modded recipe, pulled with some slight modifications from the network traffic.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;guac_greens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;line_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;custom_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;andrew's special guac with no onions success&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;134&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;13929&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;remove red onion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;out_of_stock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;parent_option_group_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;973&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;option_group_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;975&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ingredient_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;64&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;13941&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sub raw corn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;out_of_stock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;parent_option_group_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;975&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;option_group_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[],&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ingredient_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;61&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;line_item_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;restaurant_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Constructing that object is the hard part, but adding it to the shopping bag is pretty easy. Here comes another POST request:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/line_items&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;guac_greens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;line_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ignored_order_id&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Notice how I saved the order ID? That’s because I’ll need it very shortly to complete the transaction. But first, I’ve got to construct the final order object. Turns out that’s basically a copy of the object you get by calling the &lt;code class=&quot;highlighter-rouge&quot;&gt;/session&lt;/code&gt; endpoint, along with some additional billing info and other ordering ephemera. After some trial and error, I figured out it was easiest to make a call to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/session&lt;/code&gt; endpoint, grab the array of &lt;code class=&quot;highlighter-rouge&quot;&gt;orders&lt;/code&gt;, filter it down to the latest order and tack on the required miscellaneous info.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Get final order &lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/session&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  
+  &lt;span class=&quot;c1&quot;&gt;// Grab latest order object&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order_id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  
+  &lt;span class=&quot;c1&quot;&gt;// Append billing stuff and give &lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_account_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wanted_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;available_wanted_times_tuples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;original&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;complete&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_account&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that, all you need is a &lt;code class=&quot;highlighter-rouge&quot;&gt;PUT&lt;/code&gt; request referencing the &lt;code class=&quot;highlighter-rouge&quot;&gt;order_id&lt;/code&gt; and you’re good to go:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/orders/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;did it!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Sweetgreen helpfully sends an email after you post an order, so you’ll know when your order goes through.&lt;/p&gt;
+
+&lt;h2 id=&quot;boom-salad-en-route&quot;&gt;Boom! Salad en route&lt;/h2&gt;
+
+&lt;p&gt;I had to make some slight modifications to the code to get it ready for AWS Lambda, the service powering the IoT button, but it was otherwise pretty much ready to go. I also wrote a quick function that randomly chooses one of three salads to order, so I have a bit of variety. The full code is &lt;a href=&quot;https://github.com/arm5077/sweetgreen-button&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s the button posted above my desk at work:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/salad2.jpg&quot; alt=&quot;Button posted on my desk&quot; /&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Eesh! So far, #MakeEveryWeek has been more like #MakeEveryThreeWeeks. My apologies. Sometimes the making is a lot easier than the blogging.</summary></entry><entry><title type="html">Make Every Week, Part 3: How crowded is the Washington, D.C. DMV?</title><link href="http://localhost:4000/2016/07/18/make-every-week-dmv-tracker.html" rel="alternate" type="text/html" title="Make Every Week, Part 3: How crowded is the Washington, D.C. DMV?" /><published>2016-07-18T00:00:00-04:00</published><updated>2016-07-18T00:00:00-04:00</updated><id>http://localhost:4000/2016/07/18/make-every-week-dmv-tracker</id><content type="html" xml:base="http://localhost:4000/2016/07/18/make-every-week-dmv-tracker.html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;First off, an apology:&lt;/strong&gt; In the aftermath of the July 4th holiday, I took the week off last week. So you’ll see a double #MakeEveryWeek feature coming up soon.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Everyone hates the Department of Motor Vehicles. Over the years, it has  somehow become the universal American symbol for a soul-breaking bureaucracy. Washington, D.C.’s division does its best, but you still end up wondering why it takes to long to get your license renewed.&lt;/p&gt;
+
+&lt;p&gt;My wife recently stopped by &lt;a href=&quot;http://dmv.dc.gov/page/georgetown-servicecenter&quot;&gt;the DMV in Georgetown.&lt;/a&gt; While looking up the office hours for her, I remembered that D.C. does something neat: It streams &lt;a href=&quot;http://dmv.dc.gov/node/823652&quot;&gt;live webcam footage from the DMV waiting room,&lt;/a&gt; so you can get a sense for how crowded your branch is before you go.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/dmv1.jpg&quot; alt=&quot;Pretty crowded!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It also publishes a calculated wait time, but I’ve never found that particularly accurate. These images are simple JPEGS, very easy to download and parse. So I started thinking: Is there a way to use this footage to detect the ebbs and flows of crowds at the DMV — and avoid the rush yourself?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A poor man’s computer vision&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don’t have a lot experience with computer vision, though it’s definitely something I’d like to explore further. But the DMV did me a favor: They bought those bright blue chairs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/dmv2.jpg&quot; alt=&quot;They're SO blue.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Turns out that blue is pretty distinctive. With the exception of the security guard’s uniform, there’s nothing else in the DMV colored quite like it. Counting those blue pixels was key: The more bright blue in the picture, the relatively fewer people waiting in line. If I scraped these pictures every minute or so and ran my script for a few weeks, I could analyze the colors and aggregate my data to make a cool time-series graph.&lt;/p&gt;
+
+&lt;p&gt;Here’s a picture where the matching blue is colored red. Searching for this narrow band of color avoids people (and that newspaper) pretty well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/dmv4.png&quot; alt=&quot;Blue and red.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But there’s a few things I’d have to figure out:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There are &lt;a href=&quot;https://ftp.dmv.washingtondc.gov/w/gt1/video.jpg&quot;&gt;three&lt;/a&gt; &lt;a href=&quot;https://ftp.dmv.washingtondc.gov/w/gt2/video.jpg&quot;&gt;camera&lt;/a&gt; &lt;a href=&quot;https://ftp.dmv.washingtondc.gov/w/gt1/video.jpg&quot;&gt;angles&lt;/a&gt; (well, four, but the last one’s just &lt;a href=&quot;https://ftp.dmv.washingtondc.gov/w/gt3/video.jpg&quot;&gt;a shot of the door.&lt;/a&gt;) The first two are wide shots, and the last one is a bit narrower and shows fewer chairs. I’d have to calibrate my pixel-counting to compensate.&lt;/li&gt;
+  &lt;li&gt;The first two shots actually overlap. One camera shoots down the main waiting room, and the other shoots the opposite angle. It’s hard to tell, because one has been flipped horizontally. But I’d have to remove the overlap so people aren’t double-counted.&lt;/li&gt;
+  &lt;li&gt;Lastly, all the cameras show the room at an angle, so chairs in the back will have fewer blue pixels than chairs in the front. I’d have to compensate for this or risk under-counting the crowd if a few big chairs went unfilled in the front.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;On to the code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I wrote this in Node and used a bunch of libraries, but primarily &lt;a href=&quot;https://github.com/EyalAr/lwip&quot;&gt;LWIP&lt;/a&gt;, an image processing library.&lt;/p&gt;
+
+&lt;p&gt;First, I set up an array containing the camera URLs, the vertical position where to start scanning the image, a weight to account for skew and the rough number of empty seats pictured in the photo.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cameras&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://ftp.dmv.washingtondc.gov/w/gt1/video.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;rate_of_change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;976&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;empty_seats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;38&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://ftp.dmv.washingtondc.gov/w/gt2/video.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;rate_of_change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;969&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;empty_seats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://ftp.dmv.washingtondc.gov/w/gt4/video.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;rate_of_change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;983&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;empty_seats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that for the first two images, I start processing about 90-100 pixels down. That’s to remove the chairs that are in the foreground of the &lt;em&gt;other&lt;/em&gt; camera angle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/dmv3.jpg&quot; alt=&quot;I've cropped out the top third or so.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That &lt;code class=&quot;highlighter-rouge&quot;&gt;rate_of_change&lt;/code&gt; basically applies less weight to pixels in the foreground than pixels in the background, as each pixel proportionally represents more chair the higher up in the image you go.&lt;/p&gt;
+
+&lt;p&gt;Before I do anything with the live images, I want to find out how much blue is in each picture when the room is empty. (I’ve saved copies of footage from when the office is closed. They leave the lights on all night…)&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// First, let's calculate the baseline amount of blue for each camera&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;eachOfSeries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cameras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  
+  &lt;span class=&quot;c1&quot;&gt;// I've saved the photos of the empty DMV room, so let's open those&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;control_images/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'binary'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;lwip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jpeg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      
+      &lt;span class=&quot;c1&quot;&gt;// Set the total amount of blue detected to zero&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controlBlue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;239&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;319&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getHSV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pixelScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rate_of_change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controlBlue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;220&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pixelScore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Done setting baseline...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getHSV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m using the awesome &lt;a href=&quot;http://caolan.github.io/async/docs.html#&quot;&gt;aysnc&lt;/a&gt; library to keep track of all my callbacks. I cycle through the images, open them a binary file and then parse them row by row and pixel by pixel, testing if they match the blue I’m looking for and applying the various weights outlined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;cameras&lt;/code&gt; object.&lt;/p&gt;
+
+&lt;p&gt;Another shoutout to the &lt;a href=&quot;https://github.com/qix-/color&quot;&gt;Color&lt;/a&gt; library, which allows you to easily convert RGB values to HSV (hue, saturation, value/brightness). The blue I’m looking for is in a relatively narrow hue band, is medium saturation and medium-to-high brightness.&lt;/p&gt;
+
+&lt;p&gt;After I get the baseline values sorted out, I repeat the same operation with the live images, comparing their blue scores to the empty images to guesstimate how many people are sitting in the chairs.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Cycle through each of the cameras&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;eachOfSeries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cameras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  
+  &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'binary'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'binary'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;lwip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jpeg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// Like above, set the total amount of blue detected to zero&lt;/span&gt;
+			&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;239&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;319&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+				  &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getHSV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;pixelScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rate_of_change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;blue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;220&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pixelScore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;percentBlue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controlBlue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;totalEmptySeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;percentBlue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;empty_seats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Camera &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;percentBlue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;One that’s all sorted out, I upload the combined estimate to a MySQL database:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getConnection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'INSERT INTO readings (timestamp, open_chairs) VALUES(?, ?)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD HH:mm:ss'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;totalEmptySeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Full code is &lt;a href=&quot;https://github.com/arm5077/dmv&quot;&gt;here.&lt;/a&gt; I’m going to run this script for a few weeks and generate data. Once I get a decently! representative sample, I’ll come back with some visualizations!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">First off, an apology: In the aftermath of the July 4th holiday, I took the week off last week. So you’ll see a double #MakeEveryWeek feature coming up soon.</summary></entry><entry><title type="html">Make Every Week, Part 2: A Slack-powered doorbell</title><link href="http://localhost:4000/2016/07/05/make-every-week-2-slack-doorbell.html" rel="alternate" type="text/html" title="Make Every Week, Part 2: A Slack-powered doorbell" /><published>2016-07-05T00:00:00-04:00</published><updated>2016-07-05T00:00:00-04:00</updated><id>http://localhost:4000/2016/07/05/make-every-week-2-slack-doorbell</id><content type="html" xml:base="http://localhost:4000/2016/07/05/make-every-week-2-slack-doorbell.html">&lt;p&gt;These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At &lt;em&gt;The Atlantic&lt;/em&gt;, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.&lt;/p&gt;
+
+&lt;p&gt;At least once a week, I find myself awkwardly lurking in the hallway after a trip to the restroom, waiting for someone to leave the office, all because I left my fob at my desk. &lt;em&gt;_Hm,_&lt;/em&gt; I think, pretending to look at my phone. &lt;em&gt;Would my health insurance cover the surgery to implant a chip into my body?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;After a while, things get &lt;em&gt;really&lt;/em&gt; desperate: I knock on the glass door, and someone bemusedly comes over and opens it for me.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/3KBdUGGkVgRxu/giphy.gif&quot; alt=&quot;Bill Murray, as me&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-doorbell&quot;&gt;The Doorbell&lt;/h2&gt;
+
+&lt;p&gt;What we needed was a doorbell. Not the “Westminister Chimes” type — that would get annoying fast — but something more subtle.&lt;/p&gt;
+
+&lt;p&gt;Amazon just released a &lt;a href=&quot;https://aws.amazon.com/iot/button/&quot;&gt;programmable version&lt;/a&gt; of its “Dash” buttons, the little $5 doohickeys that order new paper towels with one tap. It connects to a local WiFi network and executes code through Amazon’s Lambda service, so it’s pretty easy to set up.&lt;/p&gt;
+
+&lt;p&gt;An idea formed. What if the Dash was connected to a channel in Slack, our work chat client? Folks could opt into the group and receive notifications whenever someone needed help with the door. That way, it wouldn’t bother the whole office.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The first step was setting up the Slack integration.&lt;/strong&gt; This was pretty simple, just a matter of telling Slack the name of the “bot” and specifying the channel where it would post messages. Slack then gave an API endpoint to use to send data.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Next, Lambda.&lt;/strong&gt; I wrote this code in Node.js, though you can use another language if you’d like. Lambda lets you write the code in-browser if it’s a single script, but since I needed to send HTTP POST requests as per &lt;a href=&quot;https://api.slack.com/incoming-webhooks&quot;&gt;Slack’s incoming webhooks standard&lt;/a&gt;, I chose to use the popular &lt;a href=&quot;https://github.com/request/request&quot;&gt;request&lt;/a&gt; library and upload a zipped folder instead.&lt;/p&gt;
+
+&lt;p&gt;Lambda expects everything to be contained in a module export, so laying that out came first:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then came the actual call to the Slack endpoint, which was a pretty simple POST request: Just the bot’s username, an emoji to use for the bot’s userpic and the message to post.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slack_endpoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;username&quot;: &quot;doorbellbot&quot;, &quot;icon_emoji&quot;: &quot;:bellhop_bell:&quot;, &quot;text&quot;: &quot;&amp;lt;!group&amp;gt; Someone is at the door! Let \'em in&quot;}'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You’ll notice that I’m using &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!group&amp;gt;&lt;/code&gt; to simulate a “@group” string in the message, which pings everyone in the channel. Just typing “@group” doesn’t work—you’ll need to use that code.&lt;/p&gt;
+
+&lt;p&gt;It worked!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/doorbell1.png&quot; alt=&quot;Slack's doorbell reply&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That wrapped up quicker than I thought, so I added a bit of fun. Every time the doorbell rang, I wanted the bot to print a random quote about opening doors. I found a few online and encoded them as JSON, writing a command to pick a random one:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;quotes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good manners will open doors that the best education cannot.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Clarence Thomas&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;I think there are influences that you open the door to, and influences that come under the door.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Harrison Birtwistle&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;We must open the doors of opportunity. But we must also equip our people to walk through those doors.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Lyndon B. Johnson&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;I find that when you open the door toward openness and transparency, a lot of people will follow you through.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Kirsten Gillibrand&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Not knowing when the dawn will come\nI open every door.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Emily Dickinson&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;In life sometimes, in the universe, you have to close some doors to have others open.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Gene Ween&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Knowledge of what is does not open the door directly to what should be.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Albert Einstein&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one which has opened for us.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Alexander Graham Bell&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;this_quote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;quotes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;quotes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I then rewrote my POST payload to this:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;username&quot;: &quot;doorbellbot&quot;, &quot;icon_emoji&quot;: &quot;:bellhop_bell:&quot;, &quot;text&quot;: &quot;&amp;lt;!group&amp;gt; Someone is at the door! Let \'em in.\n&amp;gt;\\&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;this_quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\\&quot; \n&amp;gt;- '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;this_quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&quot;}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;… and tada!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/doorbell2.png&quot; alt=&quot;Slack's doorbell reply&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All that remained was to post the IoT button by our office door. I attached near the fob reader and left it mysterious for now… maybe I’ll add a fun sign later.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/doorbell3.JPG&quot; alt=&quot;The posted doorbell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s it for week 2! Here’s the &lt;a href=&quot;https://gist.github.com/arm5077/1b9b32b0cca815dfce4d8bcef1d78472&quot;&gt;whole code.&lt;/a&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At The Atlantic, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.</summary></entry><entry><title type="html">Make Every Week, Part 1: A bikeshare smartwatch app</title><link href="http://localhost:4000/2016/06/26/a-summer-of-make-every-week.html" rel="alternate" type="text/html" title="Make Every Week, Part 1: A bikeshare smartwatch app" /><published>2016-06-26T00:00:00-04:00</published><updated>2016-06-26T00:00:00-04:00</updated><id>http://localhost:4000/2016/06/26/a-summer-of-make-every-week</id><content type="html" xml:base="http://localhost:4000/2016/06/26/a-summer-of-make-every-week.html">&lt;p&gt;In 2015, WNYC journalist and developer John Keefe &lt;a href=&quot;http://johnkeefe.net/make-every-week-a-bendy-mangnifier&quot;&gt;made up his mind to build a new thing every week.&lt;/a&gt; By the end of the year, he had designed &lt;a href=&quot;http://johnkeefe.net/make-every-week-wind-sensor-candle&quot;&gt;a wind-sensing candle,&lt;/a&gt;, &lt;a href=&quot;http://johnkeefe.net/make-every-week-fitness-wristband&quot;&gt;a homemade fitness wristband&lt;/a&gt;, &lt;a href=&quot;http://johnkeefe.net/make-every-week-lunch-bot&quot;&gt;a lunch-suggesting Slack bot&lt;/a&gt;, and &lt;a href=&quot;http://johnkeefe.net/make-every-week-begets-a-book&quot;&gt;much more.&lt;/a&gt; I loved following along throughout the year and seeing what he thought of next.&lt;/p&gt;
+
+&lt;p&gt;So here’s my own resolution: &lt;strong&gt;Every week this summer, I’ll build something new myself.&lt;/strong&gt; It’ll ideally have some presence in the physical world, though I’ll probably have a few lazy weeks and build web-only tools. And it can’t be something I’m already doing for work, because that’s cheating.&lt;/p&gt;
+
+&lt;p&gt;Beyond that, I’ll avoid being too picky. I want to keep the pump of creativity primed; it’s a lot easier to think of new ideas when you’re already working on something!&lt;/p&gt;
+
+&lt;p&gt;On that note, let’s look at the first project: &lt;strong&gt;a smartwatch app that tells Capital Bikeshare users how many bicycles are available at nearby docks.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;capital-bikeshare-smartwatch-app&quot;&gt;Capital Bikeshare smartwatch app&lt;/h2&gt;
+
+&lt;p&gt;This project connects two of my favorite things, both built by teams of passionate people:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Washington, D.C.’s Capital Bikeshare.&lt;/strong&gt; This &lt;a href=&quot;https://www.capitalbikeshare.com/&quot;&gt;citywide program&lt;/a&gt; puts low-cost commuter bikers within easy reach of residents. If you’re a member, you can use a key fob to check out one of the thousands of bikes docked throughout the District, Maryland and Virginia. Once you reach your destination, you lock it at the nearest dock. It’s a great one-way transportation system that I used quite frequently before I upgraded my own bicycle.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The Pebble smartwatch.&lt;/strong&gt; A &lt;a href=&quot;https://www.pebble.com/&quot;&gt;Kickstarter-funded project&lt;/a&gt;, Pebble is an awesome alternative to mainstream smartwatches like the Apple Watch, offering an e-ink display, great battery life and most of the features you’d expect. Best of all, it’s super easy to develop for Pebble, both in C and in Javascript.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As much as I love Capital Bikeshare, I dread rolling up to my office after a long commute and discovering other commuters have already claimed all the bike docks. It always looks clear when I check the &lt;a href=&quot;https://www.spotcycle.net/&quot;&gt;Spotcycle app&lt;/a&gt; at the beginning of my ride — but the racks often fill up while I’m huffing and puffing along. And fiddling with my phone mid-ride, trying to get an update, sounds like a good way to end up in the hospital.&lt;/p&gt;
+
+&lt;p&gt;But what if my Pebble could tell me whether the upcoming bike rack was full?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/smartwatch_banner.jpg&quot; alt=&quot;Tada! The Capital Bikeshare Pebble app.&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;building-the-app&quot;&gt;Building the app&lt;/h2&gt;
+
+&lt;p&gt;Most Pebble apps are written in C. But to prototype my bikeshare app, I used &lt;a href=&quot;https://pebble.github.io/pebblejs/&quot;&gt;Pebble.js&lt;/a&gt;, a framework that allows you to program your Pebble using Javascript. It’s limited and a bit laggy, since most of the computing takes place on your phone, but it’s very quick to get running.&lt;/p&gt;
+
+&lt;p&gt;For my data source, I pulled two JSON feeds from Capital Bikeshare’s &lt;a href=&quot;https://secure.capitalbikeshare.com/map/&quot;&gt;station map&lt;/a&gt;: &lt;a href=&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_information.json&quot;&gt;station_information.json&lt;/a&gt; and &lt;a href=&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_status.json&quot;&gt;station_status.json&lt;/a&gt;. Capital Bikeshare would rather developers use its &lt;a href=&quot;https://www.capitalbikeshare.com/system-data&quot;&gt;official XML feed&lt;/a&gt;, but since Pebble.js is notoriously bad at parsing non-JSON models, I opted for a hackier solution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First&lt;/strong&gt;, I needed to throw up a loading screen while the app pulled data and found the user’s location. Pebble.js mostly works by displaying &lt;strong&gt;Cards&lt;/strong&gt;, which are standalone screen with a title, subtitle and body text, and &lt;strong&gt;Menus&lt;/strong&gt;, which are scrollable lists. Here’s the code for a loading card:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;card&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Capital Bikeshare'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;subtitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Getting bikeshare data...&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pebble.js uses a version of jQuery’s &lt;code class=&quot;highlighter-rouge&quot;&gt;ajax&lt;/code&gt; function to make HTTP requests. Here, I pull in both feeds using nested AJAX calls:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_information.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// Got station info &lt;/span&gt;
+   &lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_status.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;       
+      &lt;span class=&quot;c1&quot;&gt;// Got status of stations&lt;/span&gt;
+      
+      &lt;span class=&quot;c1&quot;&gt;// Rest of code goes here&lt;/span&gt;
+      
+     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The bike availability data I need is in &lt;code class=&quot;highlighter-rouge&quot;&gt;station_status.json&lt;/code&gt;, but that file only contains very little information about the stations themselves — only a numerical ID. So you have to cut in the station metadata from &lt;code class=&quot;highlighter-rouge&quot;&gt;station_information.json&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Make array of station ids &lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// For each station status, add in metadata about the station&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;latitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;longitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Next up: The user’s current position. This is actually a snap, since Pebble.js allows you to use Javascript’s native &lt;code class=&quot;highlighter-rouge&quot;&gt;navigator.geolocation&lt;/code&gt; function. I use a &lt;a href=&quot;https://www.google.com/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=haversine&quot;&gt;Haversine distance function&lt;/a&gt; (borrowed with thanks from &lt;a href=&quot;https://github.com/jaxgeller/node-geo-distance/blob/master/index.js&quot;&gt;this library!&lt;/a&gt;) to sort the array of stations by their distance from the user, from nearest to farthest.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geolocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getCurrentPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;latitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;latitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;longitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;longitude&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  
+  &lt;span class=&quot;c1&quot;&gt;// Sort by station distance&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;haversine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;haversine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Lastly, I build a Menu object using the closest 10 stations. Menu objects accept a &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; and and a list of of &lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt;, each of which have a title of their own and an optional subtitle. You’ll notice I also attach a &lt;code class=&quot;highlighter-rouge&quot;&gt;select&lt;/code&gt; event to the Menu, which creates a new card showing expanded details about the station.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Loop through the top 10 stations closest to the user&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;menu_items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;menu_items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;subtitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num_bikes_available&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; bikes/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resultsMenu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Menu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;sections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Nearest stations:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;menu_items&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;highlightBackgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#EC008C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;highlightColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;black&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;resultsMenu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'select'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stationCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Bikes available: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num_bikes_available&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;\nDocks available: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num_docks_available&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;scrollable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;stationCard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;resultsMenu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And that’s it! Here’s the app in action (and &lt;a href=&quot;https://github.com/arm5077/capital-bikeshare-pebble&quot;&gt;full code here&lt;/a&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/watch-app-gif.gif&quot; alt=&quot;The app at work.&quot; /&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">In 2015, WNYC journalist and developer John Keefe made up his mind to build a new thing every week. By the end of the year, he had designed a wind-sensing candle,, a homemade fitness wristband, a lunch-suggesting Slack bot, and much more. I loved following along throughout the year and seeing what he thought of next.</summary></entry><entry><title type="html">Building “Omniturebot,” a Slack bot for keeping tabs on traffic</title><link href="http://localhost:4000/2016/02/15/building-omniturebot-a-slack-bot-traffic.html" rel="alternate" type="text/html" title="Building “Omniturebot,” a Slack bot for keeping tabs on traffic" /><published>2016-02-15T00:00:00-05:00</published><updated>2016-02-15T00:00:00-05:00</updated><id>http://localhost:4000/2016/02/15/building-omniturebot-a-slack-bot-traffic</id><content type="html" xml:base="http://localhost:4000/2016/02/15/building-omniturebot-a-slack-bot-traffic.html">&lt;p&gt;One of my everyday frustrations as a journalist is the veritable symphony of mouse clicks required to get web traffic stats for your stories.&lt;/p&gt;
+
+&lt;p&gt;Yes, &lt;a href=&quot;//chartbeat.com&quot;&gt;Chartbeat&lt;/a&gt; is super easy to use. But it only tracks concurrent users, not unique visitors or pageviews, which your bosses actually care about. And pulling those stats from Google Analytics or Omniture quickly devolves into a multi-step nightmare that makes setting the clock on your microwave after a power outage look downright enjoyable.&lt;/p&gt;
+
+&lt;p&gt;At The Atlantic, we use &lt;a href=&quot;http://www.adobe.com/marketing-cloud/web-analytics.html&quot;&gt;Omniture&lt;/a&gt;, or whatever Adobe is calling it these days. We also use &lt;a href=&quot;http://www.adobe.com/marketing-cloud/web-analytics.html&quot;&gt;Slack,&lt;/a&gt; the popular work chat client, which offers extensive scripting and automation capabilities.&lt;/p&gt;
+
+&lt;p&gt;After a day of one too many segment-selections and filter-applications, I asked myself, couldn’t a robot do this better?&lt;/p&gt;
+
+&lt;p&gt;Enter &lt;a href=&quot;https://github.com/arm5077/omniture-slackbot&quot;&gt;Omniturebot&lt;/a&gt;. It’s a Slack bot that uses your Omniture credentials to pull traffic stats at a moment’s notice, accepting a keyword and a timespan and returning the relevant stats.&lt;/p&gt;
+
+&lt;p&gt;Using it, getting my most recent stats is as easy as chatting @omniturebot and asking &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;andrew mcgill&quot; (1 month)&lt;/code&gt;. It’ll happily return:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/omniturebot-output.jpg&quot; alt=&quot;Slackbot's output&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Omniturebot is written in Node.js and can easily be deployed via Heroku or any SaaS provider. (You can also easily run it in your local environment, if you’d prefer.) It’s written to handle multiple users, though admittedly I haven’t tested against a ton of concurrent requests.&lt;/p&gt;
+
+&lt;p&gt;I hope it makes pulling traffic numbers as easy and enjoyable as it has for me!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">One of my everyday frustrations as a journalist is the veritable symphony of mouse clicks required to get web traffic stats for your stories.</summary></entry><entry><title type="html">Now at The Atlantic</title><link href="http://localhost:4000/2016/01/16/now-at-the-atlantic.html" rel="alternate" type="text/html" title="Now at The Atlantic" /><published>2016-01-16T00:00:00-05:00</published><updated>2016-01-16T00:00:00-05:00</updated><id>http://localhost:4000/2016/01/16/now-at-the-atlantic</id><content type="html" xml:base="http://localhost:4000/2016/01/16/now-at-the-atlantic.html">&lt;p&gt;I’m late to my own news, but I’m excited to say I’m now working at The Atlantic, an awesome publication in Washington, D.C. I’ve joined their politics team and will be writing and coding about the 2016 election and beyond.&lt;/p&gt;
+
+&lt;p&gt;It’s a return from reporting after a year supervising the graphics department at National Journal. I’m pumped to produce my own work again. And The Atlantic has already proved to be an interesting place to work — an ideas magazine that cares about good writing and values a sense of fun. Onward.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I’m late to my own news, but I’m excited to say I’m now working at The Atlantic, an awesome publication in Washington, D.C. I’ve joined their politics team and will be writing and coding about the 2016 election and beyond.</summary></entry></feed>

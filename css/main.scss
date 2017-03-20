@@ -16,6 +16,7 @@ $medium_width: 670px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
 html, body {
 	padding: 0;
@@ -225,6 +226,14 @@ ul {
       border: 1px solid #ccc;
 		}
 			
+    blockquote {
+      background-color: #eeeeee;
+      padding: 20px;
+      max-width: 630px;
+      margin: auto;
+      font-weight: 300
+    }
+  
 	}
 	
 	.date {

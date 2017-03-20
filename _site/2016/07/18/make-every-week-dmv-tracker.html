@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Make Every Week, Part 3: How crowded is the Washington, D.C. DMV? | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="Using a bit of computer vision and the helpful webcams at the Department of Motor Vehicles to estimate how long you'd have to wait for a drivers license." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Make Every Week, Part 3: How crowded is the Washington, D.C. DMV?</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			July
+			  
+			18,
+			2016
+		</div>
+
+		<p><em><strong>First off, an apology:</strong> In the aftermath of the July 4th holiday, I took the week off last week. So you’ll see a double #MakeEveryWeek feature coming up soon.</em></p>
+
+<p>Everyone hates the Department of Motor Vehicles. Over the years, it has  somehow become the universal American symbol for a soul-breaking bureaucracy. Washington, D.C.’s division does its best, but you still end up wondering why it takes to long to get your license renewed.</p>
+
+<p>My wife recently stopped by <a href="http://dmv.dc.gov/page/georgetown-servicecenter">the DMV in Georgetown.</a> While looking up the office hours for her, I remembered that D.C. does something neat: It streams <a href="http://dmv.dc.gov/node/823652">live webcam footage from the DMV waiting room,</a> so you can get a sense for how crowded your branch is before you go.</p>
+
+<p><img src="/assets/dmv1.jpg" alt="Pretty crowded!" /></p>
+
+<p>It also publishes a calculated wait time, but I’ve never found that particularly accurate. These images are simple JPEGS, very easy to download and parse. So I started thinking: Is there a way to use this footage to detect the ebbs and flows of crowds at the DMV — and avoid the rush yourself?</p>
+
+<p><strong>A poor man’s computer vision</strong></p>
+
+<p>I don’t have a lot experience with computer vision, though it’s definitely something I’d like to explore further. But the DMV did me a favor: They bought those bright blue chairs.</p>
+
+<p><img src="/assets/dmv2.jpg" alt="They're SO blue." /></p>
+
+<p>Turns out that blue is pretty distinctive. With the exception of the security guard’s uniform, there’s nothing else in the DMV colored quite like it. Counting those blue pixels was key: The more bright blue in the picture, the relatively fewer people waiting in line. If I scraped these pictures every minute or so and ran my script for a few weeks, I could analyze the colors and aggregate my data to make a cool time-series graph.</p>
+
+<p>Here’s a picture where the matching blue is colored red. Searching for this narrow band of color avoids people (and that newspaper) pretty well.</p>
+
+<p><img src="/assets/dmv4.png" alt="Blue and red." /></p>
+
+<p>But there’s a few things I’d have to figure out:</p>
+
+<ul>
+  <li>There are <a href="https://ftp.dmv.washingtondc.gov/w/gt1/video.jpg">three</a> <a href="https://ftp.dmv.washingtondc.gov/w/gt2/video.jpg">camera</a> <a href="https://ftp.dmv.washingtondc.gov/w/gt1/video.jpg">angles</a> (well, four, but the last one’s just <a href="https://ftp.dmv.washingtondc.gov/w/gt3/video.jpg">a shot of the door.</a>) The first two are wide shots, and the last one is a bit narrower and shows fewer chairs. I’d have to calibrate my pixel-counting to compensate.</li>
+  <li>The first two shots actually overlap. One camera shoots down the main waiting room, and the other shoots the opposite angle. It’s hard to tell, because one has been flipped horizontally. But I’d have to remove the overlap so people aren’t double-counted.</li>
+  <li>Lastly, all the cameras show the room at an angle, so chairs in the back will have fewer blue pixels than chairs in the front. I’d have to compensate for this or risk under-counting the crowd if a few big chairs went unfilled in the front.</li>
+</ul>
+
+<p><strong>On to the code</strong></p>
+
+<p>I wrote this in Node and used a bunch of libraries, but primarily <a href="https://github.com/EyalAr/lwip">LWIP</a>, an image processing library.</p>
+
+<p>First, I set up an array containing the camera URLs, the vertical position where to start scanning the image, a weight to account for skew and the rough number of empty seats pictured in the photo.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">cameras</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://ftp.dmv.washingtondc.gov/w/gt1/video.jpg"</span><span class="p">,</span>
+    <span class="na">start</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="na">rate_of_change</span><span class="p">:</span> <span class="p">.</span><span class="mi">976</span><span class="p">,</span>
+    <span class="na">empty_seats</span><span class="p">:</span> <span class="mi">38</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://ftp.dmv.washingtondc.gov/w/gt2/video.jpg"</span><span class="p">,</span>
+    <span class="na">start</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="na">rate_of_change</span><span class="p">:</span> <span class="p">.</span><span class="mi">969</span><span class="p">,</span>
+    <span class="na">empty_seats</span><span class="p">:</span> <span class="mi">9</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://ftp.dmv.washingtondc.gov/w/gt4/video.jpg"</span><span class="p">,</span>
+    <span class="na">start</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">rate_of_change</span><span class="p">:</span> <span class="p">.</span><span class="mi">983</span><span class="p">,</span>
+    <span class="na">empty_seats</span><span class="p">:</span> <span class="mi">24</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</code></pre>
+</div>
+
+<p>Note that for the first two images, I start processing about 90-100 pixels down. That’s to remove the chairs that are in the foreground of the <em>other</em> camera angle.</p>
+
+<p><img src="/assets/dmv3.jpg" alt="I've cropped out the top third or so." /></p>
+
+<p>That <code class="highlighter-rouge">rate_of_change</code> basically applies less weight to pixels in the foreground than pixels in the background, as each pixel proportionally represents more chair the higher up in the image you go.</p>
+
+<p>Before I do anything with the live images, I want to find out how much blue is in each picture when the room is empty. (I’ve saved copies of footage from when the office is closed. They leave the lights on all night…)</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="c1">// First, let's calculate the baseline amount of blue for each camera</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachOfSeries</span><span class="p">(</span><span class="nx">cameras</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">camera</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+  
+  <span class="c1">// I've saved the photos of the empty DMV room, so let's open those</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s2">"control_images/"</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">".jpg"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">'binary'</span><span class="p">);</span>
+    <span class="nx">lwip</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="s1">'jpeg'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">image</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+      
+      <span class="c1">// Set the total amount of blue detected to zero</span>
+      <span class="nx">camera</span><span class="p">.</span><span class="nx">controlBlue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span><span class="p">(</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">start</span><span class="p">;</span> <span class="nx">y</span> <span class="o">&lt;=</span> <span class="mi">239</span><span class="p">;</span> <span class="nx">y</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="mi">319</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">){</span>
+          <span class="kd">var</span> <span class="nx">hsv</span> <span class="o">=</span> <span class="nx">getHSV</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+          <span class="kd">var</span> <span class="nx">pixelScore</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">-</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">start</span> <span class="o">*</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">rate_of_change</span><span class="p">;</span>
+          <span class="nx">camera</span><span class="p">.</span><span class="nx">controlBlue</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">hsv</span><span class="p">.</span><span class="nx">h</span> <span class="o">&gt;=</span><span class="mi">220</span> <span class="o">&amp;&amp;</span> <span class="nx">hsv</span><span class="p">.</span><span class="nx">h</span> <span class="o">&lt;=</span> <span class="mi">240</span> <span class="o">&amp;&amp;</span> <span class="nx">hsv</span><span class="p">.</span><span class="nx">s</span> <span class="o">&gt;</span> <span class="mi">30</span> <span class="o">&amp;&amp;</span> <span class="nx">hsv</span><span class="p">.</span><span class="nx">v</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">?</span> <span class="nx">pixelScore</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="nx">callback</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Done setting baseline..."</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">getHSV</span><span class="p">(</span><span class="nx">image</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">Color</span><span class="p">().</span><span class="nx">rgb</span><span class="p">([</span><span class="nx">image</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">).</span><span class="nx">r</span><span class="p">,</span> <span class="nx">image</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">).</span><span class="nx">g</span><span class="p">,</span> <span class="nx">image</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">).</span><span class="nx">b</span><span class="p">]).</span><span class="nx">hsv</span><span class="p">();</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>I’m using the awesome <a href="http://caolan.github.io/async/docs.html#">aysnc</a> library to keep track of all my callbacks. I cycle through the images, open them a binary file and then parse them row by row and pixel by pixel, testing if they match the blue I’m looking for and applying the various weights outlined in the <code class="highlighter-rouge">cameras</code> object.</p>
+
+<p>Another shoutout to the <a href="https://github.com/qix-/color">Color</a> library, which allows you to easily convert RGB values to HSV (hue, saturation, value/brightness). The blue I’m looking for is in a relatively narrow hue band, is medium saturation and medium-to-high brightness.</p>
+
+<p>After I get the baseline values sorted out, I repeat the same operation with the live images, comparing their blue scores to the empty images to guesstimate how many people are sitting in the chairs.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="c1">// Cycle through each of the cameras</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachOfSeries</span><span class="p">(</span><span class="nx">cameras</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">camera</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+  
+  <span class="nx">request</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="na">encoding</span><span class="p">:</span> <span class="s1">'binary'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span> 
+    <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="s1">'binary'</span><span class="p">);</span>
+
+    <span class="nx">lwip</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="s1">'jpeg'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">image</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+
+      <span class="c1">// Like above, set the total amount of blue detected to zero</span>
+			<span class="kd">var</span> <span class="nx">blue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+			<span class="k">for</span><span class="p">(</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">start</span><span class="p">;</span> <span class="nx">y</span> <span class="o">&lt;=</span> <span class="mi">239</span><span class="p">;</span> <span class="nx">y</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">for</span><span class="p">(</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="mi">319</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">){</span>
+				  <span class="nx">hsv</span> <span class="o">=</span> <span class="nx">getHSV</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+          <span class="nx">pixelScore</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">-</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">start</span> <span class="o">*</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">rate_of_change</span><span class="p">;</span>
+					<span class="nx">blue</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">hsv</span><span class="p">.</span><span class="nx">h</span> <span class="o">&gt;=</span><span class="mi">220</span> <span class="o">&amp;&amp;</span> <span class="nx">hsv</span><span class="p">.</span><span class="nx">h</span> <span class="o">&lt;=</span> <span class="mi">240</span> <span class="o">&amp;&amp;</span> <span class="nx">hsv</span><span class="p">.</span><span class="nx">s</span> <span class="o">&gt;</span> <span class="mi">30</span> <span class="o">&amp;&amp;</span> <span class="nx">hsv</span><span class="p">.</span><span class="nx">v</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">?</span> <span class="nx">pixelScore</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+      <span class="nx">camera</span><span class="p">.</span><span class="nx">percentBlue</span> <span class="o">=</span> <span class="nx">blue</span> <span class="o">/</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">controlBlue</span><span class="p">;</span>
+			<span class="nx">totalEmptySeats</span> <span class="o">+=</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">percentBlue</span> <span class="o">*</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">empty_seats</span><span class="p">;</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Camera "</span> <span class="o">+</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">percentBlue</span><span class="p">);</span>
+			<span class="nx">callback</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>One that’s all sorted out, I upload the combined estimate to a MySQL database:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">pool</span><span class="p">.</span><span class="nx">getConnection</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">connection</span><span class="p">){</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">'INSERT INTO readings (timestamp, open_chairs) VALUES(?, ?)'</span><span class="p">,</span> <span class="p">[</span><span class="nx">timestamp</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s1">'YYYY-MM-DD HH:mm:ss'</span><span class="p">),</span> <span class="nx">totalEmptySeats</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="nx">connection</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Full code is <a href="https://github.com/arm5077/dmv">here.</a> I’m going to run this script for a few weeks and generate data. Once I get a decently! representative sample, I’ll come back with some visualizations!</p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/08/19/make-every-week-sweetgreen-salad-button.html">&laquo; Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button</a>
+			 
+
+			
+			<a class="back" href="/2016/07/05/make-every-week-2-slack-doorbell.html">Make Every Week, Part 2: A Slack-powered doorbell &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

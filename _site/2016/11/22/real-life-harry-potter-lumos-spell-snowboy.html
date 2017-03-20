@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="Harry used the charm to turn his wand into a wizard's flashlight. Voice recognition software can do the same for muggles." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Nov.
+			  
+			22,
+			2016
+		</div>
+
+		<p>I don’t think of myself as a <em>Harry Potter</em> fan, but I somehow know a crapload of magic spells from the famous book series. <em>Alohomora</em> was useful for unlocking doors; <em>Expelliarmus</em> would disarm an opponent of her wand. But one of the simplest was <em>Lumos</em>, which lit the tip of a wizard’s wand, along with its counterpart <em>Nox</em>, which extinguished the light.</p>
+
+<p><img src="/assets/lumos_harry_potter.jpg" alt="Severus Snape uses the Lumos spell." /></p>
+
+<p>Speech recognition has always seemed a bit like magic to me, too. But as I poked around <a href="https://github.com/alexa/alexa-avs-sample-app">the open-source work</a> being done using the Amazon Alexa Voice Service platform (which powers the Amazon Echo, Dot, etc.), I found <a href="https://github.com/Kitt-AI/snowboy">Snowboy</a>. It’s a pretty neat “wake-word-as-service” library that’s free for hackers (real apps have to pay money), and uses machine learning to recognize the desired phrase. It’s especially nice because it doesn’t need the internet to work — after you train the algorithm online using your own voice, Snowboy gives you a downloadable file that hooks up with its library offline.</p>
+
+<p><em>Hmm</em>, I thought. <em>Could Snowboy help me achieve my dream of becoming an actual wizard?</em></p>
+
+<p>Voila:</p>
+
+<blockquote class="twitter-tweet" data-lang="en">
+  <p lang="en" dir="ltr">Last week needed some Raspberry Pi-powered ACTUAL HARRY POTTER MAGIC. Explainer post coming soon <a href="https://t.co/u5AK25e3MG">pic.twitter.com/u5AK25e3MG</a>— Andrew McGill (@andrewmcgill) <a href="https://twitter.com/andrewmcgill/status/798237324043816965">November 14, 2016</a></p>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2 id="building-the-lumos-lamp">Building the Lumos Lamp</h2>
+<p>The goal was to turn on a lamp (or several) by saying “Lumos!” out loud. Since I’m not comfortable enough with electrical engineering to hardwire a lamp’s power supply directly through my Raspberry Pi, I ended up buying the <a href="https://www.adafruit.com/product/268">Powerswitch Tail 2</a>, essentially an extension cord that can be powered on and off programmatically by a micontroller.</p>
+
+<p>Here are the materials I used:</p>
+
+<ul>
+  <li>Raspberry Pi 2 (Model B in my case) with Raspbian installed</li>
+  <li><a href="https://www.amazon.com/gp/product/B00IR8R7WQ/ref=oh_aui_detailpage_o01_s00?ie=UTF8&amp;psc=1">A USB microphone</a></li>
+  <li><a href="https://www.adafruit.com/product/268">Powerswitch Tail 2</a></li>
+  <li><a href="https://www.adafruit.com/products/826">A bunch of male-female jumper wires</a></li>
+  <li><a href="https://www.amazon.com/AmazonBasics-6-Outlet-Surge-Protector-2-Pack/dp/B014EKQ5AA/ref=zg_bs_10967801_1?_encoding=UTF8&amp;psc=1&amp;refRID=G27MRDKAWFC2Q66CR6H0">Generic power strip</a></li>
+</ul>
+
+<p><strong>First, set up the Raspberry Pi.</strong> (Snowboy has <a href="http://docs.kitt.ai/snowboy/#quick-start">some good documentation here.</a>) Presuming you’ve booted up the Pi and connected it to the internet, plug in your USB microphone. You’ll need to install some audio dependencies from the command line:</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight"><code>sudo apt-get install python-pyaudio python3-pyaudio sox
+</code></pre>
+</div>
+
+<p>You can check to see if that worked by running <code class="highlighter-rouge">rec test.wav</code>, speaking into the microphone for a few seconds, and then <code class="highlighter-rouge">aplay test.wav</code>. (You may need to do some more fiddling — <a href="http://docs.kitt.ai/snowboy/#running-on-pi">troubleshooting advice here</a>).</p>
+
+<p>At this point, it’s probably best to set up your project folder. I used Node.js to code this project, so we need to initiate NPM and install a <code class="highlighter-rouge">snowboy</code>, which will run our Pi’s speech recognition, <code class="highlighter-rouge">onoff</code>, which handles switching the power source, and <code class="highlighter-rouge">node-record-lpcm16</code>, a Node-specific audio recording library.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight"><code>npm init
+npm install snowboy --save
+npm install onoff --save
+npm install node-record-lpcm16 --save
+</code></pre>
+</div>
+
+<p><strong>Now, train Snowboy to understand your voice.</strong> I’d do this one a laptop with a built-in microphone, not your Pi. Visit <a href="https://snowboy.kitt.ai/">Snowboy’s site</a> (Firefox seemed to work better for me), make an account and create a new hotword. After you repeat the word three times, Snowboy will give you a <code class="highlighter-rouge">.pmdl</code> file — that’s the key. Transfer it over to your Pi; I emailed it to myself and just downloaded it from the Pi’s web browser. I ended up making two hotwords — “lumos,” to turn the light on, and “nox,” to turn it off.</p>
+
+<p>Drop the .pmdl file into your project folder, and make <code class="highlighter-rouge">index.js</code>, which will contain your main code. <a href="https://gist.github.com/arm5077/ef498a7e31e4d799431d5ce734898907">Here’s what I ended up putting together,</a> initializing a detector and adding two hotword models. The <code class="highlighter-rouge">detector.on('hotword')</code> function fires whenever I say “lumos” or “nox,” so that’s where I’ve stuck the pin logic.</p>
+
+<p>Speaking of pins…</p>
+
+<p><strong>Time to wire this together.</strong> Here’s my setup:</p>
+
+<p><img src="/assets/lumos wiring diagram.JPG" alt="The wiring setup between the Powerswitch and the Pi." /></p>
+
+<p>I got some basic wiring advice from <a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control/overview">this tutorial</a>, but essentially, the purple wire connects to one of the Pi’s ground pins, and the blue wire connects to pin 15. You’ll see that I unscrewed the Powertail’s casing — the terminals were a bit hard to reach with the male end of the wire otherwise.</p>
+
+<p>With finished, you’re probably ready to give this a shot! I connected the Powertail to an extension cord that plugged into the wall outlet, and then linked the other end of the Powertail with a regular power strip. I ended up plugging three lights into the strip — my floor lamp, a desk lamp and my architect light.</p>
+
+<p>When you run <code class="highlighter-rouge">node index.js</code>, you should hear a click as the Powertail switches off. (The red LED indicator stays on, so you know it’s working.) Stand back, and authoritatively say “Lumos!”</p>
+
+<p>With any luck, the light will switch on — and you’ll officially be a member of the wizarding world.</p>
+
+<p><img src="/assets/ron_fail.gif" alt="Ron Weasley failing at being a wizard." /></p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/12/18/turning-an-amazon-iot-button-into-something-useful-with-almost-no-code.html">&laquo; Turning an Amazon IoT button into something actually useful with (almost) no code</a>
+			 
+
+			
+			<a class="back" href="/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet.html">How to code a virtual Internet of Things device to tempt hackers &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

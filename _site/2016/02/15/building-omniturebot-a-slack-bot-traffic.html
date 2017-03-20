@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		 
+			Andrew McGill | journalist and developer
+		
+	</title>
+		
+	
+	<meta name="description" content="I'm a journalist and web developer from Philadelphia who hopes to die happy." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Building “Omniturebot,” a Slack bot for keeping tabs on traffic</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Feb.
+			  
+			15,
+			2016
+		</div>
+
+		<p>One of my everyday frustrations as a journalist is the veritable symphony of mouse clicks required to get web traffic stats for your stories.</p>
+
+<p>Yes, <a href="//chartbeat.com">Chartbeat</a> is super easy to use. But it only tracks concurrent users, not unique visitors or pageviews, which your bosses actually care about. And pulling those stats from Google Analytics or Omniture quickly devolves into a multi-step nightmare that makes setting the clock on your microwave after a power outage look downright enjoyable.</p>
+
+<p>At The Atlantic, we use <a href="http://www.adobe.com/marketing-cloud/web-analytics.html">Omniture</a>, or whatever Adobe is calling it these days. We also use <a href="http://www.adobe.com/marketing-cloud/web-analytics.html">Slack,</a> the popular work chat client, which offers extensive scripting and automation capabilities.</p>
+
+<p>After a day of one too many segment-selections and filter-applications, I asked myself, couldn’t a robot do this better?</p>
+
+<p>Enter <a href="https://github.com/arm5077/omniture-slackbot">Omniturebot</a>. It’s a Slack bot that uses your Omniture credentials to pull traffic stats at a moment’s notice, accepting a keyword and a timespan and returning the relevant stats.</p>
+
+<p>Using it, getting my most recent stats is as easy as chatting @omniturebot and asking <code class="highlighter-rouge">"andrew mcgill" (1 month)</code>. It’ll happily return:</p>
+
+<p><img src="http://localhost:4000/assets/omniturebot-output.jpg" alt="Slackbot's output" /></p>
+
+<p>Omniturebot is written in Node.js and can easily be deployed via Heroku or any SaaS provider. (You can also easily run it in your local environment, if you’d prefer.) It’s written to handle multiple users, though admittedly I haven’t tested against a ton of concurrent requests.</p>
+
+<p>I hope it makes pulling traffic numbers as easy and enjoyable as it has for me!</p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/06/26/a-summer-of-make-every-week.html">&laquo; Make Every Week, Part 1: A bikeshare smartwatch app</a>
+			 
+
+			
+			<a class="back" href="/2016/01/16/now-at-the-atlantic.html">Now at The Atlantic &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

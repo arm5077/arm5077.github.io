@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		 
+			Andrew McGill | journalist and developer
+		
+	</title>
+		
+	
+	<meta name="description" content="I'm a journalist and web developer from Philadelphia who hopes to die happy." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>How I scraped Hillary Clinton's Benghazi emails</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			May
+			  
+			31,
+			2015
+		</div>
+
+		<p>This May, the U.S. State Department released 296 of the 30,000 government emails previously stored on Hillary Clinton’s private server.</p>
+
+<p>Or rather, they tried to.</p>
+
+<p>State directed reporters to download the emails from the department’s <a href="http://foia.state.gov/Search/Results.aspx?collection=Clinton_Email">“virtual reading room”</a> (one of many government silos of FOIA data that really should be cataloged on <a href="http://www.data.gov/">data.gov</a>). But given the world’s intense interest in former Secretary Clinton’s communications, the site slowed to a crawl.</p>
+
+<blockquote class="twitter-tweet" lang="en" style="margin: auto">
+  <p dir="ltr" lang="en">So far, State Dept.’s FOIA response time is faster than the load time for the Clinton email website</p>
+  <p>— Timothy Cama (@Timothy_Cama) <a href="https://twitter.com/Timothy_Cama/status/601789439879294977">May 22, 2015</a></p>
+</blockquote>
+<p><script src="//platform.twitter.com/widgets.js" async="" charset="utf-8"></script></p>
+
+<p>After hitting refresh about a million times and finally getting the first 20 results, it became clear the conventional route wasn’t going to work.</p>
+
+<p>So I <em>popped</em> open Chrome’s developer console and there it was — a beautiful XHR request with plenty of dangling parameters.</p>
+
+<h2 id="cutting-out-the-middleman">Cutting out the middleman</h2>
+
+<p>When you’re dealing with a big ol’ set of data you want to display on your site, hardcoding it into HTML is a bad idea. It’s easier to store the information as a file or a database on your server and have the website grab bits and pieces when it needs them.</p>
+
+<p>That’s what’s happening here. State’s site is querying some master database when it loads Clinton’s emails, and it’s using that XHR request to do it.</p>
+
+<p>Since it’s publicly exposed (the request wasn’t made using server-side code), I can query the database directly by taking the URL and tweaking it a bit. And if I can make the wheezing server give me more than 20 results at once, I could save a lot of time.</p>
+
+<p>Here’s the original:</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight"><code>http://foia.state.gov/searchapp/Search/SubmitSimpleQuery?_dc=1433123130101&amp;searchText=*&amp;beginDate=false&amp;endDate=false&amp;collectionMatch=Clinton_Email&amp;postedBeginDate=false&amp;postedEndDate=false&amp;caseNumber=false&amp;page=1&amp;start=0&amp;limit=20
+</code></pre>
+</div>
+
+<p>Aha! There’s a “limit” parameter at the end that’s set to 20. Let’s just bump that up to, say, 1,000.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight"><code>http://foia.state.gov/searchapp/Search/SubmitSimpleQuery?_dc=1433123130101&amp;searchText=*&amp;beginDate=false&amp;endDate=false&amp;collectionMatch=Clinton_Email&amp;postedBeginDate=false&amp;postedEndDate=false&amp;caseNumber=false&amp;page=1&amp;start=0&amp;limit=1000
+</code></pre>
+</div>
+
+<p>Yes! The State Department’s server just returned me a JSON file with 296 results — every email I’m looking for. What’s more, it looks like each object includes a property containing the direct URL to a PDF of the individual email.</p>
+
+<h2 id="scrape-scrape-scrape">Scrape scrape scrape</h2>
+
+<p>With this JSON file saved safely to my computer, I wrote a <a href="http://arm5077.github.io/2015/05/31/how-i-scraped-hillary-clintons-benghazi-emails.html">quick Node.js</a> script that loops through and downloads each PDF, saving it to my hard drive.</p>
+
+<p>(If I was a complete coding boss, I would’ve used a PDF library to combine these files programmatically. Instead, running close to deadline, I used Adobe Acrobat.)</p>
+
+<p>And boom — we had a 850-page PDF of every email the State Department was currently failing to load.</p>
+
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/01/16/now-at-the-atlantic.html">&laquo; Now at The Atlantic</a>
+			 
+
+			
+			<a class="back" href="/2014/03/06/the-case-of-the-fallen-cloud.html">The Case of the Fallen Cloud &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

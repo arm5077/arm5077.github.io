@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Make Every Week, Part 1: A bikeshare smartwatch app | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="A resolution to stretch my mind and build a new tool (and preferably a physical thing!) every week this summer. First up: a smartwatch app the monitors bikeshare availability in DC." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Make Every Week, Part 1: A bikeshare smartwatch app</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			June
+			  
+			26,
+			2016
+		</div>
+
+		<p>In 2015, WNYC journalist and developer John Keefe <a href="http://johnkeefe.net/make-every-week-a-bendy-mangnifier">made up his mind to build a new thing every week.</a> By the end of the year, he had designed <a href="http://johnkeefe.net/make-every-week-wind-sensor-candle">a wind-sensing candle,</a>, <a href="http://johnkeefe.net/make-every-week-fitness-wristband">a homemade fitness wristband</a>, <a href="http://johnkeefe.net/make-every-week-lunch-bot">a lunch-suggesting Slack bot</a>, and <a href="http://johnkeefe.net/make-every-week-begets-a-book">much more.</a> I loved following along throughout the year and seeing what he thought of next.</p>
+
+<p>So here’s my own resolution: <strong>Every week this summer, I’ll build something new myself.</strong> It’ll ideally have some presence in the physical world, though I’ll probably have a few lazy weeks and build web-only tools. And it can’t be something I’m already doing for work, because that’s cheating.</p>
+
+<p>Beyond that, I’ll avoid being too picky. I want to keep the pump of creativity primed; it’s a lot easier to think of new ideas when you’re already working on something!</p>
+
+<p>On that note, let’s look at the first project: <strong>a smartwatch app that tells Capital Bikeshare users how many bicycles are available at nearby docks.</strong></p>
+
+<h2 id="capital-bikeshare-smartwatch-app">Capital Bikeshare smartwatch app</h2>
+
+<p>This project connects two of my favorite things, both built by teams of passionate people:</p>
+
+<ul>
+  <li><strong>Washington, D.C.’s Capital Bikeshare.</strong> This <a href="https://www.capitalbikeshare.com/">citywide program</a> puts low-cost commuter bikers within easy reach of residents. If you’re a member, you can use a key fob to check out one of the thousands of bikes docked throughout the District, Maryland and Virginia. Once you reach your destination, you lock it at the nearest dock. It’s a great one-way transportation system that I used quite frequently before I upgraded my own bicycle.</li>
+  <li><strong>The Pebble smartwatch.</strong> A <a href="https://www.pebble.com/">Kickstarter-funded project</a>, Pebble is an awesome alternative to mainstream smartwatches like the Apple Watch, offering an e-ink display, great battery life and most of the features you’d expect. Best of all, it’s super easy to develop for Pebble, both in C and in Javascript.</li>
+</ul>
+
+<p>As much as I love Capital Bikeshare, I dread rolling up to my office after a long commute and discovering other commuters have already claimed all the bike docks. It always looks clear when I check the <a href="https://www.spotcycle.net/">Spotcycle app</a> at the beginning of my ride — but the racks often fill up while I’m huffing and puffing along. And fiddling with my phone mid-ride, trying to get an update, sounds like a good way to end up in the hospital.</p>
+
+<p>But what if my Pebble could tell me whether the upcoming bike rack was full?</p>
+
+<p><img src="/assets/smartwatch_banner.jpg" alt="Tada! The Capital Bikeshare Pebble app." /></p>
+
+<h2 id="building-the-app">Building the app</h2>
+
+<p>Most Pebble apps are written in C. But to prototype my bikeshare app, I used <a href="https://pebble.github.io/pebblejs/">Pebble.js</a>, a framework that allows you to program your Pebble using Javascript. It’s limited and a bit laggy, since most of the computing takes place on your phone, but it’s very quick to get running.</p>
+
+<p>For my data source, I pulled two JSON feeds from Capital Bikeshare’s <a href="https://secure.capitalbikeshare.com/map/">station map</a>: <a href="https://api-core.capitalbikeshare.com/gbfs/en/station_information.json">station_information.json</a> and <a href="https://api-core.capitalbikeshare.com/gbfs/en/station_status.json">station_status.json</a>. Capital Bikeshare would rather developers use its <a href="https://www.capitalbikeshare.com/system-data">official XML feed</a>, but since Pebble.js is notoriously bad at parsing non-JSON models, I opted for a hackier solution.</p>
+
+<p><strong>First</strong>, I needed to throw up a loading screen while the app pulled data and found the user’s location. Pebble.js mostly works by displaying <strong>Cards</strong>, which are standalone screen with a title, subtitle and body text, and <strong>Menus</strong>, which are scrollable lists. Here’s the code for a loading card:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">card</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UI</span><span class="p">.</span><span class="nx">Card</span><span class="p">({</span>
+  <span class="na">title</span><span class="p">:</span> <span class="s1">'Capital Bikeshare'</span><span class="p">,</span>
+  <span class="na">subtitle</span><span class="p">:</span> <span class="s2">"Getting bikeshare data..."</span>
+<span class="p">});</span>
+
+<span class="nx">card</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>Pebble.js uses a version of jQuery’s <code class="highlighter-rouge">ajax</code> function to make HTTP requests. Here, I pull in both feeds using nested AJAX calls:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">ajax</span><span class="p">(</span>
+ <span class="p">{</span>
+   <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api-core.capitalbikeshare.com/gbfs/en/station_information.json"</span><span class="p">,</span>
+   <span class="na">type</span><span class="p">:</span> <span class="s2">"json"</span>
+ <span class="p">},</span>
+ <span class="kd">function</span><span class="p">(</span><span class="nx">info</span><span class="p">){</span>
+   <span class="c1">// Got station info </span>
+   <span class="nx">ajax</span><span class="p">(</span>
+     <span class="p">{</span>
+       <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api-core.capitalbikeshare.com/gbfs/en/station_status.json"</span><span class="p">,</span>
+       <span class="na">type</span><span class="p">:</span> <span class="s2">"json"</span>
+     <span class="p">},</span>
+     <span class="kd">function</span><span class="p">(</span><span class="nx">status</span><span class="p">){</span>       
+      <span class="c1">// Got status of stations</span>
+      
+      <span class="c1">// Rest of code goes here</span>
+      
+     <span class="p">},</span>
+     <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span> <span class="p">}</span>
+   <span class="p">);</span>
+ <span class="p">},</span>
+ <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">);</span>
+</code></pre>
+</div>
+
+<p>The bike availability data I need is in <code class="highlighter-rouge">station_status.json</code>, but that file only contains very little information about the stations themselves — only a numerical ID. So you have to cut in the station metadata from <code class="highlighter-rouge">station_information.json</code>.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="c1">// Make array of station ids </span>
+<span class="kd">var</span> <span class="nx">station_ids</span> <span class="o">=</span> <span class="nx">info</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">){</span> <span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">station_id</span><span class="p">;</span> <span class="p">});</span>
+
+<span class="c1">// For each station status, add in metadata about the station</span>
+<span class="nx">status</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">station</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">station_info</span> <span class="o">=</span> <span class="nx">info</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">[</span><span class="nx">station_ids</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">station</span><span class="p">.</span><span class="nx">station_id</span><span class="p">)];</span>
+  <span class="nx">station</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">station_info</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="nx">station</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">=</span> <span class="nx">station_info</span><span class="p">.</span><span class="nx">lat</span><span class="p">;</span>
+  <span class="nx">station</span><span class="p">.</span><span class="nx">longitude</span> <span class="o">=</span> <span class="nx">station_info</span><span class="p">.</span><span class="nx">lon</span><span class="p">;</span>
+  <span class="nx">station</span><span class="p">.</span><span class="nx">capacity</span> <span class="o">=</span> <span class="nx">station_info</span><span class="p">.</span><span class="nx">capacity</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Next up: The user’s current position. This is actually a snap, since Pebble.js allows you to use Javascript’s native <code class="highlighter-rouge">navigator.geolocation</code> function. I use a <a href="https://www.google.com/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=haversine">Haversine distance function</a> (borrowed with thanks from <a href="https://github.com/jaxgeller/node-geo-distance/blob/master/index.js">this library!</a>) to sort the array of stations by their distance from the user, from nearest to farthest.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">position</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">latitude</span><span class="p">:</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">,</span>
+    <span class="na">longitude</span><span class="p">:</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Sort by station distance</span>
+  <span class="nx">status</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">haversine</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="o">-</span> <span class="nx">haversine</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="p">});</span>
+  
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Lastly, I build a Menu object using the closest 10 stations. Menu objects accept a <code class="highlighter-rouge">title</code> and and a list of of <code class="highlighter-rouge">items</code>, each of which have a title of their own and an optional subtitle. You’ll notice I also attach a <code class="highlighter-rouge">select</code> event to the Menu, which creates a new card showing expanded details about the station.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="c1">// Loop through the top 10 stations closest to the user</span>
+<span class="kd">var</span> <span class="nx">menu_items</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="mi">9</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="nx">menu_items</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="nx">status</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span><span class="p">,</span>
+    <span class="na">subtitle</span><span class="p">:</span> <span class="nx">status</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">num_bikes_available</span> <span class="o">+</span> <span class="s2">" bikes/"</span> <span class="o">+</span> <span class="nx">status</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">capacity</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">resultsMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UI</span><span class="p">.</span><span class="nx">Menu</span><span class="p">({</span>
+  <span class="na">sections</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"Nearest stations:"</span><span class="p">,</span>
+    <span class="na">items</span><span class="p">:</span> <span class="nx">menu_items</span>
+  <span class="p">}],</span>
+  <span class="na">highlightBackgroundColor</span><span class="p">:</span> <span class="s2">"#EC008C"</span><span class="p">,</span>
+  <span class="na">highlightColor</span><span class="p">:</span> <span class="s2">"black"</span>
+<span class="p">});</span>
+
+<span class="nx">resultsMenu</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'select'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">station</span> <span class="o">=</span> <span class="nx">status</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">stations</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">itemIndex</span><span class="p">]</span>
+  <span class="kd">var</span> <span class="nx">stationCard</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UI</span><span class="p">.</span><span class="nx">Card</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="nx">station</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="s2">"Bikes available: "</span> <span class="o">+</span> <span class="nx">station</span><span class="p">.</span><span class="nx">num_bikes_available</span>
+      <span class="o">+</span> <span class="s2">"\nDocks available: "</span> <span class="o">+</span> <span class="nx">station</span><span class="p">.</span><span class="nx">num_docks_available</span><span class="p">,</span>
+    <span class="na">scrollable</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">})</span>
+  <span class="nx">stationCard</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">})</span>
+
+<span class="nx">resultsMenu</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>And that’s it! Here’s the app in action (and <a href="https://github.com/arm5077/capital-bikeshare-pebble">full code here</a>):</p>
+
+<p><img src="/assets/watch-app-gif.gif" alt="The app at work." /></p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/07/05/make-every-week-2-slack-doorbell.html">&laquo; Make Every Week, Part 2: A Slack-powered doorbell</a>
+			 
+
+			
+			<a class="back" href="/2016/02/15/building-omniturebot-a-slack-bot-traffic.html">Building “Omniturebot,” a Slack bot for keeping tabs on traffic &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

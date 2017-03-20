@@ -9,7 +9,7 @@ I’m pretty nuts for [Amazon’s internet-of-things button.](https://aws.amazon
 Why is this button interesting? Gooood question. I mean, you can't do much with it, besides press it. But: 
 
 * **It combined a mechanical sensor with built-in WiFi, in a package that costs $20.** That's actually pretty incredible. Even the cheapest DIY setup would easily clock in at $30 or more, and would mostly likely be a great deal more bulky.
-* **It ties into Amazon's _Lamda_ service.** A few years ago, to do anything on the internet, you had to rent a server. They weren't necessarily _expensive_ — Amazon's been in the server game for a decade — but they could be knowledge-intensive. You still had to do all the annoying initializing/maintenance stuff that many coders didn't care for. 
+* **It ties into Amazon's _Lambda_ service.** A few years ago, to do anything on the internet, you had to rent a server. They weren't necessarily _expensive_ — Amazon's been in the server game for a decade — but they could be knowledge-intensive. You still had to do all the annoying initializing/maintenance stuff that many coders didn't care for. 
 
   Services like Lamda abstract this aaway — you pop in your code, and Amazon worries about the rest.
 

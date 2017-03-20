@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="A physical button that spins the roulette wheel and orders a random Sweetgreen salad online." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Aug.
+			  
+			19,
+			2016
+		</div>
+
+		<p>Eesh! So far, #MakeEveryWeek has been more like #MakeEveryThreeWeeks. My apologies. Sometimes the making is a lot easier than the blogging.</p>
+
+<p>This week’s projects focuses on a (sort of) healthy addiction of mine: salads from <a href="http://www.sweetgreen.com/">Sweetgreen</a>, a restaurant chain from D.C. that serves up a mean quinoa-and-kale. Though technically fast food, Sweetgreen doesn’t feel or taste like your regular rushed-lunch fare. It’s my go-to place to pick up lunch if I didn’t bring left overs from home, and it doesn’t hurt that their Foggy Bottom location is a nice walk from <em>The Atlantic</em>’s offices.</p>
+
+<p>But a lot of people feel the same way. The line around noon can get verrrrry long.</p>
+
+<blockquote class="twitter-tweet" data-lang="en">
+  <p lang="en" dir="ltr">Unknowingly showed up to sweetgreen in the middle of lunch hour. Now I’m stuck in this long ass line.— Sextina Aquafina (@yosoymichael) <a href="https://twitter.com/yosoymichael/status/765229537756061696">August 15, 2016</a></p>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-lang="en">
+  <p lang="en" dir="ltr">There was barely anyone in line today at <a href="https://twitter.com/sweetgreen">@sweetgreen</a>. <a href="https://twitter.com/hashtag/SignOfTheApocalypse?src=hash">#SignOfTheApocalypse</a>— Heather Benjamin (@Heather_Benj) <a href="https://twitter.com/Heather_Benj/status/764160904825036800">August 12, 2016</a></p>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>One remedy to this is Sweetgreen’s online ordering system, which signals the kitchen to make a salad at a certain time and leave it on a shelf for pick-up. That way, you can pop in, grab and leave, instead of waiting for the salad to be made in front of you.</p>
+
+<p><img src="/assets/salad1.jpg" alt="Delicious, pick-up-able salad." /></p>
+
+<p>Last week, I got my second Amazon IoT button—they’re finally back in stock. Then the thought struck me. <strong>Is there a way to hook into Sweetgreen’s ordering system and buy a salad with a simple button press?</strong> Could my dream of seamless, on-demand salad delivery come true? Granted, if I had such a device, I’d probably spend entirely too much on salads. But it was too neat of an idea to pass up.</p>
+
+<p>Since Sweetgreen doesn’t publish a documented ordering API (and who does?), I had to dive deep into the network traffic of the average salad order.</p>
+
+<h2 id="figuring-out-how-sweetgreen-works">Figuring out how Sweetgreen works</h2>
+
+<p>To complete a Sweetgreen transaction, I need to:</p>
+
+<ul>
+  <li>log in using my email and password, saving the resulting cookie;</li>
+  <li>add a salad to my shopping bag;</li>
+  <li>complete the order with my credit card information.</li>
+</ul>
+
+<p>Fortunately, Sweetgreen has a relatively simple (though undocumented) API, accessible through <a href="https://order.sweetgreen.com/api/">https://order.sweetgreen.com/api/</a>. After poking around the website (and adding/removing quite a few salads from my shopping bag), it looks like this is the workflow I’ll have to follow:</p>
+
+<ul>
+  <li>Send a <code class="highlighter-rouge">POST</code> request to <code class="highlighter-rouge">https://order.sweetgreen.com/api/customers/login_or_register</code> with my username and password;</li>
+  <li>Add the salad to my bag with a <code class="highlighter-rouge">POST</code> request to <code class="highlighter-rouge">https://order.sweetgreen.com/api/line_items</code>, along with a JSON object describing the order;</li>
+  <li>Get the “order” JSON by sending a <code class="highlighter-rouge">GET</code> request to <code class="highlighter-rouge">https://order.sweetgreen.com/api/session</code>, saving the <code class="highlighter-rouge">order</code> object and my billing information;</li>
+  <li>Send a <code class="highlighter-rouge">PUT</code> request to <code class="highlighter-rouge">https://order.sweetgreen.com/api/orders/[order id]</code>, packaging my combined order+billing object.</li>
+</ul>
+
+<p>I’m writing this code in Node.js using the <code class="highlighter-rouge">request</code> module, so I’m going to start off my script by including the library and setting up the jar where I’ll store the session cookie (so my authentication will stick once I log in.)</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cookies</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">jar</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">defaults</span><span class="p">({</span><span class="na">jar</span><span class="p">:</span> <span class="nx">cookies</span><span class="p">})</span>
+</code></pre>
+</div>
+
+<p>Next up, I’ll log in with my Sweetgreen credentials.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="c1">// Log in</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://order.sweetgreen.com/api/customers/login_or_register"</span><span class="p">,</span>
+  <span class="na">form</span><span class="p">:{</span>
+    <span class="na">customer</span><span class="p">:</span> <span class="p">{</span><span class="na">email</span><span class="p">:</span> <span class="nx">INSERT_SWEETGREEN_EMAIL</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span> <span class="nx">INSERT_SWEETGREEN_PASSWORD</span><span class="p">}</span> 
+  <span class="p">}</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+  <span class="c1">// Rest of code goes here</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p>That call returns a massive JSON object, holding previous orders, current shopping status, and billing account info. Since the final package I send to Sweetgreen to complete the order needs some of this account info, I’m going to grab it now.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">contact_number</span> <span class="o">=</span> <span class="nx">session</span><span class="p">.</span><span class="nx">customers</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">contact_number</span>
+<span class="kd">var</span> <span class="nx">billing_account_id</span> <span class="o">=</span> <span class="nx">session</span><span class="p">.</span><span class="nx">customers</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">billing_account_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nx">billing_account</span> <span class="o">=</span> <span class="nx">session</span><span class="p">.</span><span class="nx">billing_accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</code></pre>
+</div>
+<p>We’re now set to add salads to my shopping bag.</p>
+
+<h2 id="adding-items-and-completing-the-order">Adding items and completing the order</h2>
+
+<p>Each salad object is actually pretty simple. At its most basic, it just needs a <code class="highlighter-rouge">quantity</code>, a <code class="highlighter-rouge">product_id</code> and a <code class="highlighter-rouge">restaurant_id</code>. The Foggy Bottom ID is <code class="highlighter-rouge">6</code>, so I’ll use that for every order. Here’s the object for a Harvest Bowl:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">harvest_bowl</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">line_item</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">quantity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">product_id</span><span class="p">:</span> <span class="s2">"139"</span><span class="p">,</span>
+    <span class="na">restaurant_id</span><span class="p">:</span> <span class="s2">"6"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>But! Things get more complicated if you want to modify a base recipe. For example, I love the Guacamole Greens salad—but only if I can replace the red onion with corn. In the API, you need to drop these changes as a series of <code class="highlighter-rouge">options</code> objects. Here’s an object for my modded recipe, pulled with some slight modifications from the network traffic.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="kd">var</span> <span class="nx">guac_greens</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">line_item</span><span class="p">:{</span>
+    <span class="na">quantity</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span>
+    <span class="na">custom_name</span><span class="p">:</span><span class="s2">"andrew's special guac with no onions success"</span><span class="p">,</span>
+    <span class="na">product_id</span><span class="p">:</span><span class="s2">"134"</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:[{</span>
+      <span class="na">id</span><span class="p">:</span><span class="s2">"13929"</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span><span class="s2">"remove red onion"</span><span class="p">,</span>
+      <span class="na">out_of_stock</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+      <span class="na">quantity</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span>
+      <span class="na">parent_option_group_id</span><span class="p">:</span><span class="s2">"973"</span><span class="p">,</span>
+      <span class="na">option_group_ids</span><span class="p">:[</span><span class="s2">"975"</span><span class="p">],</span>
+      <span class="na">ingredient_id</span><span class="p">:</span><span class="s2">"64"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span><span class="s2">"13941"</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span><span class="s2">"sub raw corn"</span><span class="p">,</span>
+      <span class="na">out_of_stock</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+      <span class="na">quantity</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span>
+      <span class="na">parent_option_group_id</span><span class="p">:</span><span class="s2">"975"</span><span class="p">,</span>
+      <span class="na">option_group_ids</span><span class="p">:[],</span>
+      <span class="na">ingredient_id</span><span class="p">:</span><span class="s2">"61"</span><span class="p">,</span>
+      <span class="na">line_item_id</span><span class="p">:</span><span class="kc">null</span>
+    <span class="p">}],</span>
+    <span class="na">restaurant_id</span><span class="p">:</span><span class="s2">"6"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+<p>Constructing that object is the hard part, but adding it to the shopping bag is pretty easy. Here comes another POST request:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://order.sweetgreen.com/api/line_items"</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">guac_greens</span><span class="p">,</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">order_id</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">line_item</span><span class="p">.</span><span class="nx">ignored_order_id</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<p>Notice how I saved the order ID? That’s because I’ll need it very shortly to complete the transaction. But first, I’ve got to construct the final order object. Turns out that’s basically a copy of the object you get by calling the <code class="highlighter-rouge">/session</code> endpoint, along with some additional billing info and other ordering ephemera. After some trial and error, I figured out it was easiest to make a call to the <code class="highlighter-rouge">/session</code> endpoint, grab the array of <code class="highlighter-rouge">orders</code>, filter it down to the latest order and tack on the required miscellaneous info.</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="c1">// Get final order </span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://order.sweetgreen.com/api/session"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
+  
+  <span class="c1">// Grab latest order object</span>
+  <span class="kd">var</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">orders</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">){</span> <span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="nx">order_id</span> <span class="p">})[</span><span class="mi">0</span><span class="p">];</span>
+  
+  <span class="c1">// Append billing stuff and give </span>
+  <span class="nx">order</span><span class="p">.</span><span class="nx">contact_number</span> <span class="o">=</span> <span class="nx">contact_number</span><span class="p">;</span>
+  <span class="nx">order</span><span class="p">.</span><span class="nx">billing_account_id</span> <span class="o">=</span> <span class="nx">billing_account_id</span><span class="p">;</span>
+  <span class="nx">order</span><span class="p">.</span><span class="nx">wanted_time</span> <span class="o">=</span> <span class="nx">order</span><span class="p">.</span><span class="nx">available_wanted_times_tuples</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">original</span>
+  <span class="nx">order</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="s2">"complete"</span><span class="p">;</span>
+  <span class="nx">order</span><span class="p">.</span><span class="nx">billing_account</span> <span class="o">=</span> <span class="nx">billing_account</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>After that, all you need is a <code class="highlighter-rouge">PUT</code> request referencing the <code class="highlighter-rouge">order_id</code> and you’re good to go:</p>
+
+<div class="language-javascript highlighter-rouge">
+  <pre class="highlight"><code><span class="nx">request</span><span class="p">.</span><span class="nx">put</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://order.sweetgreen.com/api/orders/"</span> <span class="o">+</span> <span class="nx">order_id</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span> <span class="na">order</span><span class="p">:</span> <span class="nx">order</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"did it!"</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Sweetgreen helpfully sends an email after you post an order, so you’ll know when your order goes through.</p>
+
+<h2 id="boom-salad-en-route">Boom! Salad en route</h2>
+
+<p>I had to make some slight modifications to the code to get it ready for AWS Lambda, the service powering the IoT button, but it was otherwise pretty much ready to go. I also wrote a quick function that randomly chooses one of three salads to order, so I have a bit of variety. The full code is <a href="https://github.com/arm5077/sweetgreen-button">here</a>.</p>
+
+<p>Here’s the button posted above my desk at work:</p>
+
+<p><img src="/assets/salad2.jpg" alt="Button posted on my desk" /></p>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet.html">&laquo; How to code a virtual Internet of Things device to tempt hackers</a>
+			 
+
+			
+			<a class="back" href="/2016/07/18/make-every-week-dmv-tracker.html">Make Every Week, Part 3: How crowded is the Washington, D.C. DMV? &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Can a Slack bot inspire serendipity at work? | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="I found myself wondering what cool things my coworkers were writing and coding. But I didn't know how to ask." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Can a Slack bot inspire serendipity at work?</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			Mar.
+			  
+			18,
+			2017
+		</div>
+
+		<p>At any given moment, people are doing some pretty neat stuff at <em>The Atlantic.</em> Just last week, my coworkers:</p>
+
+<ul>
+  <li>
+    <p>Wrote a story about <a href="https://www.theatlantic.com/science/archive/2017/03/snake-vs-snake/519696/">snakes that are good at killing other snakes;</a></p>
+  </li>
+  <li>
+    <p>Experimented with how to hype a magazine story <a href="https://www.instagram.com/p/BReEOpLD8zm/">in a really cool way on Instagram;</a></p>
+  </li>
+  <li>
+    <p>Compiled a <a href="https://www.theatlantic.com/photo/2017/03/mount-etna-europes-most-active-volcano/519681/">crazy photo essay on Mount Etna,</a> Europe’s most active volcano.</p>
+  </li>
+</ul>
+
+<p>But here’s the sad truth: I  only see a tiny percentage of the things my officemates make. I just don’t have enough time in the day to read through every story on <a href="https://theatlantic.com">theatlantic.com.</a> And even if I could, I’d still miss all the things our events staffers are planning, or what the product team is coding, or what the graphic artists are cooking up…</p>
+
+<p>We all work in the same building, but I know very little about what people outside my own team (politics) do on a daily basis. And although I don’t really <em>need</em> to, I wondered if there was a way to introduce some serendipity into our working lives.</p>
+
+<blockquote>
+  <p><strong>Why is serendipity even important?</strong> <br />
+This probably deserves a longer answer, and at some point, I’ll write a standalone post.</p>
+  <p>For now, here’s my best shot: Encouraging serendipity at an organization makes room for happy accidents, where something unexpected results from the collision of two separate things. Some of my favorite projects have come from chance conversations — and they’re usually something neither me nor my conversation partner would have developed alone.</p>
+</blockquote>
+
+<h2 id="enter-serendipitybot">Enter SerendipityBot</h2>
+<p>They say that if <a href="https://en.wiktionary.org/wiki/if_all_you_have_is_a_hammer,_everything_looks_like_a_nail">all you have is a hammer, everything looks like a nail.</a> I’m trying to be more careful about jumping to a technical solution when something might just need a simple conversation — or might not be a problem at all.</p>
+
+<p>But in this case, I felt pretty confident about my idea: <strong>What if we had a Slack bot that unobtrusively asked random staffers about what’s energizing them this week, and then shared that with the office at large?</strong></p>
+
+<p>Here was my idea:</p>
+
+<ul>
+  <li>
+    <p>I’d make a Slack #serendipity channel where people who are interested in learning about what their coworkers do — and telling their own stories — could join and engage in conversation;</p>
+  </li>
+  <li>
+    <p>I’d code a Slack bot that would randomly ping people from that channel to share what they’re passionate about at that moment, at an interval of no more than once every two weeks or so.</p>
+  </li>
+  <li>
+    <p>Every day, the bot would ping coworkers during working hours until it had three responses. And at a set time, it would post all three to the #serendipity channel as a small blog post.</p>
+  </li>
+</ul>
+
+<p>Would anyone even want to participate? I floated a trial balloon:</p>
+
+<p><img src="/assets/serendipity-pitch.png" alt="i’m considering an experiment: i enjoy learning via serendipity what my non-political coworkers are working on and wondered if there was a way to find out more intentionally. i’m rigging up a slackbot that would a) ping random dot-com folks at non-annoying intervals (every few weeks?) to ask what they’re writing/coding/videoing about and b) distill that into a occasional digest on a special slack channel. could be a neat place to get some ideas or offer suggestions. if you’re interested in being a part of the beta, throw me a robot emoji here!" /></p>
+
+<p>OK, so I wasn’t crazy! Those 25 people became my beta testers.</p>
+
+<p>First job was figuring out what the bot would say to people. I wanted it to be chill and non-threatening, and give people the option of ducking out — but also be fairly direct.</p>
+
+<p>Here’s what I ended up with:</p>
+
+<p><img src="/assets/serendipity-intro.png" alt="Hi! I'm SerendipityBot, created by @andrewmcgill. I ask random Atlantic people what they're working on this week that excites them, and share a brief digest every day in #serendipity. It's a fun way to get an idea of the cool things your coworkers are doing. Want to partipate? If so, tell me something you're working on this week that you'd like to share, in the form of &quot;I am *building a rocket,*&quot; or &quot;I'm *writing about Capt. Jean-Luc Picard*.&quot; If you don't want me to bug you right now, reply *&quot;snooze.&quot;* If you never want to hear from me again (:sob:), type *&quot;I hate you.&quot;*" /></p>
+
+<p>The bot waits a while for an answer. If it doesn’t get one, it nudges politely: “I’ll ask one more time before leaving you alone: Any chance you want to share a cool thing you’re working on this week?”</p>
+
+<p>It’s key, by the way, to give people a way to let the bot know they don’t really have anything they want to share. Sometimes, you’re just not working on anything exciting at the moment. Or maybe you’re too busy. In that case, the bot happily accepts <code class="highlighter-rouge">snooze</code> and leaves the person alone for two weeks.</p>
+
+<p>Right now, I have the bot pinging a random employee every 10 minutes, from 11 a.m. to 2 p.m., Monday through Friday. Once it gets three responses, it stops for the day. (Of course, sometimes people respond a few hours late, after the quota has already been filled, so we’ll occasionally have four or even five responses in a single day.)</p>
+
+<p>At the stroke of 2:30 p.m. — I originally set it for the next morning, but people didn’t like waiting a whole day to see their responses go up — the bot posts in #serendipity.</p>
+
+<p>Here’s an example:</p>
+
+<p><img src="/assets/serendipity-example.png" alt="A slack conversation initated by the bot that culminates in a picture of a panther with a breathing mask." /></p>
+
+<h2 id="how-has-this-experiment-turned-out">How has this experiment turned out?</h2>
+<p>Pretty well. More than 70 people have joined the #serendipity channel — somewhere around a quarter of the entire <em>Atlantic</em> Slack community. SerendipityBot had some hiccups: It spammed a bunch of people on Martin Luther King Jr. Day, which is on a Monday, when the bot thought everyone would be working. But overall, I think it has made each day a teensy bit more delightful.</p>
+
+<p>What’s the long term impact? I don’t know. So far, I haven’t seen The Next Big Atlantic Idea bubble up from a conversation in #serendipity. But that’s not really the point. Getting to know your coworkers better is a worthy goal on its own — and I think SerendipityBot has helped with that.</p>
+
+<p><em>If you’d like to look at the code powering SerendipityBot, <a href="https://github.com/arm5077/sup-slackbot">it’s available here.</a> Tldr: It’s a Node app that lives on Heroku and stores user information in a MongoDB database.</em></p>
+
+	
+		
+		<div class="navigation">
+			 
+
+			
+			<a class="back" href="/2016/12/18/turning-an-amazon-iot-button-into-something-useful-with-almost-no-code.html">Turning an Amazon IoT button into something actually useful with (almost) no code &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>
