@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		
+			Using computer vision to figure out the best time to visit the DMV | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="The results of an experiment I began last year using camera feeds of a Washington, DC Department of Motor Vehicles office." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Using computer vision to figure out the best time to visit the DMV</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			May
+			  
+			22,
+			2017
+		</div>
+
+		<p>Last summer — it <em>does not</em> feel that long ago — <a href="/2016/07/18/make-every-week-dmv-tracker.html">I launched a script</a> to record data from the District of Columbia Department of Motor Vehicles’ <a href="https://dmv.dc.gov/page/customer-webcams-georgetown-service-center">live webcam feeds</a>, which monitor the waiting room of the main service station in Georgetown.</p>
+
+<p>Every minute, my code “counted” the number of empty seats present, building a database that could tell you, with extremely fine granularity, exactly how busy the DMV was. (Take a look at the link above for an explanation of how that worked.)</p>
+
+<p>I planned to let it run for a month. But then I forgot about it; the script actually ran for three months (at which point my free Heroku MySQL database ran out of memory). Happy accident!</p>
+
+<p>Packing all that data into a visualization that lays out the center’s relatively crowdedness over the course of the “average” week actually shows some interesting trends:</p>
+
+<div id="chart"></div>
+<script src="https://s3-us-west-2.amazonaws.com/nationaljournal/libraries/pym.js"></script>
+
+<script>
+var pymParent = new pym.Parent('chart', 'https://s3.amazonaws.com/the-atlantic/dc-dmv-display/index.html', {});
+</script>
+
+<p>First, the service center is closed on Sunday and Monday, so those days registered no data. Lop ‘em off.</p>
+
+<p>Second, Saturday is the busiest day. I expected that — most people have to wait for the weekend to get enough free time to slog through renewing their their licenses. The worst time to show up is 12-1 p.m. on Saturday, when crowds are at least 60 percent larger than average.</p>
+
+<p>But then there’s Thursday, which for some reason is a relative respite at the DMV. The whole morning is far less busy than average, with the 10 a.m. hour being the least crowded of the week. And the rest of the day is on par.</p>
+
+<p>What is it about <em>Thursday</em>? I’m going to have to do more investigation here. Maybe the staff closes off part of the service center for cleaning, fooling the camera algorithm into thinking the whole place is less busy?</p>
+
+<p>Regardless, it’s a fun conclusion to a little experiment I started a year ago. I only wish I had sprung for a paid Heroku instance… we could be working with a whole <em>year</em> of data if the database hadn’t tapped out!</p>
+
+<p>But even from this, there’s a clear takeaway: <strong>go to the DMV on Thursday.</strong></p>
+
+	
+		
+		<div class="navigation">
+			 
+
+			
+			<a class="back" href="/2017/03/18/finding-serendipity-at-the-atlantic.html">Can a Slack bot inspire serendipity at work? &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>
