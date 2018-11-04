@@ -45,10 +45,9 @@ ul { font-size: 20px; line-height: 1.55em; width: 670px; margin: auto; }
 .page .page-body h1, .page .page-body h2, .page .page-body .date, .page .page-body .navigation, .page .page-body p { max-width: 670px; margin-left: auto; margin-right: auto; }
 .page .page-body h1 { margin-bottom: 20px; }
 .page .page-body h2 { margin-top: 40px; }
-.page .page-body img { max-width: 100vw; margin: 10px 0px; position: relative; left: 50%; transform: translateX(-50%); border: 1px solid #ccc; }
-.page .page-body blockquote { background-color: #eeeeee; padding: 20px; max-width: 630px; margin: auto; font-weight: 300; }
+.page .page-body img { width: 100%; max-width: 700px; margin: 10px 0px; position: relative; left: 50%; transform: translateX(-50%); border: 1px solid #ccc; }
+.page .page-body blockquote { border-left: 10px solid #eee; padding: 20px; max-width: 630px; margin: auto; font-weight: 300; }
 .page .date { margin-bottom: 5px; margin-right: 6px; margin-top: 3px; top: 3px; }
-.page ul { border-left: 10px solid #eee; }
 .page ul li { margin-bottom: 15px; }
 .page .navigation { margin-bottom: 30px; margin-top: 20px; }
 .page .navigation a { max-width: 48%; font-size: 20px; text-decoration: underline; }
@@ -70,12 +69,13 @@ pre { font-size: 15px; max-width: 650px; margin: auto; background-color: #eee !i
 
 .twitter-tweet { margin: auto; }
 
-@media screen and (max-width: 670px) { body { padding: 10px 20px; }
-  h1 { font-size: 40px; }
+@media screen and (max-width: 670px) { h1 { font-size: 40px; }
   .home .banner .intro { font-size: 25px; }
   .home .posts .date { position: static; padding: 0; width: auto; text-align: left; line-height: 1em; margin-bottom: 5px; }
+  .page { padding: 0px 20px; }
   .page .page-body h2.line-below { margin-top: 20px; }
   .page .page-body p { font-size: 17px; line-height: 1.55em; }
+  .page ul { width: 100%; box-sizing: border-box; font-size: 17px; padding: 0px 15px; }
   .page .navigation a { display: block; max-width: 100%; margin-bottom: 10px; }
-  .page .footer { margin: 20px auto; padding: 20px; }
+  .page .footer { width: calc(100% + 40px); margin: 20px 0px 0px -20px; padding: 20px; box-sizing: border-box; }
   .page .footer p { font-size: 25px; } }

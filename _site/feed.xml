@@ -1,4 +1,165 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-06-12T19:19:22-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Using computer vision to figure out the best time to visit the DMV</title><link href="http://localhost:4000/2017/05/22/the-results-of-my-DMV-camera-experiment.html" rel="alternate" type="text/html" title="Using computer vision to figure out the best time to visit the DMV" /><published>2017-05-22T00:00:00-04:00</published><updated>2017-05-22T00:00:00-04:00</updated><id>http://localhost:4000/2017/05/22/the-results-of-my-DMV-camera-experiment</id><content type="html" xml:base="http://localhost:4000/2017/05/22/the-results-of-my-DMV-camera-experiment.html">&lt;p&gt;Last summer — it &lt;em&gt;does not&lt;/em&gt; feel that long ago — &lt;a href=&quot;/2016/07/18/make-every-week-dmv-tracker.html&quot;&gt;I launched a script&lt;/a&gt; to record data from the District of Columbia Department of Motor Vehicles’ &lt;a href=&quot;https://dmv.dc.gov/page/customer-webcams-georgetown-service-center&quot;&gt;live webcam feeds&lt;/a&gt;, which monitor the waiting room of the main service station in Georgetown.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-04T13:33:30-05:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Excited by the latest news platform? Build three — yes, three — prototypes to test it first</title><link href="http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first.html" rel="alternate" type="text/html" title="Excited by the latest news platform? Build three — yes, three — prototypes to test it first" /><published>2018-03-29T00:00:00-04:00</published><updated>2018-03-29T00:00:00-04:00</updated><id>http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first</id><content type="html" xml:base="http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first.html">&lt;p&gt;&lt;em&gt;Reposting something I wrote for &lt;a href=&quot;building.theatlantic.com&quot;&gt;The Atlantic’s product blog.&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We have so many toys. If you’re a developer, I’m guessing there’s a new framework you’re itching to try tomorrow. And if you’re a news developer, or involved in news product development, there’s even more to tempt you—AMP Stories, ARKit, chatbots, podcasts, IoT, that 3D graphics library you never manage to find time to crack open…&lt;/p&gt;
+
+&lt;p&gt;All of this stuff is awesome and you should use it to make great journalism. And yet… haven’t we all been in this position?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Product manager:&lt;/strong&gt; Guys, Facebook just released a new feature where you can post a picture of yourself smiling, and it’ll make a hot-dog dance next to your face. What could we do with this?&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Excited developer:&lt;/strong&gt; Oh man, so many things! (skims documentation) And it’s so simple! We need to get on this platform immediately!&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Product manager, now also excited:&lt;/strong&gt; OK! Let’s build something! How many sprints will it take?&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Boss:&lt;/strong&gt; Uh, hold on a second…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I am intimately familiar with the rush of adrenaline that comes from hearing about a new platform or technology and &lt;em&gt;needing to build something with it, immediately.&lt;/em&gt; But what if the platform is more annoying to work with than you expected? Or it isn’t a good fit for your users? Or — and this is always the heartbreaking one—what if you just don’t have a good enough idea of how to use it?&lt;/p&gt;
+
+&lt;p&gt;Our team at The Atlantic is mighty and growing mightier, but we’re still small enough that we have to choose our shots carefully. So here’s a proposal: Before you go whole-hog into launching a creative initiative with new tech, build &lt;strong&gt;three completely different prototypes first.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;prototype-prototype-prototype&quot;&gt;Prototype, prototype, prototype&lt;/h2&gt;
+&lt;p&gt;By “prototype,” I mean a thing that is proudly held together with duct tape. It is the minimum of your minimum viable product. It is hopelessly bespoke.&lt;/p&gt;
+
+&lt;p&gt;It is also a crucial first step. Without getting your hands dirty, I find it’s very hard to get a sense of how a technology could fit into your systems and editorial workflow. Also, your audience (or a small slice of them) can play with a prototype. Who knows if they even want the latest journalism-hot-dog mashup?&lt;/p&gt;
+
+&lt;p&gt;Here’s the bottom line. If you’re going to spend a bunch of time reading documentation to make a level-of-effort recommendation to your boss anyway, why not make something while you’re at it?&lt;/p&gt;
+
+&lt;p&gt;Well, not something. Three things. You have to make three things. What’s so special about the number three?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;It’s not one.&lt;/strong&gt; Your first idea for this platform might be complete magic. But never test just your first idea. You’re too enthusiastic about it to be objective.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;It’s not two.&lt;/strong&gt; Two ideas means you have a winner and a loser. Don’t give your brain (or your bosses) an excuse to ditch the insights from a “losing prototype” because you built a duopoly. You need to learn from both.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;It gives you permission to move fast and be imperfect.&lt;/strong&gt; When you’re just building one thing, you’ll want to make it perfect. Building two things is definitely a grind, so you’ll end up putting 75 percent of your effort into the idea you like better. But when you have to build three prototypes, all those excuses go out the window. You don’t have time to focus on your favorite, and no one’s expecting you to come up with something production-ready.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So those are the rules. Get excited. Build three things. Put them in front of people. Then figure out the next step.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-we-did-this-with-the-amazon-echo&quot;&gt;How we did this with the Amazon Echo&lt;/h2&gt;
+&lt;p&gt;The Atlantic is no stranger to audio — we have two podcasts we love and a slew of audio articles. But we haven’t built anything for smart speakers like the Amazon Echo or Google Home.&lt;/p&gt;
+
+&lt;p&gt;We knew we &lt;em&gt;wanted&lt;/em&gt; to. But the prospect of having to learn an unfamiliar SDK and the difficulty of coming up with a worthwhile idea that could also attract sponsors meant smart speakers always got pushed to the back of the line.&lt;/p&gt;
+
+&lt;p&gt;In February, we resolved to break the stalemate with a prototyping blitz. Oh, and do it within a month.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;On Day 1, we pulled newsroom editors, product leaders and sales reps into a conference room. Their topic of debate: How could smart speakers improve The Atlantic’s journalism, and also present an attractive opportunity to underwriters? Together, this larger group hashed out a few broad areas of interest — quizzes, archive material, scientific and cultural discoveries, and non-political news content.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We then whittled the group down, keeping only the key stakeholders. They refined the broad areas and came up with a list of “prototype candidates” — around a six or seven ideas. (A requirement — they had to have goofy names.) To help the group see potential costs, I found it helpful to plot how hard they would be to &lt;strong&gt;build&lt;/strong&gt; versus &lt;strong&gt;maintain,&lt;/strong&gt; using a chart like the one below:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/build-maintain-chart.png&quot; alt=&quot;A chart showing a nubmer of prototypes plotted along a chart, with &amp;quot;Build&amp;quot; on the x-axis and &amp;quot;Maintain&amp;quot; on the y-axis.&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Voting time! From that smaller list, the stakeholder group picked three ideas to rapidly prototype and test with readers. They ending up selecting the two flash briefing skills, as well as one custom skill. Remember, you have to build three!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The Atlantic Product team got to work. For each of the feed skills, we produced a week’s worth of “episodes,” pulling talent from the newsroom to help us write scripts and line up interviews. The custom skill required a bit more work in Node, but also a fair amount of voice acting — let’s just say we discovered some emerging radio talent from the ranks of Atlantic developers. All in all, building the prototypes took two weeks.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Simultaneously, we recruited beta testers from our readership. We’d give them things to listen to over their smart speakers, and they’d fill out a survey after every episode/interaction. We’re lucky to have dedicated Atlanticans who are willing to play around with what we create.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Launch day! All three products went live to various segments of our beta testers. Before long, we started getting feedback through surveys (and by surveys, I mean Google Forms, because what else do you really need?):&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/prototype-net-promoter-score.png&quot; alt=&quot;A bar chart showing how people responded to the classic &amp;quot;How likely are you to recommend this&amp;quot; question.&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;This real-time feedback was super helpful, and allowed us to switch things around in the second week of beta testing. By the end of the week, we had hundreds of responses — tons of quantitative and qualitative data to pore through.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It’s over! We convened a wrap-up meeting to discuss what we learned and what products we wanted to build next.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That was our prototyping blitz. At the end of it, we had a) three working products, b) lots of data about customer preferences, and c) tons of enthusiasm for the next steps, both on our team and among our readers/testers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/prototyping-team.jpeg&quot; alt=&quot;A group of smiling people in front of a wall with The Atlantic's logo.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Maybe you don’t have the time for this approach. (I’m betting you do.) And perhaps the technology you’re looking to test is just too complicated to cram into a one-off prototype. (Is it really?) If that’s the case, I guess you just have to wing it.&lt;/p&gt;
+
+&lt;p&gt;But if you’ve got any flexibility in your pipeline, give yourself permission to rough out a new thing (three things!) and learn along the way what you really want to create.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Reposting something I wrote for The Atlantic’s product blog..</summary></entry><entry><title type="html">Atlantic hack day project: Giving you great journalism in every browser tab</title><link href="http://localhost:4000/2017/11/15/giving-you-great-journalism-in-every-browser-tab.html" rel="alternate" type="text/html" title="Atlantic hack day project: Giving you great journalism in every browser tab" /><published>2017-11-15T00:00:00-05:00</published><updated>2017-11-15T00:00:00-05:00</updated><id>http://localhost:4000/2017/11/15/giving-you-great-journalism-in-every-browser-tab</id><content type="html" xml:base="http://localhost:4000/2017/11/15/giving-you-great-journalism-in-every-browser-tab.html">&lt;p&gt;&lt;em&gt;Reposting something I wrote for &lt;a href=&quot;building.theatlantic.com&quot;&gt;The Atlantic’s product blog.&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Every so often on The Atlantic’s Product team, we drop what we’re doing and spend a day messing around. Lots of whiteboards, some frantic coding, usually ending with presentations over beers. We call it a “hack day,” but I think of it more as a talent show for ideas — a chance to take all those concepts we’ve been privately mulling, put them on stage, and see how they perform.&lt;/p&gt;
+
+&lt;p&gt;Today, we’re publicly launching one of the reader-focused projects we prototyped at our last hack day: Serendipity, a Chrome and Firefox extension that displays an awesome piece of Atlantic journalism every time you open a new tab.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-example.gif&quot; alt=&quot;A picture of Serendpity in action, rotating through stories.*&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-it-does&quot;&gt;What it does&lt;/h2&gt;
+&lt;p&gt;Are you on your desktop computer? Hit Cmd-T (or Ctrl-T, if you’re on a PC).&lt;/p&gt;
+
+&lt;p&gt;OK, now come back. Are you back?&lt;/p&gt;
+
+&lt;p&gt;Good. You probably saw an empty screen, or maybe a Google search bar. Chances are, you don’t think about that page. It’s a blank nothingness, waiting for you to type a URL.&lt;/p&gt;
+
+&lt;p&gt;We saw a canvas.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/building-the-atlantic/building-a-slack-bot-to-inspire-serendipity-in-the-office-30dc658f8609&quot;&gt;As I’ve written before,&lt;/a&gt; I’m fascinated by the concept of serendipity, the collision of unrelated things that result in something new. True serendipity is rare, but it can be encouraged. I think that’s what we’re trying to do when we publish a magazine: We take a bunch of ideas, bundle them together, and deliver them to you for inspiration.&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href=&quot;https://www.theatlantic.com/serendipity/&quot;&gt;The Atlantic Serendipity,&lt;/a&gt; we’re aiming to do the same thing. With every new tab, it surprises you with a new piece of journalism. Maybe the article catches your eye, and you read more — or maybe it doesn’t, and you finish typing in the website you were going to visit.&lt;/p&gt;
+
+&lt;p&gt;Either way, you get a bit of delightful (we hope!) randomness, and we get a chance to show you a piece of writing or video we think is really good.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-we-built-it&quot;&gt;How we built it&lt;/h2&gt;
+&lt;p&gt;When the team (&lt;a href=&quot;https://www.linkedin.com/in/ana-carano-3a5b7090/&quot;&gt;Ana Carano,&lt;/a&gt; &lt;a href=&quot;https://www.linkedin.com/in/thanh-do-03b9b096/&quot;&gt;Thanh Do,&lt;/a&gt; &lt;a href=&quot;http://kevinmahoney.me/&quot;&gt;Kevin Mahoney,&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/carsontrob?lang=en&quot;&gt;Carson Trobich&lt;/a&gt;) huddled up on Hack Day morning, the only thing we knew was that we wanted to put The Atlantic on someone’s Chrome tab. What it looked like, or even how we’d do it — no idea.&lt;/p&gt;
+
+&lt;p&gt;Our first step was to look at the competition. Here are a few extensions we found helpful for inspiration:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://momentumdash.com/&quot;&gt;Momentum&lt;/a&gt;, the grande dame of them all, with more than 11,000 reviews on the Chrome store. It puts a clock, a quote, and a beautiful picture on your browser, and greets you by name. It also has a number of optional widgets.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://beta.wall.cat/&quot;&gt;Wallcat&lt;/a&gt;. Like Momentum, it displays a new piece of stunning photography every day.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/wandertab-by-hitlist/fobdcmnamenjmkffajcbljjpgiolooeh?hl=en&quot;&gt;Wandertab&lt;/a&gt;. This one is fun: It features airfare deals from the location of your choice, updating frequently.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/mainichi/dfekdjmdikicceaiokcmmchenpilglhn?hl=en&quot;&gt;Mainichi&lt;/a&gt;. Kevin and Thanh were fans of this one, which drops in a flashcard of foreign language vocabulary into each new tab.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After some initial brainstorming, Thanh put together some sketches of three approaches, varying in density and tone:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-thanh-prototype-1.jpeg&quot; alt=&quot;This one looks a bit like Tweetdeck, with cascading columns of Atlantic stories.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-thanh-prototype-2.jpeg&quot; alt=&quot;This is simpler, and colored in reverse.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By the end of hack day, we had semi-interactive version of the second design ready to show the rest of the Product team. Folks were intrigued. There were a few complaints, however:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It was monochrome, and didn’t feature any of the photography or graphic art that usually accompanies our stories.&lt;/li&gt;
+  &lt;li&gt;Even with just three stories, it was a bit dense.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A week or two after the presentation, I went back to the drawing board and mocked up a simpler version, featuring just one headline, and using our new display font, Noe:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-andrew-prototype-1.png&quot; alt=&quot;A single story, this time, with a blue background.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hm! Much cleaner. For variety, I played around with having the background tint change every time, cycling through some of our new brand colors. (I also attempted a misbegotten adventure with a shifting animated gradient, which nearly sent my computer’s CPU marching to the picket lines.)&lt;/p&gt;
+
+&lt;p&gt;But was there a way to integrate photography? Turns out that a good number of our display photos looked decent behind the headlines, so long as they were toned correctly to avoid conflicting with the text. I also added an Atlantic logo and a “Next story” button, so people could cycle through without having to open new tabs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/serendipity-andrew-prototype-2.png&quot; alt=&quot;Added a photo and a next button.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now, the story-recommendation algorithm is simple: We’re just using the our homepage’s RSS feed. The first time you open a new tab, Serendipity pulls the latest stories and stashes them in your browser’s local storage; that means it works even when you’re not connected to the internet (though the photos don’t show up.)&lt;/p&gt;
+
+&lt;p&gt;Every time you pop open a tab, it shows you a different story. After 30 minutes or so, it’ll check back with us to see if there’s new content.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s next&lt;/h2&gt;
+
+&lt;p&gt;In October, we debuted Serendipity to The Masthead, The Atlantic’s membership program. Based on their feedback and new responses from you, we’ll be updating the extension as time permits. Some of the ideas we’re fielding:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A “back” button,for those times you glimpse an interesting story just before gmail.com or facebook.com loads;&lt;/li&gt;
+  &lt;li&gt;A “quiet” mode, where the same story is shown to you on every new tab, refreshed every half-hour;&lt;/li&gt;
+  &lt;li&gt;An accessibility theme, losing the image and switching to high-contrast font and background colors.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’ll see — it all depends on what our readers say. And so I hope you’ll &lt;a href=&quot;https://www.theatlantic.com/serendipity&quot;&gt;give Serendipity a try!&lt;/a&gt; And please let me know what you think at andrew@theatlantic.com. Excited to hear from you.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Endnote:&lt;/em&gt; The New Yorker &lt;em&gt;has published their own cool new-tab Chrome extension &lt;a href=&quot;https://chrome.google.com/webstore/detail/the-new-yorker/apbnnoblhichgncodkjnmlbgmdclkmco?hl=en&quot;&gt;here.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Reposting something I wrote for The Atlantic’s product blog..</summary></entry><entry><title type="html">Using computer vision to figure out the best time to visit the DMV</title><link href="http://localhost:4000/2017/05/22/the-results-of-my-DMV-camera-experiment.html" rel="alternate" type="text/html" title="Using computer vision to figure out the best time to visit the DMV" /><published>2017-05-22T00:00:00-04:00</published><updated>2017-05-22T00:00:00-04:00</updated><id>http://localhost:4000/2017/05/22/the-results-of-my-DMV-camera-experiment</id><content type="html" xml:base="http://localhost:4000/2017/05/22/the-results-of-my-DMV-camera-experiment.html">&lt;p&gt;Last summer — it &lt;em&gt;does not&lt;/em&gt; feel that long ago — &lt;a href=&quot;/2016/07/18/make-every-week-dmv-tracker.html&quot;&gt;I launched a script&lt;/a&gt; to record data from the District of Columbia Department of Motor Vehicles’ &lt;a href=&quot;https://dmv.dc.gov/page/customer-webcams-georgetown-service-center&quot;&gt;live webcam feeds&lt;/a&gt;, which monitor the waiting room of the main service station in Georgetown.&lt;/p&gt;
 
 &lt;p&gt;Every minute, my code “counted” the number of empty seats present, building a database that could tell you, with extremely fine granularity, exactly how busy the DMV was. (Take a look at the link above for an explanation of how that worked.)&lt;/p&gt;
 
@@ -776,159 +937,4 @@ npm install node-record-lpcm16 --save
 
 &lt;p&gt;&lt;img src=&quot;/assets/doorbell3.JPG&quot; alt=&quot;The posted doorbell&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;That’s it for week 2! Here’s the &lt;a href=&quot;https://gist.github.com/arm5077/1b9b32b0cca815dfce4d8bcef1d78472&quot;&gt;whole code.&lt;/a&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At The Atlantic, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.</summary></entry><entry><title type="html">Make Every Week, Part 1: A bikeshare smartwatch app</title><link href="http://localhost:4000/2016/06/26/a-summer-of-make-every-week.html" rel="alternate" type="text/html" title="Make Every Week, Part 1: A bikeshare smartwatch app" /><published>2016-06-26T00:00:00-04:00</published><updated>2016-06-26T00:00:00-04:00</updated><id>http://localhost:4000/2016/06/26/a-summer-of-make-every-week</id><content type="html" xml:base="http://localhost:4000/2016/06/26/a-summer-of-make-every-week.html">&lt;p&gt;In 2015, WNYC journalist and developer John Keefe &lt;a href=&quot;http://johnkeefe.net/make-every-week-a-bendy-mangnifier&quot;&gt;made up his mind to build a new thing every week.&lt;/a&gt; By the end of the year, he had designed &lt;a href=&quot;http://johnkeefe.net/make-every-week-wind-sensor-candle&quot;&gt;a wind-sensing candle,&lt;/a&gt;, &lt;a href=&quot;http://johnkeefe.net/make-every-week-fitness-wristband&quot;&gt;a homemade fitness wristband&lt;/a&gt;, &lt;a href=&quot;http://johnkeefe.net/make-every-week-lunch-bot&quot;&gt;a lunch-suggesting Slack bot&lt;/a&gt;, and &lt;a href=&quot;http://johnkeefe.net/make-every-week-begets-a-book&quot;&gt;much more.&lt;/a&gt; I loved following along throughout the year and seeing what he thought of next.&lt;/p&gt;
-
-&lt;p&gt;So here’s my own resolution: &lt;strong&gt;Every week this summer, I’ll build something new myself.&lt;/strong&gt; It’ll ideally have some presence in the physical world, though I’ll probably have a few lazy weeks and build web-only tools. And it can’t be something I’m already doing for work, because that’s cheating.&lt;/p&gt;
-
-&lt;p&gt;Beyond that, I’ll avoid being too picky. I want to keep the pump of creativity primed; it’s a lot easier to think of new ideas when you’re already working on something!&lt;/p&gt;
-
-&lt;p&gt;On that note, let’s look at the first project: &lt;strong&gt;a smartwatch app that tells Capital Bikeshare users how many bicycles are available at nearby docks.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;capital-bikeshare-smartwatch-app&quot;&gt;Capital Bikeshare smartwatch app&lt;/h2&gt;
-
-&lt;p&gt;This project connects two of my favorite things, both built by teams of passionate people:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Washington, D.C.’s Capital Bikeshare.&lt;/strong&gt; This &lt;a href=&quot;https://www.capitalbikeshare.com/&quot;&gt;citywide program&lt;/a&gt; puts low-cost commuter bikers within easy reach of residents. If you’re a member, you can use a key fob to check out one of the thousands of bikes docked throughout the District, Maryland and Virginia. Once you reach your destination, you lock it at the nearest dock. It’s a great one-way transportation system that I used quite frequently before I upgraded my own bicycle.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The Pebble smartwatch.&lt;/strong&gt; A &lt;a href=&quot;https://www.pebble.com/&quot;&gt;Kickstarter-funded project&lt;/a&gt;, Pebble is an awesome alternative to mainstream smartwatches like the Apple Watch, offering an e-ink display, great battery life and most of the features you’d expect. Best of all, it’s super easy to develop for Pebble, both in C and in Javascript.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As much as I love Capital Bikeshare, I dread rolling up to my office after a long commute and discovering other commuters have already claimed all the bike docks. It always looks clear when I check the &lt;a href=&quot;https://www.spotcycle.net/&quot;&gt;Spotcycle app&lt;/a&gt; at the beginning of my ride — but the racks often fill up while I’m huffing and puffing along. And fiddling with my phone mid-ride, trying to get an update, sounds like a good way to end up in the hospital.&lt;/p&gt;
-
-&lt;p&gt;But what if my Pebble could tell me whether the upcoming bike rack was full?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/smartwatch_banner.jpg&quot; alt=&quot;Tada! The Capital Bikeshare Pebble app.&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;building-the-app&quot;&gt;Building the app&lt;/h2&gt;
-
-&lt;p&gt;Most Pebble apps are written in C. But to prototype my bikeshare app, I used &lt;a href=&quot;https://pebble.github.io/pebblejs/&quot;&gt;Pebble.js&lt;/a&gt;, a framework that allows you to program your Pebble using Javascript. It’s limited and a bit laggy, since most of the computing takes place on your phone, but it’s very quick to get running.&lt;/p&gt;
-
-&lt;p&gt;For my data source, I pulled two JSON feeds from Capital Bikeshare’s &lt;a href=&quot;https://secure.capitalbikeshare.com/map/&quot;&gt;station map&lt;/a&gt;: &lt;a href=&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_information.json&quot;&gt;station_information.json&lt;/a&gt; and &lt;a href=&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_status.json&quot;&gt;station_status.json&lt;/a&gt;. Capital Bikeshare would rather developers use its &lt;a href=&quot;https://www.capitalbikeshare.com/system-data&quot;&gt;official XML feed&lt;/a&gt;, but since Pebble.js is notoriously bad at parsing non-JSON models, I opted for a hackier solution.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;First&lt;/strong&gt;, I needed to throw up a loading screen while the app pulled data and found the user’s location. Pebble.js mostly works by displaying &lt;strong&gt;Cards&lt;/strong&gt;, which are standalone screen with a title, subtitle and body text, and &lt;strong&gt;Menus&lt;/strong&gt;, which are scrollable lists. Here’s the code for a loading card:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;card&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Capital Bikeshare'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;subtitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Getting bikeshare data...&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Pebble.js uses a version of jQuery’s &lt;code class=&quot;highlighter-rouge&quot;&gt;ajax&lt;/code&gt; function to make HTTP requests. Here, I pull in both feeds using nested AJAX calls:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_information.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-   &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-   &lt;span class=&quot;c1&quot;&gt;// Got station info &lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://api-core.capitalbikeshare.com/gbfs/en/station_status.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;       
-      &lt;span class=&quot;c1&quot;&gt;// Got status of stations&lt;/span&gt;
-      
-      &lt;span class=&quot;c1&quot;&gt;// Rest of code goes here&lt;/span&gt;
-      
-     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The bike availability data I need is in &lt;code class=&quot;highlighter-rouge&quot;&gt;station_status.json&lt;/code&gt;, but that file only contains very little information about the stations themselves — only a numerical ID. So you have to cut in the station metadata from &lt;code class=&quot;highlighter-rouge&quot;&gt;station_information.json&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Make array of station ids &lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// For each station status, add in metadata about the station&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;station_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;latitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;longitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Next up: The user’s current position. This is actually a snap, since Pebble.js allows you to use Javascript’s native &lt;code class=&quot;highlighter-rouge&quot;&gt;navigator.geolocation&lt;/code&gt; function. I use a &lt;a href=&quot;https://www.google.com/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=haversine&quot;&gt;Haversine distance function&lt;/a&gt; (borrowed with thanks from &lt;a href=&quot;https://github.com/jaxgeller/node-geo-distance/blob/master/index.js&quot;&gt;this library!&lt;/a&gt;) to sort the array of stations by their distance from the user, from nearest to farthest.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geolocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getCurrentPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;latitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;latitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;longitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;longitude&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// Sort by station distance&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;haversine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;haversine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Lastly, I build a Menu object using the closest 10 stations. Menu objects accept a &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; and and a list of of &lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt;, each of which have a title of their own and an optional subtitle. You’ll notice I also attach a &lt;code class=&quot;highlighter-rouge&quot;&gt;select&lt;/code&gt; event to the Menu, which creates a new card showing expanded details about the station.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Loop through the top 10 stations closest to the user&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;menu_items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;menu_items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;subtitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num_bikes_available&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; bikes/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resultsMenu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Menu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;sections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Nearest stations:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;menu_items&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;highlightBackgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#EC008C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;highlightColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;black&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;resultsMenu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'select'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stationCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Bikes available: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num_bikes_available&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;\nDocks available: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;station&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num_docks_available&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;scrollable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;stationCard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;resultsMenu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And that’s it! Here’s the app in action (and &lt;a href=&quot;https://github.com/arm5077/capital-bikeshare-pebble&quot;&gt;full code here&lt;/a&gt;):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/watch-app-gif.gif&quot; alt=&quot;The app at work.&quot; /&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">In 2015, WNYC journalist and developer John Keefe made up his mind to build a new thing every week. By the end of the year, he had designed a wind-sensing candle,, a homemade fitness wristband, a lunch-suggesting Slack bot, and much more. I loved following along throughout the year and seeing what he thought of next.</summary></entry><entry><title type="html">Building “Omniturebot,” a Slack bot for keeping tabs on traffic</title><link href="http://localhost:4000/2016/02/15/building-omniturebot-a-slack-bot-traffic.html" rel="alternate" type="text/html" title="Building “Omniturebot,” a Slack bot for keeping tabs on traffic" /><published>2016-02-15T00:00:00-05:00</published><updated>2016-02-15T00:00:00-05:00</updated><id>http://localhost:4000/2016/02/15/building-omniturebot-a-slack-bot-traffic</id><content type="html" xml:base="http://localhost:4000/2016/02/15/building-omniturebot-a-slack-bot-traffic.html">&lt;p&gt;One of my everyday frustrations as a journalist is the veritable symphony of mouse clicks required to get web traffic stats for your stories.&lt;/p&gt;
-
-&lt;p&gt;Yes, &lt;a href=&quot;//chartbeat.com&quot;&gt;Chartbeat&lt;/a&gt; is super easy to use. But it only tracks concurrent users, not unique visitors or pageviews, which your bosses actually care about. And pulling those stats from Google Analytics or Omniture quickly devolves into a multi-step nightmare that makes setting the clock on your microwave after a power outage look downright enjoyable.&lt;/p&gt;
-
-&lt;p&gt;At The Atlantic, we use &lt;a href=&quot;http://www.adobe.com/marketing-cloud/web-analytics.html&quot;&gt;Omniture&lt;/a&gt;, or whatever Adobe is calling it these days. We also use &lt;a href=&quot;http://www.adobe.com/marketing-cloud/web-analytics.html&quot;&gt;Slack,&lt;/a&gt; the popular work chat client, which offers extensive scripting and automation capabilities.&lt;/p&gt;
-
-&lt;p&gt;After a day of one too many segment-selections and filter-applications, I asked myself, couldn’t a robot do this better?&lt;/p&gt;
-
-&lt;p&gt;Enter &lt;a href=&quot;https://github.com/arm5077/omniture-slackbot&quot;&gt;Omniturebot&lt;/a&gt;. It’s a Slack bot that uses your Omniture credentials to pull traffic stats at a moment’s notice, accepting a keyword and a timespan and returning the relevant stats.&lt;/p&gt;
-
-&lt;p&gt;Using it, getting my most recent stats is as easy as chatting @omniturebot and asking &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;andrew mcgill&quot; (1 month)&lt;/code&gt;. It’ll happily return:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/omniturebot-output.jpg&quot; alt=&quot;Slackbot's output&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Omniturebot is written in Node.js and can easily be deployed via Heroku or any SaaS provider. (You can also easily run it in your local environment, if you’d prefer.) It’s written to handle multiple users, though admittedly I haven’t tested against a ton of concurrent requests.&lt;/p&gt;
-
-&lt;p&gt;I hope it makes pulling traffic numbers as easy and enjoyable as it has for me!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">One of my everyday frustrations as a journalist is the veritable symphony of mouse clicks required to get web traffic stats for your stories.</summary></entry></feed>
+&lt;p&gt;That’s it for week 2! Here’s the &lt;a href=&quot;https://gist.github.com/arm5077/1b9b32b0cca815dfce4d8bcef1d78472&quot;&gt;whole code.&lt;/a&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At The Atlantic, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.</summary></entry></feed>

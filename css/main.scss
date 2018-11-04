@@ -218,7 +218,8 @@ ul {
     }
     
 		img {
-			max-width: 100vw;
+			width: 100%;
+      max-width: 700px;
 			margin: 10px 0px;
 			position: relative;
 			left: 50%;
@@ -227,7 +228,7 @@ ul {
 		}
 			
     blockquote {
-      background-color: #eeeeee;
+      border-left: 10px solid #eee;
       padding: 20px;
       max-width: 630px;
       margin: auto;
@@ -244,8 +245,6 @@ ul {
 	}
 	
 	ul {
-	  
-    border-left: 10px solid #eee;
     
 	  li { 
     
@@ -341,7 +340,7 @@ pre {
 
 @media screen and (max-width: 670px) {
 	body {
-		padding: 10px 20px;
+
 	}
 	
 	h1 {
@@ -378,7 +377,9 @@ pre {
 	
 	
 	.page {
-		
+	  
+    padding: 0px 20px;
+    
 		.page-body {
 			
 			h2.line-below {
@@ -391,6 +392,13 @@ pre {
 			}
 			
 		}
+    
+    ul {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 17px;
+      padding: 0px 15px;
+    }
 		
 		.navigation {
 			a {
@@ -402,8 +410,10 @@ pre {
 		}
 		
 		.footer {
-			margin: 20px auto;
+			width: calc(100% + 40px);
+      margin: 20px 0px 0px -20px;
 			padding: 20px;
+      box-sizing: border-box;
 			
 			p {
 				font-size: 25px;
