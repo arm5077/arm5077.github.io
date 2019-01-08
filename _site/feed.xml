@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-04T13:33:30-05:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Excited by the latest news platform? Build three — yes, three — prototypes to test it first</title><link href="http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first.html" rel="alternate" type="text/html" title="Excited by the latest news platform? Build three — yes, three — prototypes to test it first" /><published>2018-03-29T00:00:00-04:00</published><updated>2018-03-29T00:00:00-04:00</updated><id>http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first</id><content type="html" xml:base="http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first.html">&lt;p&gt;&lt;em&gt;Reposting something I wrote for &lt;a href=&quot;building.theatlantic.com&quot;&gt;The Atlantic’s product blog.&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-07T21:53:45-05:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">New Year, new Make Every Week resolution</title><link href="http://localhost:4000/2019/01/01/new-year-new-make-every-week-resolutions.html" rel="alternate" type="text/html" title="New Year, new Make Every Week resolution" /><published>2019-01-01T00:00:00-05:00</published><updated>2019-01-01T00:00:00-05:00</updated><id>http://localhost:4000/2019/01/01/new-year-new-make-every-week-resolutions</id><content type="html" xml:base="http://localhost:4000/2019/01/01/new-year-new-make-every-week-resolutions.html">&lt;p&gt;Three years ago, following the &lt;a href=&quot;http://johnkeefe.net/make-every-week-a-bendy-mangnifier&quot;&gt;advice&lt;/a&gt; of builder-journalist John Keefe, I resolved to make something new every week.&lt;/p&gt;
+
+&lt;p&gt;At the time, I wrote and coded for &lt;em&gt;The Atlantic&lt;/em&gt;’s politics section, and my editor might have argued building every week was &lt;em&gt;already&lt;/em&gt; my job. But these projects were supposed to be different — off-the-cuff engineering hacks, with learning something new as the primary objective.&lt;/p&gt;
+
+&lt;p&gt;What I quickly figured out: &lt;strong&gt;making something every week is hard.&lt;/strong&gt; In the end, I made only five things, and sometimes they took a lot more than a week:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://127.0.0.1:4000/2016/06/26/a-summer-of-make-every-week.html&quot;&gt;A Capital Bikeshare Pebble smartwatch app (RIP Pebble);&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.andrewmcgill.me/2016/07/05/make-every-week-2-slack-doorbell.html&quot;&gt;A Slack-powered doorbell;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.andrewmcgill.me/2016/07/18/make-every-week-dmv-tracker.html&quot;&gt;A computer vision script that monitored the lines at the DC DMV;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.andrewmcgill.me/2016/08/19/make-every-week-sweetgreen-salad-button.html&quot;&gt;A button that ordered Sweetgreen salads for me;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.andrewmcgill.me/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html&quot;&gt;A light that turned on when I said the magic word.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But it was fun!&lt;/p&gt;
+
+&lt;p&gt;So it’s back. For 2019, I’m resolving to &lt;strong&gt;Make Every (Two) Week(s),&lt;/strong&gt; launching a new project or improving an old one twice a month. These won’t always be perfectly polished — sometimes they’ll just be a non-functioning prototype. But I miss having the pressure of a publication deadline to keep me honest and busy.&lt;/p&gt;
+
+&lt;p&gt;This time, things will be different. Each month, I’ll have two mandatory go-live dates — on the second and fourth Sundays of each month, I have to publish &lt;em&gt;something.&lt;/em&gt; Revisiting a project over multiple weeks is fine, but I should pursue something substantive, like a round of user-testing or a major enhancement.&lt;/p&gt;
+
+&lt;p&gt;I’ve already picked out my first project, which will be turning the one-off “draw the line” interactive I built for &lt;a href=&quot;https://www.theatlantic.com/politics/archive/2016/07/is-violence-in-america-going-up-or-down/491384/&quot;&gt;this story&lt;/a&gt; on declining homicide rates into a &lt;a href=&quot;https://developers.google.com/web/fundamentals/web-components/customelements&quot;&gt;reuseable web component.&lt;/a&gt; Here’s a shortlist of what other stuff I might dive into:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An algorithmically generated magazine;&lt;/li&gt;
+  &lt;li&gt;A website to help you quickly rank your favorite &lt;a href=&quot;https://en.wikipedia.org/wiki/Marvel_Cinematic_Universe&quot;&gt;Marvel Cinematic Universe&lt;/a&gt; movies;&lt;/li&gt;
+  &lt;li&gt;An app to help teams see where their members fall on the &lt;a href=&quot;http://www.slate.com/articles/life/low_concept/2012/06/what_kind_of_muppet_are_you_chaos_or_order_.html&quot;&gt;“chaos-order muppet scale”&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;An app to help worker bees quickly surface ideas to top leadership;&lt;/li&gt;
+  &lt;li&gt;???&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;arm5077@gmail.com&quot;&gt;Hit me up&lt;/a&gt; if you’ve got a great idea. Otherwise, let the making begin!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Three years ago, following the advice of builder-journalist John Keefe, I resolved to make something new every week.</summary></entry><entry><title type="html">Excited by the latest news platform? Build three — yes, three — prototypes to test it first</title><link href="http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first.html" rel="alternate" type="text/html" title="Excited by the latest news platform? Build three — yes, three — prototypes to test it first" /><published>2018-03-29T00:00:00-04:00</published><updated>2018-03-29T00:00:00-04:00</updated><id>http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first</id><content type="html" xml:base="http://localhost:4000/2018/03/29/excited-by-latest-news-platform-build-three-prototypes-first.html">&lt;p&gt;&lt;em&gt;Reposting something I wrote for &lt;a href=&quot;building.theatlantic.com&quot;&gt;The Atlantic’s product blog.&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;We have so many toys. If you’re a developer, I’m guessing there’s a new framework you’re itching to try tomorrow. And if you’re a news developer, or involved in news product development, there’s even more to tempt you—AMP Stories, ARKit, chatbots, podcasts, IoT, that 3D graphics library you never manage to find time to crack open…&lt;/p&gt;
 
@@ -831,110 +861,4 @@ npm install node-record-lpcm16 --save
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Full code is &lt;a href=&quot;https://github.com/arm5077/dmv&quot;&gt;here.&lt;/a&gt; I’m going to run this script for a few weeks and generate data. Once I get a decently! representative sample, I’ll come back with some visualizations!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">First off, an apology: In the aftermath of the July 4th holiday, I took the week off last week. So you’ll see a double #MakeEveryWeek feature coming up soon.</summary></entry><entry><title type="html">Make Every Week, Part 2: A Slack-powered doorbell</title><link href="http://localhost:4000/2016/07/05/make-every-week-2-slack-doorbell.html" rel="alternate" type="text/html" title="Make Every Week, Part 2: A Slack-powered doorbell" /><published>2016-07-05T00:00:00-04:00</published><updated>2016-07-05T00:00:00-04:00</updated><id>http://localhost:4000/2016/07/05/make-every-week-2-slack-doorbell</id><content type="html" xml:base="http://localhost:4000/2016/07/05/make-every-week-2-slack-doorbell.html">&lt;p&gt;These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At &lt;em&gt;The Atlantic&lt;/em&gt;, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.&lt;/p&gt;
-
-&lt;p&gt;At least once a week, I find myself awkwardly lurking in the hallway after a trip to the restroom, waiting for someone to leave the office, all because I left my fob at my desk. &lt;em&gt;_Hm,_&lt;/em&gt; I think, pretending to look at my phone. &lt;em&gt;Would my health insurance cover the surgery to implant a chip into my body?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;After a while, things get &lt;em&gt;really&lt;/em&gt; desperate: I knock on the glass door, and someone bemusedly comes over and opens it for me.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/3KBdUGGkVgRxu/giphy.gif&quot; alt=&quot;Bill Murray, as me&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;the-doorbell&quot;&gt;The Doorbell&lt;/h2&gt;
-
-&lt;p&gt;What we needed was a doorbell. Not the “Westminister Chimes” type — that would get annoying fast — but something more subtle.&lt;/p&gt;
-
-&lt;p&gt;Amazon just released a &lt;a href=&quot;https://aws.amazon.com/iot/button/&quot;&gt;programmable version&lt;/a&gt; of its “Dash” buttons, the little $5 doohickeys that order new paper towels with one tap. It connects to a local WiFi network and executes code through Amazon’s Lambda service, so it’s pretty easy to set up.&lt;/p&gt;
-
-&lt;p&gt;An idea formed. What if the Dash was connected to a channel in Slack, our work chat client? Folks could opt into the group and receive notifications whenever someone needed help with the door. That way, it wouldn’t bother the whole office.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The first step was setting up the Slack integration.&lt;/strong&gt; This was pretty simple, just a matter of telling Slack the name of the “bot” and specifying the channel where it would post messages. Slack then gave an API endpoint to use to send data.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Next, Lambda.&lt;/strong&gt; I wrote this code in Node.js, though you can use another language if you’d like. Lambda lets you write the code in-browser if it’s a single script, but since I needed to send HTTP POST requests as per &lt;a href=&quot;https://api.slack.com/incoming-webhooks&quot;&gt;Slack’s incoming webhooks standard&lt;/a&gt;, I chose to use the popular &lt;a href=&quot;https://github.com/request/request&quot;&gt;request&lt;/a&gt; library and upload a zipped folder instead.&lt;/p&gt;
-
-&lt;p&gt;Lambda expects everything to be contained in a module export, so laying that out came first:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then came the actual call to the Slack endpoint, which was a pretty simple POST request: Just the bot’s username, an emoji to use for the bot’s userpic and the message to post.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slack_endpoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;username&quot;: &quot;doorbellbot&quot;, &quot;icon_emoji&quot;: &quot;:bellhop_bell:&quot;, &quot;text&quot;: &quot;&amp;lt;!group&amp;gt; Someone is at the door! Let \'em in&quot;}'&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;You’ll notice that I’m using &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!group&amp;gt;&lt;/code&gt; to simulate a “@group” string in the message, which pings everyone in the channel. Just typing “@group” doesn’t work—you’ll need to use that code.&lt;/p&gt;
-
-&lt;p&gt;It worked!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/doorbell1.png&quot; alt=&quot;Slack's doorbell reply&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;That wrapped up quicker than I thought, so I added a bit of fun. Every time the doorbell rang, I wanted the bot to print a random quote about opening doors. I found a few online and encoded them as JSON, writing a command to pick a random one:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;quotes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good manners will open doors that the best education cannot.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Clarence Thomas&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;I think there are influences that you open the door to, and influences that come under the door.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Harrison Birtwistle&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;We must open the doors of opportunity. But we must also equip our people to walk through those doors.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Lyndon B. Johnson&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;I find that when you open the door toward openness and transparency, a lot of people will follow you through.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Kirsten Gillibrand&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Not knowing when the dawn will come\nI open every door.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Emily Dickinson&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;In life sometimes, in the universe, you have to close some doors to have others open.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Gene Ween&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Knowledge of what is does not open the door directly to what should be.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Albert Einstein&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;na&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one which has opened for us.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Alexander Graham Bell&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;this_quote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;quotes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;quotes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I then rewrote my POST payload to this:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;username&quot;: &quot;doorbellbot&quot;, &quot;icon_emoji&quot;: &quot;:bellhop_bell:&quot;, &quot;text&quot;: &quot;&amp;lt;!group&amp;gt; Someone is at the door! Let \'em in.\n&amp;gt;\\&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;this_quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\\&quot; \n&amp;gt;- '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;this_quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&quot;}'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;… and tada!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/doorbell2.png&quot; alt=&quot;Slack's doorbell reply&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;All that remained was to post the IoT button by our office door. I attached near the fob reader and left it mysterious for now… maybe I’ll add a fun sign later.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/doorbell3.JPG&quot; alt=&quot;The posted doorbell&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;That’s it for week 2! Here’s the &lt;a href=&quot;https://gist.github.com/arm5077/1b9b32b0cca815dfce4d8bcef1d78472&quot;&gt;whole code.&lt;/a&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">These days, most office buildings require employees to swipe a keycard or wave an RFID chip to get into their workplace. At The Atlantic, we use a fob to get into our actual office from the elevators or the bathrooms. It’s great for security. It’s not always great for the forgetful.</summary></entry></feed>
+&lt;p&gt;Full code is &lt;a href=&quot;https://github.com/arm5077/dmv&quot;&gt;here.&lt;/a&gt; I’m going to run this script for a few weeks and generate data. Once I get a decently! representative sample, I’ll come back with some visualizations!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">First off, an apology: In the aftermath of the July 4th holiday, I took the week off last week. So you’ll see a double #MakeEveryWeek feature coming up soon.</summary></entry></feed>
