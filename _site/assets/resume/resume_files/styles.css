@@ -12,18 +12,16 @@ a:hover
 text-decoration:underline;
 }
 		
-h1.banner, h1.bannerText
+h1
 {
-margin-bottom:10px;
-}
-		
-.banner
-{
-font-size:50pt;
+font-size:4rem;
 width:60%;
 margin-right:1%;
 display:inline-block;
 line-height:1.1em;
+padding: 0;
+font-weight: 300;
+margin-bottom: 10px;
 }
 
 .bannerText
@@ -31,7 +29,6 @@ line-height:1.1em;
 width:38%;
 display:inline-block;
 font-size: 16pt;
-
 margin-bottom: 5px;
 }
 
@@ -47,20 +44,33 @@ margin-bottom: 5px;
 		margin-bottom:10px;
 		}
 		
-		h1
+		h2
 		{ 
 		font-family:"Roboto", Helvetica, Arial, sans-serif; 
-		font-weight:300;
+		font-weight:700;
+    font-size: 2rem;
+    margin-bottom: 10px;
 		}
-		
+    
+      #skills h2 {
+        display: inline-block;
+      }
+    
+		h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0 10px 0 0;
+      display: inline-block;
+		}
+  		
 		.sections
 		{
-		width:50%;
-		min-width:650px;
-		margin:auto;
+		width:100%;
+		max-width:800px;
+		margin: auto;
 		}
 		
-		li.section
+		.section
 		{
 		list-style-type:none;
 		margin-bottom:10px;
@@ -68,23 +78,42 @@ margin-bottom: 5px;
 		border-bottom: 1px solid lightgray;
 		}
 		
-		li h2
-		{
-		margin:0;
-		}
-		
+
 		.experienceBlock
 		{
 		padding:0;
 		}
 		
+    .experienceBlock .title-row {
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .experienceBlock a, #professional a {
+      color: seagreen;
+      text-decoration: underline;
+    }
+    
+    .experienceBlock .text {
+      display: inline-block;
+      width: 50%;
+      margin-top: 0;
+      font-size: 1.3rem;
+      font-weight: 100;
+      box-sizing: border-box;
+      padding-right: 10px;
+    }
+    
+    .job-metadata {
+      display: block;
+      margin: 0 0 5px 0;
+    }
+    
 			.experienceBlock > li
 			{
 			list-style-type:none;
-			padding-left: 10px;
-			//border-left: 20px #009999 solid;
 			opacity: .8;
-			margin-bottom: 35px;
+			margin-bottom: 36px;
 			}
 			
 			.experienceBlock h2
@@ -98,29 +127,34 @@ margin-bottom: 5px;
 			
 			.experienceText li
 			{
-			margin-top:15px;
+			margin-top:6px;
 			line-height:1.5em;
 			}
 			
-			.timespan, .location
-			{
-			display: inline;
-			margin-left: 10px;
-			color: #333;
-			padding: 3px 10px;
-			background-color: seagreen;
-			color: white;
-			border-radius: 10px;
-			font-size: 9pt;
-			position:relative;
-			top:-2px;
+			.timespan {
+        display: inline-block;
+        color: #333;
+        font-size: 9pt;
 			}
-			
-			.location
-			{
-			background-color:#bf3030;
-			}
-			
+      
+      .timespan#primary {
+        color: #bf3030;
+      }
+      
+		
+      .favorite-projects {
+        width: 48%;
+        display: inline-block;
+        font-size: .8rem;
+        vertical-align: top;
+      }
+      
+      .favorite-projects:before {
+        content: "Favorite projects: ";
+        font-weight: bold;
+        
+      }
+	
 .skillsBlock
 {
 list-style-type:none;
@@ -155,51 +189,6 @@ padding:0;
 	font-size: 15pt;
 	height: 100%;
 	}
-	
-	
-	#awards ul
-	{
-	padding:0;
-	}
-	
-		#awards li
-		{
-		list-style-type: none;
-		padding: 2%;
-		display: inline-block;
-		width: 44%;
-		margin-left: 2%;
-		vertical-align:top;
-		margin-bottom:20px;
-		}
-		
-		#awards li:nth-child(2n+1)
-		{
-		margin-left:0;
-		}
-		
-		#awards .time
-		{
-		text-align: center;
-		font-family: roboto condensed;
-		opacity: .8;
-		margin-bottom:5px;
-		}
-		
-		#awards .contest
-		{
-		font-size:16pt;
-		font-weight:300;
-		text-align:center;
-		margin-bottom:5px;
-		}
-		
-		#awards .details
-		{
-		font-size:21pt;
-		text-align:center;
-		margin-bottom:5px;
-		}
 		
 .key, .keyItem
 {
@@ -208,7 +197,9 @@ display:inline-block;
 
 .key
 {
-margin-left:20px;
+  margin-left:20px;
+  position: relative;
+  top: -4px;
 }
 
 .keyItem
@@ -226,20 +217,7 @@ vertical-align:middle;
 		margin-right:10px;
 		}
 		
-.shared
-{
-background-color:#5ccccc;
-}
 
-.individual
-{
-background-color:#ff7373;
-}
-
-.great
-{
-background-color:#9fee00;
-}
 .basic, li.basic
 {
 background-color:#FF7373;
@@ -257,3 +235,35 @@ background-color:#FF7373;
 		opacity: .8;
 		line-height:1.5em;
 		}
+    
+#professional li {
+  margin-bottom: 10px;
+}
+
+#professional ul {
+  padding-left: 17px;
+}
+
+    
+@media (max-width: 600px) {
+  
+  .experienceBlock .title-row {
+    margin-bottom: 8px;
+  }
+  
+ .experienceBlock .text {
+   display: block;
+   width: 100%;
+   margin-bottom: 10px;
+ } 
+ 
+ .favorite-projects {
+   width: 100%;
+ }
+ 
+ h3 span {
+   display: block;
+ }
+ 
+  
+}
