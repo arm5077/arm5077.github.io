@@ -26,12 +26,6 @@ html, body {
 	overflow-x: hidden;
 }
 
-body {
-  box-sizing: border-box;
-  padding: 0px 10px;
-}
-
-
 a {
 	color: inherit;
 	text-decoration: none;
@@ -130,6 +124,8 @@ ul {
 .home, .page-body {
 	width: 100%;
 	margin: 0px auto;
+  box-sizing: border-box;
+  padding: 0px 10px;
 }
 	
 .home {
@@ -383,9 +379,7 @@ pre {
 	
 	
 	.page {
-	  
-    padding: 0px 20px;
-    
+ 
 		.page-body {
 			
 			h2.line-below {
