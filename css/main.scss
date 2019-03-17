@@ -26,6 +26,11 @@ html, body {
 	overflow-x: hidden;
 }
 
+body {
+  box-sizing: border-box;
+  padding: 0px 10px;
+}
+
 
 a {
 	color: inherit;
@@ -108,7 +113,8 @@ p {
 ul {
   font-size: 20px;
   line-height: 1.55em;
-  width: $medium_width;
+  width: 100%;
+  max-width: $medium_width;
   margin: auto;
     
 }
