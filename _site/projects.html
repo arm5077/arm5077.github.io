@@ -170,7 +170,7 @@
 
 <p><strong>How:</strong> During the campaign, Trump almost exclusively tweeted from an Android phone. His staffers, on the other hand, used iPhones. Using archived Twitter data, I built a <a href="https://github.com/arm5077/trump-twitter-classify">machine-learning model</a> that used language patterns to predict whether Trump was the author of a given tweet.</p>
 
-<p><strong>What I learned:</strong> Keeping a model up to date is really hard to do when you don’t have new data. Trump gave up his Android when he became president, so the classifier is based only on his pre-election tweets. It’s become increasingly inaccurate.</p>
+<p><strong>What I learned:</strong> Keeping a model up to date is really hard to do when you don’t have new data. Trump gave up his Android when he became president, so the classifier is based only on his pre-election tweets. It’s increasingly inaccurate.</p>
 
       </div>
     
@@ -187,7 +187,7 @@
         <div class="project-detail-item-description">A fake internet-of-things toaster begging to be hacked.</div>
         <p><strong>Where:</strong> <a href="https://www.theatlantic.com/technology/archive/2016/10/we-built-a-fake-web-toaster-and-it-was-hacked-in-an-hour/505571/">The Atlantic</a></p>
 
-<p><strong>Why:</strong> After it became clear comprimised internet-connected devices had brought down major websites like Twitter in the <a href="https://www.theatlantic.com/technology/archive/2016/10/whos-responsible-when-your-dvr-launches-a-cyberattack/505322/">Mirai botnet attack of 2016</a>, I wanted to see exactly how quickly an unsecured device could be hacked. What better way than to build an <a href="https://www.livinginternet.com/i/ia_myths_toast.htm">IoT toaster?</a></p>
+<p><strong>Why:</strong> After it became clear that comprimised internet-connected devices had brought down major websites like Twitter in the <a href="https://www.theatlantic.com/technology/archive/2016/10/whos-responsible-when-your-dvr-launches-a-cyberattack/505322/">Mirai botnet attack of 2016</a>, I wanted to see exactly how quickly an unsecured device could be hacked. What better way than to build an <a href="https://www.livinginternet.com/i/ia_myths_toast.htm">IoT toaster?</a></p>
 
 <p><strong>How:</strong> OK, I didn’t build an <em>actual</em> toaster. Instead, I set up a server using Amazon Web Services that outwardly presented a fake login screen. As hackers attempted to break in, it played along and recorded their keystrokes.</p>
 
@@ -212,7 +212,7 @@
 
 <p><strong>Why:</strong> The American health care system is quite expensive compared to other industrialized nations. We wanted to see how the high amount spent on the small slice of sickest patients contributed to that total.</p>
 
-<p><strong>How:</strong> I used the Medical Expenditure Panel Survey for this story, a massive dataset maintained by the U.S. Department of Health and Human Services. It’s a great source because while it relies on household surveys to get information on medical expenses, it then follows up with medical providers to verify the information.</p>
+<p><strong>How:</strong> I used R to analyze the Medical Expenditure Panel Survey for this story, a massive dataset maintained by the U.S. Department of Health and Human Services. It’s a great source because while it relies on household surveys to get information on medical expenses, it follows up with medical providers to verify the information.</p>
 
 <p><strong>What I learned:</strong> The sickest 5 percent of Americans account for about 50 percent of the nation’s medical costs, a staggering proportion. I also loved working with <a href="http://polygraph.cool/">Polygraph</a>, who contributed coding and design help.</p>
 
@@ -226,12 +226,12 @@
           
         </a>
         <div class="project-detail-item-title">
-          <a href="https://www.theatlantic.com/politics/archive/2016/05/white-people-dont-use-white-emoji/481695/" target="blank">Why White People Don't Use White Emoji</a>
+          <a href="https://www.theatlantic.com/politics/archive/2016/05/white-people-dont-use-white-emoji/481695/" target="blank">Emoji skin tone usage on Twitter</a>
         </div>
         <div class="project-detail-item-description">A story examining why white people don't use white emoji.</div>
         <p><strong>Where:</strong> <a href="https://www.theatlantic.com/politics/archive/2016/05/white-people-dont-use-white-emoji/481695/">The Atlantic.</a></p>
 
-<p><strong>Why:</strong> My office uses Slack to communicate, which has native emoji suppot. I noticed that while many of my coworkers of color used darker-toned emoji, pretty much all of my white colleagues — including myself — preferred yellow emoji.</p>
+<p><strong>Why:</strong> My office uses Slack to communicate, which has native emoji support. I noticed that while many of my coworkers of color used darker-toned emoji, pretty much all of my white colleagues — including myself — preferred yellow emoji.</p>
 
 <p><strong>How:</strong> The meat of this analysis comes from a sampling of Twitter’s <a href="https://developer.twitter.com/en/docs/tweets/filter-realtime/overview">realtime tweet stream,</a> filtering U.S. tweets for messages with emoji and then cataloging the skin tones used. I then compared the relative incidence of emoji tones to the reported demographics of U.S. Twitter users.</p>
 
@@ -275,13 +275,13 @@
           <a href="http://localhost:4000/projects/#2" target="blank">Cherrypicker</a>
         </div>
         <div class="project-detail-item-description">A web app showing you the nearest cherry tree in Washington, DC.</div>
-        <p><strong>Where:</strong> <a href="dccherrypicker.com">http://localhost:4000/projects/#2</a></p>
+        <p><strong>Where:</strong> <a href="http://www.dccherrypicker.com">dccherrypicker.com</a></p>
 
-<p><strong>Why:</strong> Washington’s cherry trees are beautiful. But while everyone rushes down to the Tidal Basin to see them during peak bloom season, there are tons of trees planted elsewhere in the city that are just as pretty.</p>
+<p><strong>Why:</strong> Washington’s cherry trees are beautiful. But everyone rushes down to the Tidal Basin to see them during peak bloom season. Meanwhile, there are tons of trees planted elsewhere in the city that are just as pretty.</p>
 
 <p><strong>How:</strong> DC’s Urban Forestry Department maintains a <a href="http://opendata.dc.gov/datasets/urban-forestry-street-trees">database</a> of all street trees cared for by the city. I dropped this data into a Postgresql/PostGIS database and built a mobile web app allowing you to search by location and see details.</p>
 
-<p><strong>What I learned:</strong> Cherry trees are awesome, no matter where they are. Also, browsers have become increasingly strict about allowing access to the user’s location.</p>
+<p><strong>What I learned:</strong> Cherry trees are awesome, no matter where they are. Also, browsers have become increasingly strict about allowing access to the user’s location; keeping this app functional has required a bunch of updates.</p>
 
       </div>
     
@@ -302,7 +302,7 @@
 
 <p><strong>How:</strong> I reverse-engineered Sweetgreen’s ordering API, wrote a script with my payment information, and configured an Amazon Dash Button to order a Guacomole Greens salad (no onions!).</p>
 
-<p><strong>What I learned:</strong> Salads are good! Also, companies choose the worst times to change their undocument APIs and ruin your lunch 😡</p>
+<p><strong>What I learned:</strong> Salads are good! Also, companies choose the worst times to change their undocumented APIs and ruin your lunch 😡</p>
 
 <p><strong>Media mentions:</strong> Envoy’s <a href="https://soundcloud.com/envoy-office-hacks"><em>Office Hacks</em></a> podcast did an <a href="https://soundcloud.com/envoy-office-hacks/35-the-atlantics-lunch-button">episode</a> on the button.</p>
 
@@ -327,7 +327,7 @@
 
 <p><strong>Media mentions:</strong> <a href="http://www.niemanlab.org/2012/09/monday-qa-andrew-mcgill-on-philly-rap-sheet-his-automatic-arrest-tracker/">Neiman Journalism Lab.</a></p>
 
-<p><strong>What I learned:</strong> A lot about programming. But even more about ethics. Once folks showed up on Philly Rap Sheet, they were there permanently; I didn’t rescrape the data. In months and years after I launched, I received many take-down requests from people who had their records expunged, and a few letters from lawyers, too. Eventually, I decided it was unethical to make this data publicly Google-able without updating it, and I shut Philly Rap Sheet down.</p>
+<p><strong>What I learned:</strong> A lot about programming. But even more about ethics. Once folks showed up on Philly Rap Sheet, they were there permanently; I didn’t rescrape the data, which would have been unfeasible as the database grew larger. In months and years after I launched, I received many take-down requests from people who had their records expunged, and a few letters from lawyers, too. Eventually, I decided it was unethical to make this data publicly Google-able without updating it, and I shut Philly Rap Sheet down.</p>
 
       </div>
     
@@ -337,7 +337,7 @@
 	<div class="footer">
 		<div class="bio">
 			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
-			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="http://www.theatlantic.com/author/andrew-mcgill/" target="blank">what I'm doing now.</a></p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a></p>
 		</div>
 	</div>
   

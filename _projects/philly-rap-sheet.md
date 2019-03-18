@@ -13,4 +13,4 @@ order: 99
 
 **Media mentions:** [Neiman Journalism Lab.](http://www.niemanlab.org/2012/09/monday-qa-andrew-mcgill-on-philly-rap-sheet-his-automatic-arrest-tracker/)
 
-**What I learned:** A lot about programming. But even more about ethics. Once folks showed up on Philly Rap Sheet, they were there permanently; I didn't rescrape the data. In months and years after I launched, I received many take-down requests from people who had their records expunged, and a few letters from lawyers, too. Eventually, I decided it was unethical to make this data publicly Google-able without updating it, and I shut Philly Rap Sheet down.
+**What I learned:** A lot about programming. But even more about ethics. Once folks showed up on Philly Rap Sheet, they were there permanently; I didn't rescrape the data, which would have been unfeasible as the database grew larger. In months and years after I launched, I received many take-down requests from people who had their records expunged, and a few letters from lawyers, too. Eventually, I decided it was unethical to make this data publicly Google-able without updating it, and I shut Philly Rap Sheet down.

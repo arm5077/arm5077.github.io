@@ -73,7 +73,7 @@ pre { font-size: 15px; max-width: 650px; margin: auto; background-color: #eee !i
 
 .projects .dek { font-weight: 400; font-size: 30px; max-width: 670px; margin: auto; }
 .projects p { margin-left: 0; }
-.projects a:hover { text-decoration: underline; }
+.projects .projects-preview-list-item a:hover, .projects .project-detail-item-title a:hover { text-decoration: underline; }
 .projects h3 { font-weight: normal; font-size: 32px; }
 .projects .projects-preview-list { max-width: 850px; margin: 48px auto 0; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid #999; }
 .projects .projects-preview-list .projects-preview-list-item { width: 30%; display: inline-block; box-sizing: border-box; vertical-align: top; margin-bottom: 32px; }

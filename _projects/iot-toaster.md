@@ -7,7 +7,7 @@ order: 3
 ---
 **Where:** [The Atlantic](https://www.theatlantic.com/technology/archive/2016/10/we-built-a-fake-web-toaster-and-it-was-hacked-in-an-hour/505571/)
 
-**Why:** After it became clear comprimised internet-connected devices had brought down major websites like Twitter in the [Mirai botnet attack of 2016](https://www.theatlantic.com/technology/archive/2016/10/whos-responsible-when-your-dvr-launches-a-cyberattack/505322/), I wanted to see exactly how quickly an unsecured device could be hacked. What better way than to build an [IoT toaster?](https://www.livinginternet.com/i/ia_myths_toast.htm)
+**Why:** After it became clear that comprimised internet-connected devices had brought down major websites like Twitter in the [Mirai botnet attack of 2016](https://www.theatlantic.com/technology/archive/2016/10/whos-responsible-when-your-dvr-launches-a-cyberattack/505322/), I wanted to see exactly how quickly an unsecured device could be hacked. What better way than to build an [IoT toaster?](https://www.livinginternet.com/i/ia_myths_toast.htm)
 
 **How:** OK, I didn't build an _actual_ toaster. Instead, I set up a server using Amazon Web Services that outwardly presented a fake login screen. As hackers attempted to break in, it played along and recorded their keystrokes.
 
