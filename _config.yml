@@ -5,6 +5,8 @@ url: "http://andrewmcgill.me"
 paginate: 5
 markdown: kramdown
 highlighter: rouge
+collections:
+  - projects
 kramdown: 
   parse_block_html: true
 gems:

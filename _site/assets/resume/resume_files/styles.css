@@ -75,7 +75,7 @@ margin-bottom: 5px;
 		list-style-type:none;
 		margin-bottom:10px;
 		padding-bottom: 10px;
-		border-bottom: 1px solid lightgray;
+		border-bottom: 1px solid #999;
 		}
 		
 
@@ -87,6 +87,8 @@ margin-bottom: 5px;
     .experienceBlock .title-row {
       margin-bottom: 12px;
       display: block;
+      border-bottom: 1px dotted #aaa;
+      padding-bottom: 8px;
     }
     
     .experienceBlock a, #professional a {
@@ -216,6 +218,10 @@ vertical-align:middle;
 		float:left;
 		margin-right:10px;
 		}
+    
+.great {
+  background-color: #9fee00;
+}
 		
 
 .basic, li.basic
