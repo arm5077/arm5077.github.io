@@ -142,24 +142,72 @@ ul {
 	}
 	
 	.banner {
-		padding-bottom: 30px;
+		padding-bottom: 32px;
 		margin-top: 10vh;
 		border-bottom: 1px solid #aaa;
 		
 		.intro {
-			margin-top: 10px;
-			font-size: 30px;
+			margin-top: 12px;
+			font-size: 32px;
 			color: #555;
 			line-height: 1.25em;
 		
 			a {
 				@extend %red_links;
 			}
-		
-		}
-		
+		}	
 	}
-	
+  
+  .random-project {
+    display: none;
+    padding: 32px 0px;
+    border-bottom: 1px solid #aaa;
+
+    &.visible {
+      display: block;
+    }
+
+    .random-project-label {
+      font-size: 24px;
+      color: #666;
+    }
+    
+    a.image-wrapper {
+      display: block;
+      width: 50%;
+      float: right;
+      margin-left: 10px;
+    }
+    
+    .video, .img {
+      width: 50%;
+      position: relative;
+      display: block;
+      width: 100%;
+      border: 1px solid #333;
+      padding-bottom: 55%;
+      height: 0;
+      background-size: cover;
+      overflow: hidden;
+    
+      video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    
+    a.description {
+      font-size: 24px;
+      display: inline;
+      &:hover {
+        text-decoration: underline;
+      } 
+    }
+  }
+  	
 	.posts {
 
 		ul {
@@ -397,7 +445,7 @@ pre {
     padding-bottom: 55%;
     height: 0;
     background-size: cover;
-    
+    overflow: hidden;
     
     video {
       position: absolute;

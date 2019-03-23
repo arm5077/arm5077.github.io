@@ -10,8 +10,26 @@ title: "journalist and developer"
 			I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic</a> as a product manager. Before, I wrote and coded for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a>
 		</div>
 	</div>
-
-	<div class="posts">
+  
+  {% assign projects = site.projects | sort:"order" %}
+  {% for project in projects %}
+  <div class="random-project">
+        <a href="/projects/#{{ project.order}}" class="image-wrapper">
+        {% if project.asset contains "mp4"%}
+          <div class="video">
+            <video src="{{ project.asset }}" muted loop autoplay></video>
+          </div>
+          {% else %}
+          <div class="img" style="background-image: url('{{ project.asset }}')"></div>
+        {% endif %}
+      </a>
+      <div class="random-project-label">This was fun to make:</div>
+      <a class="description" href="/projects/#{{ project.order }}">{{ project.description }}</a>  
+      <div style="clear: both"></div>
+  </div>
+  {% endfor %}
+	
+  <div class="posts">
 
 		<ul>
 		  {% for post in site.posts %}
@@ -54,3 +72,4 @@ title: "journalist and developer"
 		</div>
 	</div>
 </div>
+<script src="/scripts.js"></script>

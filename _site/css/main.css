@@ -32,8 +32,16 @@ ul { font-size: 20px; line-height: 1.55em; width: 100%; max-width: 670px; margin
 
 .home { margin-bottom: 50px; max-width: 670px; }
 .home img { max-width: 100%; margin: 15px auto; }
-.home .banner { padding-bottom: 30px; margin-top: 10vh; border-bottom: 1px solid #aaa; }
-.home .banner .intro { margin-top: 10px; font-size: 30px; color: #555; line-height: 1.25em; }
+.home .banner { padding-bottom: 32px; margin-top: 10vh; border-bottom: 1px solid #aaa; }
+.home .banner .intro { margin-top: 12px; font-size: 32px; color: #555; line-height: 1.25em; }
+.home .random-project { display: none; padding: 32px 0px; border-bottom: 1px solid #aaa; }
+.home .random-project.visible { display: block; }
+.home .random-project .random-project-label { font-size: 24px; color: #666; }
+.home .random-project a.image-wrapper { display: block; width: 50%; float: right; margin-left: 10px; }
+.home .random-project .video, .home .random-project .img { width: 50%; position: relative; display: block; width: 100%; border: 1px solid #333; padding-bottom: 55%; height: 0; background-size: cover; overflow: hidden; }
+.home .random-project .video video, .home .random-project .img video { position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
+.home .random-project a.description { font-size: 24px; display: inline; }
+.home .random-project a.description:hover { text-decoration: underline; }
 .home .posts ul { list-style: none; padding: 0; margin: 40px 0px 30px; }
 .home .posts ul li { position: relative; margin-bottom: 40px; }
 .home .posts ul li:last-child { margin-bottom: 0px; }
@@ -78,7 +86,7 @@ pre { font-size: 15px; max-width: 650px; margin: auto; background-color: #eee !i
 .projects .projects-preview-list { max-width: 850px; margin: 48px auto 0; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid #999; }
 .projects .projects-preview-list .projects-preview-list-item { width: 30%; display: inline-block; box-sizing: border-box; vertical-align: top; margin-bottom: 32px; }
 .projects .projects-preview-list .projects-preview-list-item .description { margin-top: 24px; font-size: 20px; width: 80%; }
-.projects .video, .projects .img { position: relative; display: block; width: 100%; border: 1px solid #333; padding-bottom: 55%; height: 0; background-size: cover; }
+.projects .video, .projects .img { position: relative; display: block; width: 100%; border: 1px solid #333; padding-bottom: 55%; height: 0; background-size: cover; overflow: hidden; }
 .projects .video video, .projects .img video { position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
 .projects .project-detail-item { margin: auto; max-width: 850px; position: relative; padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid #999; }
 .projects .project-detail-item .project-detail-item-title { display: block; font-weight: bold; font-size: 40px; line-height: 46px; margin-bottom: 12px; }
