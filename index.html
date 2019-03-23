@@ -14,7 +14,7 @@ title: "journalist and developer"
   {% assign projects = site.projects | sort:"order" %}
   {% for project in projects %}
   <div class="random-project">
-        <a href="/projects/#{{ project.order}}" class="image-wrapper">
+        <a href="/projects#{{ project.order}}" class="image-wrapper">
         {% if project.asset contains "mp4"%}
           <div class="video">
             <video src="{{ project.asset }}" muted loop autoplay></video>
@@ -24,7 +24,7 @@ title: "journalist and developer"
         {% endif %}
       </a>
       <div class="random-project-label">This was fun to make:</div>
-      <a class="description" href="/projects/#{{ project.order }}">{{ project.description }}</a>  
+      <a class="description" href="/projects#{{ project.order }}">{{ project.description }}</a>  
       <div style="clear: both"></div>
   </div>
   {% endfor %}
