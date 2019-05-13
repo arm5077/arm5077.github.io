@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3293083-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-3293083-5');
+  </script>
+  
+	<title>
+		
+			Building a web app to rank my favorite Marvel superhero movies, part one | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="How's a superhero fan supposed to overcome recency bias in rating their favorite movies? Uh, how does complicated math sound?" />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Building a web app to rank my favorite Marvel superhero movies, part one</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			May
+			  
+			7,
+			2019
+		</div>
+
+		<p>I love superhero movies. Specifically, Marvel superhero movies. Specifically specifically, Marvel Cinematic Universe movies — Iron Man, Captain America, Thor, and so on. Never thought I’d be that guy, but somehow I’ve seen <em>every single MCU movie</em> — 22 in total.</p>
+
+<p>Why? Because they’re super good! There’s a reason they have an average Rotten Tomatoes score of 84%.</p>
+
+<p>But which ones are the <em>best?</em> This is a constant debate among my friends. And with the latest phase of the MCU coming to a close with <em>Avengers: Endgame</em>, it’s been a good time to take stock and make best-of lists.</p>
+
+<p>A few problems, though:</p>
+
+<ul>
+  <li><strong>There are too many movies.</strong> Organizing 22 films in order of preference is a… <em>tall order.</em> (🥁) You have to keep track of every other movie when you’re considering one, or chunk them in ways that could lead to misalignment later.</li>
+  <li><strong>You’re probably going to give better scores to movies you just saw.</strong> Because I watched <em>Avengers: Endgame</em> more recently, I’m more likely to rate it higher than the original Avengers, just because I remember more details about it.</li>
+  <li><strong>You probably know your favorite and least-favorite films, but nothing in between.</strong> This is a twist on the well-documented <a href="https://en.wikipedia.org/wiki/Serial-position_effect">recency/primacy</a> effect, where humans are better at remembering the beginnings and ends of lists than things in the middle. In this case, fans probably never formed opinions on middling movies, focusing on just the best and the worst.</li>
+</ul>
+
+<p>All of these problems mean tools that let you <a href="http://rankthemcu.com">drag around movie names</a> probably aren’t helping you come up with a definitive list. They’re just confusing you!</p>
+
+<video autoplay="" playsinline="" muted="" loop="" preload="auto" poster="https://thumbs.gfycat.com/SleepyAngelicGiantschnauzer-mobile.jpg" tabindex="-1"><source src="https://thumbs.gfycat.com/SleepyAngelicGiantschnauzer-mobile.mp4" type="video/mp4" /><source src="https://giant.gfycat.com/SleepyAngelicGiantschnauzer.webm" type="video/webm" /><source src="https://giant.gfycat.com/SleepyAngelicGiantschnauzer.mp4" type="video/mp4" /><source src="https://thumbs.gfycat.com/SleepyAngelicGiantschnauzer-mobile.mp4" type="video/mp4" /><meta itemprop="contentUrl" content="https://giant.gfycat.com/SleepyAngelicGiantschnauzer.mp4" /></video>
+
+<p>My take: <strong>It’s easier to pick your favorite movie when you just have two options in front of you.</strong> If you run through enough pairings, eventually you’ll get an ordered list.</p>
+
+<p>That’s the idea behind <a href="http://mcu.ninja/">mcu.ninja,</a> a ranking tool I put out last week. 🎉</p>
+
+<p>In this post, I’m going to explain the logic behind the ordering algorithm powering mcu.ninja and the command-line utility I built to demonstrate it. Next week, I’ll discuss the UI and why I thought Tinder-style swiping was the right decision.</p>
+
+<p><a href="#my-list">If you just want my MCU movie ranking, here you go.</a></p>
+
+<h2 id="sorting-is-hard">Sorting is hard</h2>
+
+<p>If you need to order a list of 22 items, it’s simplest to go one by one and compare every movie to every other.</p>
+
+<p>Let’s say I start with <em>Captain Marvel.</em> I’d compare it to <em>Iron Man</em>, the first film in the MCU.</p>
+
+<p><img src="/assets/mcu-ninja-1-images/marvel-vs-iron-man.png" alt="Captain Marvel vs. Iron Man" /></p>
+
+<p>OK, that’s easy — I like <em>Iron Man</em> better. But that’s only the beginning. I still have to compare <em>Captain Marvel</em> to every other MCU movie — 21 comparisons in all.</p>
+
+<p><img src="/assets/mcu-ninja-1-images/marvel-vs-everyone.png" alt="Captain Marvel vs. every other Marvel movie — quite a few!" /></p>
+
+<p>Once we’re done with <em>Captain Marvel</em>, we move on to the next film: <em>Avengers: Endgame.</em> Since we already compared it to <em>Captain Marvel</em>, we don’t have to match them again. But we still have 20 other movies to compare.</p>
+
+<p><img src="/assets/mcu-ninja-1-images/marvel-and-endgame.png" alt="Let's add in Avengers: Endgame. SO MANY MOVIES" /></p>
+
+<p>So far, we’ve made 41 comparisons. If we add just two more movies, we’re up to 78:</p>
+
+<p><img src="/assets/mcu-ninja-1-images/obviously-crazy.png" alt="This is obviously crazy." /></p>
+
+<p>Taking this to its mathematical conclusion, we’d have to make comparisons equal to 21 + 20 + 19 + 18… + 1, or <em>(n^2 + n) / 2</em>. That’s 231 match-ups — only marginally better than watching <a href="https://screenrant.com/infinity-war-doctor-strange-futures-how-many-why/">14,000,605 alternative futures.</a></p>
+
+<h2 id="quicksort-to-the-rescue">Quicksort to the rescue</h2>
+
+<p>There are plenty of <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_sorts">better ways</a> to sort stuff. In this case, topping the list is the <strong><a href="https://en.wikipedia.org/wiki/Quicksort">Quicksort</a></strong> algorithm.</p>
+
+<p>Let’s line up all the movies by date released — the order doesn’t matter — and randomly pick <em>Captain Marvel</em> to start:</p>
+
+<p><img src="/assets/mcu-ninja-1-images/quicksort-step-1.png" alt="All the Marvel movies lined up, with Captain Marvel highlighted." /></p>
+
+<p><em>Captain Marvel</em> is the <strong>pivot.</strong> Our job is to re-order the list so every movie that’s worse goes on the left, and every movie that’s better goes on the right.</p>
+
+<p>It doesn’t matter what order we put them in — only that they’re better or worse than the pivot.</p>
+
+<p><img src="/assets/mcu-ninja-1-images/quicksort-step-2.png" alt="We've sorted the movies to be better or worse than Captain Marvel." /></p>
+
+<p>Ater sorting (your choices might be different!), we now know Captain Marvel is No. 16 on list. To do this, we had to make 21 comparisons — same as we did before. But the next step is different. We consider the better-than and worse-than movies as <em>their own sets,</em> and run the method again.</p>
+
+<p>So in the “worse-than-Captain Marvel” set, we randomly choose <em>Thor: The Dark World</em> as our pivot. In the “better-than-Captain Marvel” set, we choose <em>Captain America: Civil War.</em> For each of these sets, we again sort the movies by whether or not they’re worse than the pivot.</p>
+
+<p><img src="/assets/mcu-ninja-1-images/quicksort-step-3.png" alt="Now we've sorted each subset as well — marking Thor: The Dark World as No. 20 and Captain America: Civil War as No. 8." /></p>
+
+<p>Now we have three movies properly ordered — with only 40 comparisons, instead of 60 with our previous method. That’s a huge improvement.</p>
+
+<p>That kind of efficiency isn’t guaranteed. Quicksort works best when the pivots land in the middle of a given set — in this case, the movie that’s chosen is average, not terrible or spectacular. But unless you’re really unlucky, Quicksort will work far better than brute force.</p>
+
+<h2 id="building-a-proof-of-concept">Building a proof of concept</h2>
+
+<p>Before I built out the full <a href="http://www.mcu.ninja">mcu.ninja</a> app, I wanted to make sure this method actually made sense. In practice, would it work to present people with pairs of movies and having Quicksort figure out which to show next?</p>
+
+<p>So to test, I built <a href="https://github.com/arm5077/mcu-rankings-cli">mcu-rankings-cli,</a> a command line interface script written in Node.</p>
+
+<video autoplay="" loop="" muted=""><source src="/assets/mcu-ninja-1-images/cli-example.mp4" /></video>
+
+<p>Pretty simple — it gives you two options, and you pick one. On the back end, I wrote a <code class="highlighter-rouge">MovieList</code> class that handled making match-ups and accepting votes from the user. On the front end, the <a href="https://www.npmjs.com/package/inquirer">inquirer</a> makes the CLI magic happen.</p>
+
+<p>The method seemed to work pretty well. Sometimes the pivot movies weren’t great — it’s annoying to get a stinker like <em>The Incredible Hulk</em> and have to vote against it 20-something times. Later on, I decided to use Rotten Tomatoes data to choose the most “average” movie in a set as the pivot.</p>
+
+<p>But otherwise, success. Next week, I’ll talk about how the final swipe-y UI came to be!</p>
+
+<h2 id="for-the-record-heres-my-list-a-namemy-lista">For the record, here’s my list: <a name="my-list"></a></h2>
+
+<ol>
+  <li>The Avengers</li>
+  <li>Iron Man</li>
+  <li>Guardians of the Galaxy</li>
+  <li>Thor: Ragnarok</li>
+  <li>Avengers: Infinity War</li>
+  <li>Captain America: The Winter Soldier</li>
+  <li>Captain America: Civil War</li>
+  <li>Avengers: Endgame</li>
+  <li>Black Panther</li>
+  <li>Spider-Man: Homecoming</li>
+  <li>Iron Man 3</li>
+  <li>Captain America: The First Avenger</li>
+  <li>Captain Marvel</li>
+  <li>Ant-Man</li>
+  <li>Avengers: Age of Ultron</li>
+  <li>Doctor Strange</li>
+  <li>Ant-Man and the Wasp</li>
+  <li>Thor</li>
+  <li>Guardians of the Galaxy Vol. 2</li>
+  <li>Thor 2</li>
+  <li>Iron Man 2</li>
+  <li>The Incredible Hulk</li>
+</ol>
+
+	
+		
+		<div class="navigation">
+			 
+
+			
+			<a class="back" href="/2019/01/13/making-the-guess-graph-module.html">A data interactive that challenges people to draw a trend, and then shows them reality &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
-p a, .page_body li a, .home .banner .intro a, .page ul li a { text-decoration: none; color: #EE2A24; border-bottom: 1px solid transparent; }
-p a:hover, .page_body li a:hover, .home .banner .intro a:hover, .page ul li a:hover { border-bottom: 1px solid #EE2A24; }
+p a, .page_body li a, .home .banner .intro a, .page ul li a, .page ol li a { text-decoration: none; color: #EE2A24; border-bottom: 1px solid transparent; }
+p a:hover, .page_body li a:hover, .home .banner .intro a:hover, .page ul li a:hover, .page ol li a:hover { border-bottom: 1px solid #EE2A24; }
 
 html, body { padding: 0; margin: 0; color: #222; font-family: Lora, Georgia, serif; overflow-x: hidden; }
 
@@ -24,7 +24,7 @@ p { font-size: 20px; line-height: 1.55em; }
 p:first-of-type { margin-top: 0; }
 p:last-child { margin-bottom: 0; }
 
-ul { font-size: 20px; line-height: 1.55em; width: 100%; max-width: 670px; margin: auto; }
+ul, ol { font-size: 20px; line-height: 1.55em; width: 100%; max-width: 670px; margin: auto; }
 
 .date { display: block; color: #888; font-weight: normal; text-transform: uppercase; position: relative; }
 
@@ -42,11 +42,11 @@ ul { font-size: 20px; line-height: 1.55em; width: 100%; max-width: 670px; margin
 .home .random-project .video video, .home .random-project .img video { position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
 .home .random-project a.description { font-size: 24px; display: inline; }
 .home .random-project a.description:hover { text-decoration: underline; }
-.home .posts ul { list-style: none; padding: 0; margin: 40px 0px 30px; }
-.home .posts ul li { position: relative; margin-bottom: 40px; }
-.home .posts ul li:last-child { margin-bottom: 0px; }
-.home .posts ul li h2 { margin-bottom: 15px; }
-.home .posts ul li h2 a:hover { text-decoration: underline; }
+.home .posts ul, .home .posts ol { list-style: none; padding: 0; margin: 40px 0px 30px; }
+.home .posts ul li, .home .posts ol li { position: relative; margin-bottom: 40px; }
+.home .posts ul li:last-child, .home .posts ol li:last-child { margin-bottom: 0px; }
+.home .posts ul li h2, .home .posts ol li h2 { margin-bottom: 15px; }
+.home .posts ul li h2 a:hover, .home .posts ol li h2 a:hover { text-decoration: underline; }
 .home .posts .date { position: absolute; text-align: right; font-size: 14px; width: 95px; left: -118px; top: 1px; padding-right: 15px; }
 
 h1, h2, .date, .navigation, p { max-width: 670px; margin-left: auto; margin-right: auto; }
@@ -57,8 +57,9 @@ h1, h2, .date, .navigation, p { max-width: 670px; margin-left: auto; margin-righ
 .page .page-body h2 { margin-top: 40px; }
 .page .page-body img { width: 100%; max-width: 700px; margin: 10px 0px; position: relative; left: 50%; transform: translateX(-50%); border: 1px solid #ccc; }
 .page .page-body blockquote { border-left: 10px solid #eee; padding: 20px; max-width: 630px; margin: auto; font-weight: 300; }
-.page .date { margin-bottom: 5px; margin-right: 6px; margin-top: 3px; top: 3px; }
-.page ul li { margin-bottom: 15px; }
+.page .page-body video { max-width: 700px; margin: auto; display: block; }
+.page .date { margin-bottom: 5px; margin-top: 3px; top: 3px; }
+.page ul li, .page ol li { margin-bottom: 15px; }
 .page .navigation { margin-bottom: 30px; margin-top: 20px; }
 .page .navigation a { max-width: 48%; font-size: 20px; text-decoration: underline; }
 .page .navigation a.next { float: left; }
@@ -99,7 +100,7 @@ pre { font-size: 15px; max-width: 650px; margin: auto; background-color: #eee !i
   .home .posts .date { position: static; padding: 0; width: auto; text-align: left; line-height: 1em; margin-bottom: 5px; }
   .page .page-body h2.line-below { margin-top: 20px; }
   .page .page-body p { font-size: 17px; line-height: 1.55em; }
-  .page ul { width: 100%; box-sizing: border-box; font-size: 17px; padding: 0px 15px; }
+  .page ul, .page ol { width: 100%; box-sizing: border-box; font-size: 17px; padding: 0px 15px; }
   .page .navigation a { display: block; max-width: 100%; margin-bottom: 10px; }
   .page .footer { width: calc(100% + 40px); margin: 20px 0px 0px -20px; padding: 20px; box-sizing: border-box; }
   .page .footer p { font-size: 25px; }

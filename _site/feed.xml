@@ -1,4 +1,115 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-03-23T16:42:36-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">A data interactive that challenges people to draw a trend, and then shows them reality</title><link href="http://localhost:4000/2019/01/13/making-the-guess-graph-module.html" rel="alternate" type="text/html" title="A data interactive that challenges people to draw a trend, and then shows them reality" /><published>2019-01-13T00:00:00-05:00</published><updated>2019-01-13T00:00:00-05:00</updated><id>http://localhost:4000/2019/01/13/making-the-guess-graph-module</id><content type="html" xml:base="http://localhost:4000/2019/01/13/making-the-guess-graph-module.html">&lt;p&gt;In the thick of the 2016 campaign, then-candidate Donald Trump frequently claimed that life in America was becoming &lt;a href=&quot;https://twitter.com/realDonaldTrump/status/752834632907943936&quot;&gt;more dangerous.&lt;/a&gt; He didn’t have to work hard to convince folks. Gallup pollsters found &lt;a href=&quot;http://www.gallup.com/poll/190475/americans-concern-crime-climbs-year-high.aspx&quot;&gt;more than half&lt;/a&gt; of Americans worried “a great deal” about crime and violence, and the same proportion expected gun violence to go up.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-13T11:10:59-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Building a web app to rank my favorite Marvel superhero movies, part one</title><link href="http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one.html" rel="alternate" type="text/html" title="Building a web app to rank my favorite Marvel superhero movies, part one" /><published>2019-05-07T00:00:00-04:00</published><updated>2019-05-07T00:00:00-04:00</updated><id>http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one</id><content type="html" xml:base="http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one.html">&lt;p&gt;I love superhero movies. Specifically, Marvel superhero movies. Specifically specifically, Marvel Cinematic Universe movies — Iron Man, Captain America, Thor, and so on. Never thought I’d be that guy, but somehow I’ve seen &lt;em&gt;every single MCU movie&lt;/em&gt; — 22 in total.&lt;/p&gt;
+
+&lt;p&gt;Why? Because they’re super good! There’s a reason they have an average Rotten Tomatoes score of 84%.&lt;/p&gt;
+
+&lt;p&gt;But which ones are the &lt;em&gt;best?&lt;/em&gt; This is a constant debate among my friends. And with the latest phase of the MCU coming to a close with &lt;em&gt;Avengers: Endgame&lt;/em&gt;, it’s been a good time to take stock and make best-of lists.&lt;/p&gt;
+
+&lt;p&gt;A few problems, though:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;There are too many movies.&lt;/strong&gt; Organizing 22 films in order of preference is a… &lt;em&gt;tall order.&lt;/em&gt; (🥁) You have to keep track of every other movie when you’re considering one, or chunk them in ways that could lead to misalignment later.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;You’re probably going to give better scores to movies you just saw.&lt;/strong&gt; Because I watched &lt;em&gt;Avengers: Endgame&lt;/em&gt; more recently, I’m more likely to rate it higher than the original Avengers, just because I remember more details about it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;You probably know your favorite and least-favorite films, but nothing in between.&lt;/strong&gt; This is a twist on the well-documented &lt;a href=&quot;https://en.wikipedia.org/wiki/Serial-position_effect&quot;&gt;recency/primacy&lt;/a&gt; effect, where humans are better at remembering the beginnings and ends of lists than things in the middle. In this case, fans probably never formed opinions on middling movies, focusing on just the best and the worst.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of these problems mean tools that let you &lt;a href=&quot;http://rankthemcu.com&quot;&gt;drag around movie names&lt;/a&gt; probably aren’t helping you come up with a definitive list. They’re just confusing you!&lt;/p&gt;
+
+&lt;video autoplay=&quot;&quot; playsinline=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; preload=&quot;auto&quot; poster=&quot;https://thumbs.gfycat.com/SleepyAngelicGiantschnauzer-mobile.jpg&quot; tabindex=&quot;-1&quot;&gt;&lt;source src=&quot;https://thumbs.gfycat.com/SleepyAngelicGiantschnauzer-mobile.mp4&quot; type=&quot;video/mp4&quot; /&gt;&lt;source src=&quot;https://giant.gfycat.com/SleepyAngelicGiantschnauzer.webm&quot; type=&quot;video/webm&quot; /&gt;&lt;source src=&quot;https://giant.gfycat.com/SleepyAngelicGiantschnauzer.mp4&quot; type=&quot;video/mp4&quot; /&gt;&lt;source src=&quot;https://thumbs.gfycat.com/SleepyAngelicGiantschnauzer-mobile.mp4&quot; type=&quot;video/mp4&quot; /&gt;&lt;meta itemprop=&quot;contentUrl&quot; content=&quot;https://giant.gfycat.com/SleepyAngelicGiantschnauzer.mp4&quot; /&gt;&lt;/video&gt;
+
+&lt;p&gt;My take: &lt;strong&gt;It’s easier to pick your favorite movie when you just have two options in front of you.&lt;/strong&gt; If you run through enough pairings, eventually you’ll get an ordered list.&lt;/p&gt;
+
+&lt;p&gt;That’s the idea behind &lt;a href=&quot;http://mcu.ninja/&quot;&gt;mcu.ninja,&lt;/a&gt; a ranking tool I put out last week. 🎉&lt;/p&gt;
+
+&lt;p&gt;In this post, I’m going to explain the logic behind the ordering algorithm powering mcu.ninja and the command-line utility I built to demonstrate it. Next week, I’ll discuss the UI and why I thought Tinder-style swiping was the right decision.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#my-list&quot;&gt;If you just want my MCU movie ranking, here you go.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sorting-is-hard&quot;&gt;Sorting is hard&lt;/h2&gt;
+
+&lt;p&gt;If you need to order a list of 22 items, it’s simplest to go one by one and compare every movie to every other.&lt;/p&gt;
+
+&lt;p&gt;Let’s say I start with &lt;em&gt;Captain Marvel.&lt;/em&gt; I’d compare it to &lt;em&gt;Iron Man&lt;/em&gt;, the first film in the MCU.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/marvel-vs-iron-man.png&quot; alt=&quot;Captain Marvel vs. Iron Man&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OK, that’s easy — I like &lt;em&gt;Iron Man&lt;/em&gt; better. But that’s only the beginning. I still have to compare &lt;em&gt;Captain Marvel&lt;/em&gt; to every other MCU movie — 21 comparisons in all.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/marvel-vs-everyone.png&quot; alt=&quot;Captain Marvel vs. every other Marvel movie — quite a few!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once we’re done with &lt;em&gt;Captain Marvel&lt;/em&gt;, we move on to the next film: &lt;em&gt;Avengers: Endgame.&lt;/em&gt; Since we already compared it to &lt;em&gt;Captain Marvel&lt;/em&gt;, we don’t have to match them again. But we still have 20 other movies to compare.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/marvel-and-endgame.png&quot; alt=&quot;Let's add in Avengers: Endgame. SO MANY MOVIES&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So far, we’ve made 41 comparisons. If we add just two more movies, we’re up to 78:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/obviously-crazy.png&quot; alt=&quot;This is obviously crazy.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Taking this to its mathematical conclusion, we’d have to make comparisons equal to 21 + 20 + 19 + 18… + 1, or &lt;em&gt;(n^2 + n) / 2&lt;/em&gt;. That’s 231 match-ups — only marginally better than watching &lt;a href=&quot;https://screenrant.com/infinity-war-doctor-strange-futures-how-many-why/&quot;&gt;14,000,605 alternative futures.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;quicksort-to-the-rescue&quot;&gt;Quicksort to the rescue&lt;/h2&gt;
+
+&lt;p&gt;There are plenty of &lt;a href=&quot;https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_sorts&quot;&gt;better ways&lt;/a&gt; to sort stuff. In this case, topping the list is the &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Quicksort&quot;&gt;Quicksort&lt;/a&gt;&lt;/strong&gt; algorithm.&lt;/p&gt;
+
+&lt;p&gt;Let’s line up all the movies by date released — the order doesn’t matter — and randomly pick &lt;em&gt;Captain Marvel&lt;/em&gt; to start:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/quicksort-step-1.png&quot; alt=&quot;All the Marvel movies lined up, with Captain Marvel highlighted.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Captain Marvel&lt;/em&gt; is the &lt;strong&gt;pivot.&lt;/strong&gt; Our job is to re-order the list so every movie that’s worse goes on the left, and every movie that’s better goes on the right.&lt;/p&gt;
+
+&lt;p&gt;It doesn’t matter what order we put them in — only that they’re better or worse than the pivot.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/quicksort-step-2.png&quot; alt=&quot;We've sorted the movies to be better or worse than Captain Marvel.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ater sorting (your choices might be different!), we now know Captain Marvel is No. 16 on list. To do this, we had to make 21 comparisons — same as we did before. But the next step is different. We consider the better-than and worse-than movies as &lt;em&gt;their own sets,&lt;/em&gt; and run the method again.&lt;/p&gt;
+
+&lt;p&gt;So in the “worse-than-Captain Marvel” set, we randomly choose &lt;em&gt;Thor: The Dark World&lt;/em&gt; as our pivot. In the “better-than-Captain Marvel” set, we choose &lt;em&gt;Captain America: Civil War.&lt;/em&gt; For each of these sets, we again sort the movies by whether or not they’re worse than the pivot.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mcu-ninja-1-images/quicksort-step-3.png&quot; alt=&quot;Now we've sorted each subset as well — marking Thor: The Dark World as No. 20 and Captain America: Civil War as No. 8.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we have three movies properly ordered — with only 40 comparisons, instead of 60 with our previous method. That’s a huge improvement.&lt;/p&gt;
+
+&lt;p&gt;That kind of efficiency isn’t guaranteed. Quicksort works best when the pivots land in the middle of a given set — in this case, the movie that’s chosen is average, not terrible or spectacular. But unless you’re really unlucky, Quicksort will work far better than brute force.&lt;/p&gt;
+
+&lt;h2 id=&quot;building-a-proof-of-concept&quot;&gt;Building a proof of concept&lt;/h2&gt;
+
+&lt;p&gt;Before I built out the full &lt;a href=&quot;http://www.mcu.ninja&quot;&gt;mcu.ninja&lt;/a&gt; app, I wanted to make sure this method actually made sense. In practice, would it work to present people with pairs of movies and having Quicksort figure out which to show next?&lt;/p&gt;
+
+&lt;p&gt;So to test, I built &lt;a href=&quot;https://github.com/arm5077/mcu-rankings-cli&quot;&gt;mcu-rankings-cli,&lt;/a&gt; a command line interface script written in Node.&lt;/p&gt;
+
+&lt;video autoplay=&quot;&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;source src=&quot;/assets/mcu-ninja-1-images/cli-example.mp4&quot; /&gt;&lt;/video&gt;
+
+&lt;p&gt;Pretty simple — it gives you two options, and you pick one. On the back end, I wrote a &lt;code class=&quot;highlighter-rouge&quot;&gt;MovieList&lt;/code&gt; class that handled making match-ups and accepting votes from the user. On the front end, the &lt;a href=&quot;https://www.npmjs.com/package/inquirer&quot;&gt;inquirer&lt;/a&gt; makes the CLI magic happen.&lt;/p&gt;
+
+&lt;p&gt;The method seemed to work pretty well. Sometimes the pivot movies weren’t great — it’s annoying to get a stinker like &lt;em&gt;The Incredible Hulk&lt;/em&gt; and have to vote against it 20-something times. Later on, I decided to use Rotten Tomatoes data to choose the most “average” movie in a set as the pivot.&lt;/p&gt;
+
+&lt;p&gt;But otherwise, success. Next week, I’ll talk about how the final swipe-y UI came to be!&lt;/p&gt;
+
+&lt;h2 id=&quot;for-the-record-heres-my-list-a-namemy-lista&quot;&gt;For the record, here’s my list: &lt;a name=&quot;my-list&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Avengers&lt;/li&gt;
+  &lt;li&gt;Iron Man&lt;/li&gt;
+  &lt;li&gt;Guardians of the Galaxy&lt;/li&gt;
+  &lt;li&gt;Thor: Ragnarok&lt;/li&gt;
+  &lt;li&gt;Avengers: Infinity War&lt;/li&gt;
+  &lt;li&gt;Captain America: The Winter Soldier&lt;/li&gt;
+  &lt;li&gt;Captain America: Civil War&lt;/li&gt;
+  &lt;li&gt;Avengers: Endgame&lt;/li&gt;
+  &lt;li&gt;Black Panther&lt;/li&gt;
+  &lt;li&gt;Spider-Man: Homecoming&lt;/li&gt;
+  &lt;li&gt;Iron Man 3&lt;/li&gt;
+  &lt;li&gt;Captain America: The First Avenger&lt;/li&gt;
+  &lt;li&gt;Captain Marvel&lt;/li&gt;
+  &lt;li&gt;Ant-Man&lt;/li&gt;
+  &lt;li&gt;Avengers: Age of Ultron&lt;/li&gt;
+  &lt;li&gt;Doctor Strange&lt;/li&gt;
+  &lt;li&gt;Ant-Man and the Wasp&lt;/li&gt;
+  &lt;li&gt;Thor&lt;/li&gt;
+  &lt;li&gt;Guardians of the Galaxy Vol. 2&lt;/li&gt;
+  &lt;li&gt;Thor 2&lt;/li&gt;
+  &lt;li&gt;Iron Man 2&lt;/li&gt;
+  &lt;li&gt;The Incredible Hulk&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I love superhero movies. Specifically, Marvel superhero movies. Specifically specifically, Marvel Cinematic Universe movies — Iron Man, Captain America, Thor, and so on. Never thought I’d be that guy, but somehow I’ve seen every single MCU movie — 22 in total.</summary></entry><entry><title type="html">A data interactive that challenges people to draw a trend, and then shows them reality</title><link href="http://localhost:4000/2019/01/13/making-the-guess-graph-module.html" rel="alternate" type="text/html" title="A data interactive that challenges people to draw a trend, and then shows them reality" /><published>2019-01-13T00:00:00-05:00</published><updated>2019-01-13T00:00:00-05:00</updated><id>http://localhost:4000/2019/01/13/making-the-guess-graph-module</id><content type="html" xml:base="http://localhost:4000/2019/01/13/making-the-guess-graph-module.html">&lt;p&gt;In the thick of the 2016 campaign, then-candidate Donald Trump frequently claimed that life in America was becoming &lt;a href=&quot;https://twitter.com/realDonaldTrump/status/752834632907943936&quot;&gt;more dangerous.&lt;/a&gt; He didn’t have to work hard to convince folks. Gallup pollsters found &lt;a href=&quot;http://www.gallup.com/poll/190475/americans-concern-crime-climbs-year-high.aspx&quot;&gt;more than half&lt;/a&gt; of Americans worried “a great deal” about crime and violence, and the same proportion expected gun violence to go up.&lt;/p&gt;
 
 &lt;p&gt;The problem? Those opinions weren’t based on facts. Violence in the United States has declined almost every year for the past 25 years. Trump’s comments were well-timed — the national murder rate did briefly jot up in 2015 and 2016, largely driven by violence in a few cities — but the overwhelming trend is negative. New York City, which ranks near the &lt;a href=&quot;https://today.yougov.com/topics/lifestyle/articles-reports/2014/09/15/what-is-americas-most-dangerous-city&quot;&gt;bottom&lt;/a&gt; in polls on public perception of crime and violence, is actually one of the &lt;a href=&quot;https://www.brennancenter.org/sites/default/files/publications/2018_09_CrimeAnalysisV6.pdf&quot;&gt;safest places&lt;/a&gt; to live in the country.&lt;/p&gt;
 
@@ -619,177 +730,4 @@ npm install node-record-lpcm16 --save
   &lt;li&gt;&lt;strong&gt;The Mirai bot is still out in force.&lt;/strong&gt; Many of the hack attempts used the same sequence of password (and shell commands) outlined in the Mirai botnet’s code. It appears other folks have spun up multiple copies of the bot and are busy recruiting unsuspecting servers.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;My toaster experiment isn’t a situation most consumers will face. But it’s an accurate analog to the plight of the kinds of unsecured devices harnessed by the Mirai botnet, and shows how quickly they can be pulled into a hacker’s thrall.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out the worm that recruited the botnet targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.</summary></entry><entry><title type="html">Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button</title><link href="http://localhost:4000/2016/08/19/make-every-week-sweetgreen-salad-button.html" rel="alternate" type="text/html" title="Make Every Week, Part 4: Ordering a Sweetgreen salad at the press of a button" /><published>2016-08-19T00:00:00-04:00</published><updated>2016-08-19T00:00:00-04:00</updated><id>http://localhost:4000/2016/08/19/make-every-week-sweetgreen-salad-button</id><content type="html" xml:base="http://localhost:4000/2016/08/19/make-every-week-sweetgreen-salad-button.html">&lt;p&gt;Eesh! So far, #MakeEveryWeek has been more like #MakeEveryThreeWeeks. My apologies. Sometimes the making is a lot easier than the blogging.&lt;/p&gt;
-
-&lt;p&gt;This week’s projects focuses on a (sort of) healthy addiction of mine: salads from &lt;a href=&quot;http://www.sweetgreen.com/&quot;&gt;Sweetgreen&lt;/a&gt;, a restaurant chain from D.C. that serves up a mean quinoa-and-kale. Though technically fast food, Sweetgreen doesn’t feel or taste like your regular rushed-lunch fare. It’s my go-to place to pick up lunch if I didn’t bring left overs from home, and it doesn’t hurt that their Foggy Bottom location is a nice walk from &lt;em&gt;The Atlantic&lt;/em&gt;’s offices.&lt;/p&gt;
-
-&lt;p&gt;But a lot of people feel the same way. The line around noon can get verrrrry long.&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
-  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Unknowingly showed up to sweetgreen in the middle of lunch hour. Now I'm stuck in this long ass line.— Sextina Aquafina (@yosoymichael) &lt;a href=&quot;https://twitter.com/yosoymichael/status/765229537756061696&quot;&gt;August 15, 2016&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
-  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;There was barely anyone in line today at &lt;a href=&quot;https://twitter.com/sweetgreen&quot;&gt;@sweetgreen&lt;/a&gt;. &lt;a href=&quot;https://twitter.com/hashtag/SignOfTheApocalypse?src=hash&quot;&gt;#SignOfTheApocalypse&lt;/a&gt;— Heather Benjamin (@Heather_Benj) &lt;a href=&quot;https://twitter.com/Heather_Benj/status/764160904825036800&quot;&gt;August 12, 2016&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;One remedy to this is Sweetgreen’s online ordering system, which signals the kitchen to make a salad at a certain time and leave it on a shelf for pick-up. That way, you can pop in, grab and leave, instead of waiting for the salad to be made in front of you.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/salad1.jpg&quot; alt=&quot;Delicious, pick-up-able salad.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Last week, I got my second Amazon IoT button—they’re finally back in stock. Then the thought struck me. &lt;strong&gt;Is there a way to hook into Sweetgreen’s ordering system and buy a salad with a simple button press?&lt;/strong&gt; Could my dream of seamless, on-demand salad delivery come true? Granted, if I had such a device, I’d probably spend entirely too much on salads. But it was too neat of an idea to pass up.&lt;/p&gt;
-
-&lt;p&gt;Since Sweetgreen doesn’t publish a documented ordering API (and who does?), I had to dive deep into the network traffic of the average salad order.&lt;/p&gt;
-
-&lt;h2 id=&quot;figuring-out-how-sweetgreen-works&quot;&gt;Figuring out how Sweetgreen works&lt;/h2&gt;
-
-&lt;p&gt;To complete a Sweetgreen transaction, I need to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;log in using my email and password, saving the resulting cookie;&lt;/li&gt;
-  &lt;li&gt;add a salad to my shopping bag;&lt;/li&gt;
-  &lt;li&gt;complete the order with my credit card information.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fortunately, Sweetgreen has a relatively simple (though undocumented) API, accessible through &lt;a href=&quot;https://order.sweetgreen.com/api/&quot;&gt;https://order.sweetgreen.com/api/&lt;/a&gt;. After poking around the website (and adding/removing quite a few salads from my shopping bag), it looks like this is the workflow I’ll have to follow:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Send a &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/customers/login_or_register&lt;/code&gt; with my username and password;&lt;/li&gt;
-  &lt;li&gt;Add the salad to my bag with a &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/line_items&lt;/code&gt;, along with a JSON object describing the order;&lt;/li&gt;
-  &lt;li&gt;Get the “order” JSON by sending a &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/session&lt;/code&gt;, saving the &lt;code class=&quot;highlighter-rouge&quot;&gt;order&lt;/code&gt; object and my billing information;&lt;/li&gt;
-  &lt;li&gt;Send a &lt;code class=&quot;highlighter-rouge&quot;&gt;PUT&lt;/code&gt; request to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://order.sweetgreen.com/api/orders/[order id]&lt;/code&gt;, packaging my combined order+billing object.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I’m writing this code in Node.js using the &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt; module, so I’m going to start off my script by including the library and setting up the jar where I’ll store the session cookie (so my authentication will stick once I log in.)&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;jar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Next up, I’ll log in with my Sweetgreen credentials.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Log in&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/customers/login_or_register&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INSERT_SWEETGREEN_EMAIL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INSERT_SWEETGREEN_PASSWORD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// Rest of code goes here&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;That call returns a massive JSON object, holding previous orders, current shopping status, and billing account info. Since the final package I send to Sweetgreen to complete the order needs some of this account info, I’m going to grab it now.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_account_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_accounts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;We’re now set to add salads to my shopping bag.&lt;/p&gt;
-
-&lt;h2 id=&quot;adding-items-and-completing-the-order&quot;&gt;Adding items and completing the order&lt;/h2&gt;
-
-&lt;p&gt;Each salad object is actually pretty simple. At its most basic, it just needs a &lt;code class=&quot;highlighter-rouge&quot;&gt;quantity&lt;/code&gt;, a &lt;code class=&quot;highlighter-rouge&quot;&gt;product_id&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;restaurant_id&lt;/code&gt;. The Foggy Bottom ID is &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;, so I’ll use that for every order. Here’s the object for a Harvest Bowl:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;harvest_bowl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;line_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;139&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;restaurant_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;But! Things get more complicated if you want to modify a base recipe. For example, I love the Guacamole Greens salad—but only if I can replace the red onion with corn. In the API, you need to drop these changes as a series of &lt;code class=&quot;highlighter-rouge&quot;&gt;options&lt;/code&gt; objects. Here’s an object for my modded recipe, pulled with some slight modifications from the network traffic.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;guac_greens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;line_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;custom_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;andrew's special guac with no onions success&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;134&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;13929&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;remove red onion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;out_of_stock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;parent_option_group_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;973&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;option_group_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;975&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;ingredient_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;64&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;13941&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sub raw corn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;out_of_stock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;quantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;parent_option_group_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;975&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;option_group_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[],&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;ingredient_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;61&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;line_item_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;restaurant_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Constructing that object is the hard part, but adding it to the shopping bag is pretty easy. Here comes another POST request:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/line_items&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;guac_greens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;line_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ignored_order_id&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Notice how I saved the order ID? That’s because I’ll need it very shortly to complete the transaction. But first, I’ve got to construct the final order object. Turns out that’s basically a copy of the object you get by calling the &lt;code class=&quot;highlighter-rouge&quot;&gt;/session&lt;/code&gt; endpoint, along with some additional billing info and other ordering ephemera. After some trial and error, I figured out it was easiest to make a call to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/session&lt;/code&gt; endpoint, grab the array of &lt;code class=&quot;highlighter-rouge&quot;&gt;orders&lt;/code&gt;, filter it down to the latest order and tack on the required miscellaneous info.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Get final order &lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/session&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// Grab latest order object&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order_id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// Append billing stuff and give &lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_account_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wanted_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;available_wanted_times_tuples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;original&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;complete&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;billing_account&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;billing_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;After that, all you need is a &lt;code class=&quot;highlighter-rouge&quot;&gt;PUT&lt;/code&gt; request referencing the &lt;code class=&quot;highlighter-rouge&quot;&gt;order_id&lt;/code&gt; and you’re good to go:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://order.sweetgreen.com/api/orders/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;did it!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Sweetgreen helpfully sends an email after you post an order, so you’ll know when your order goes through.&lt;/p&gt;
-
-&lt;h2 id=&quot;boom-salad-en-route&quot;&gt;Boom! Salad en route&lt;/h2&gt;
-
-&lt;p&gt;I had to make some slight modifications to the code to get it ready for AWS Lambda, the service powering the IoT button, but it was otherwise pretty much ready to go. I also wrote a quick function that randomly chooses one of three salads to order, so I have a bit of variety. The full code is &lt;a href=&quot;https://github.com/arm5077/sweetgreen-button&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here’s the button posted above my desk at work:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/salad2.jpg&quot; alt=&quot;Button posted on my desk&quot; /&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Eesh! So far, #MakeEveryWeek has been more like #MakeEveryThreeWeeks. My apologies. Sometimes the making is a lot easier than the blogging.</summary></entry></feed>
+&lt;p&gt;My toaster experiment isn’t a situation most consumers will face. But it’s an accurate analog to the plight of the kinds of unsecured devices harnessed by the Mirai botnet, and shows how quickly they can be pulled into a hacker’s thrall.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out the worm that recruited the botnet targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.</summary></entry></feed>

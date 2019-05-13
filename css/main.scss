@@ -107,7 +107,7 @@ p {
 
 }
 
-ul {
+ul, ol {
   font-size: 20px;
   line-height: 1.55em;
   width: 100%;
@@ -210,7 +210,7 @@ ul {
   	
 	.posts {
 
-		ul {
+		ul,ol {
 			list-style: none;
 			padding: 0;
 			margin: 40px 0px 30px;
@@ -287,17 +287,22 @@ h1, h2, .date, .navigation, p {
       margin: auto;
       font-weight: 300
     }
+    
+    video {
+      max-width: 700px;
+      margin: auto;
+      display: block;
+    }
   
 	}
 	
 	.date {
 	    margin-bottom: 5px;
-	    margin-right: 6px;
 	    margin-top: 3px;
 	    top: 3px;
 	}
 	
-	ul {
+	ul, ol {
     
 	  li { 
     
@@ -545,7 +550,7 @@ pre {
 			
 		}
     
-    ul {
+    ul, ol {
       width: 100%;
       box-sizing: border-box;
       font-size: 17px;
