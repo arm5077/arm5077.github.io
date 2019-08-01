@@ -1,4 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-13T11:10:59-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Building a web app to rank my favorite Marvel superhero movies, part one</title><link href="http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one.html" rel="alternate" type="text/html" title="Building a web app to rank my favorite Marvel superhero movies, part one" /><published>2019-05-07T00:00:00-04:00</published><updated>2019-05-07T00:00:00-04:00</updated><id>http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one</id><content type="html" xml:base="http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one.html">&lt;p&gt;I love superhero movies. Specifically, Marvel superhero movies. Specifically specifically, Marvel Cinematic Universe movies — Iron Man, Captain America, Thor, and so on. Never thought I’d be that guy, but somehow I’ve seen &lt;em&gt;every single MCU movie&lt;/em&gt; — 22 in total.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-01T16:37:44-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Why don’t we have news apps as fun as TikTok?</title><link href="http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html" rel="alternate" type="text/html" title="Why don’t we have news apps as fun as TikTok?" /><published>2019-06-15T00:00:00-04:00</published><updated>2019-06-15T00:00:00-04:00</updated><id>http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok</id><content type="html" xml:base="http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html">&lt;p&gt;I’m newly obsessed by TikTok, the social video platform that combines the best parts of Vine and a casino slot machine. Its interface is easy. IT shows me just one thing at a time. And the algorithm powering it is uncannily good at learning my tastes and serving up what I like.&lt;/p&gt;
+
+&lt;iframe height=&quot;700&quot; src=&quot;https://www.tiktok.com/embed/6646016679396510981&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; style=&quot;margin: auto; display: block; width: 100%; max-width: 350px&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Why aren’t more news apps like this? I recognize there’s a big difference between quality journalism and funny videos, but I don’t see a single major news app emulating the awesome, serendipitous user interfaces we’re seeing from social media companies.&lt;/p&gt;
+
+&lt;p&gt;I think three things apply:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;News apps (and homepages) are generally organized around breadth.&lt;/strong&gt; They want to show you all the stuff that’s going on, instead of directing your attention to a single thing, or series of things.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;New organizations prize curation and editing, and are reluctant to surrender that judgement to algorithms.&lt;/strong&gt; (Vox and Flipboard use computer logic to determine the best homepage layout, but not the stories being displayed.)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;News apps don’t want to look frivolous.&lt;/strong&gt; A lot of the newest ways to navigate apps – swiping, tapping – have been pioneered by companies news orgs would rather not be associated with. No editor-in-chief wants to hear, “Oh, your app is just like Tinder!”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m not arguing that these positions are &lt;em&gt;wrong&lt;/em&gt; – though I look askance at being conservative for conservativeness’s sake. But I do wonder if a more serendipitous, easier-to-navigate news app would appeal to people in interstitial moments, those times when you’re waiting in line or taking a Lyft and just want something to occupy your attention.&lt;/p&gt;
+
+&lt;p&gt;A few apps (&lt;a href=&quot;https://apps.apple.com/us/app/economist-espresso/id896628003&quot;&gt;Economist Espresso,&lt;/a&gt; &lt;a href=&quot;https://apps.apple.com/us/app/refinery29-this-am-top-8-news-headlines-updates/id988472315&quot;&gt;Refinery29 This AM,&lt;/a&gt; the now-defunct &lt;a href=&quot;https://digiday.com/media/quartz-is-shutting-down-its-quartz-brief-mobile-app-july-1/&quot;&gt;Quartz Briefing&lt;/a&gt;) have tried to hit this target. But right now, my go-to is TikTok or Instagram. Is there room for something more intellectually fulfilling?&lt;/p&gt;
+
+&lt;h2 id=&quot;a-proposal&quot;&gt;A proposal&lt;/h2&gt;
+&lt;p&gt;I’d argue a place like The Atlantic actually has a good mix of content for a TikTok-type app. Instead of simply relaying the news, most of its stories consider a question or pose an argument. And a lot of its stuff falls nicely into the “wonder-and-delight” category that could grab people immediately.&lt;/p&gt;
+
+&lt;p&gt;Here’s how it would work:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;First, get good content.&lt;/strong&gt; Pull The Atlantic’s 500 best-performing stories, and strip out political news. That way, we get stories we know people have enjoyed, but are also less likely to be flash-in-the-pan spot coverage.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Guarantee a surprise.&lt;/strong&gt; Every time the reader opens the app, it shows them a new single-screen promo to an interesting story. It can be simple – maybe just the headline, a deck, and the amount of time it would take to read the full story.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Give them a choice.&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;If the reader is interested in a story, they tap it. A screen pops up with the full story text, which they can scroll through or dismiss.&lt;/li&gt;
+      &lt;li&gt;If they’re not interested, they swipe up. Boom! They get a new story.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Keep doing this forever.&lt;/strong&gt; Once the reader swipes through the first set of stories, we pull another 500.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/atlantic-tiktok-images/wireframe.png&quot; alt=&quot;Here's a wireframe of the proposal.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’d need to record which stories they’ve read or swipe through, so we avoid showing them again. And it might be nice to have a “save-for-later” function – if they’re interested but don’t have enough time in the elevator, they can bookmark a story.&lt;/p&gt;
+
+&lt;p&gt;Now, I’m not saying this replaces an organization’s news app. It’s still important to have the editors’ voice saying, “These are the stories you &lt;em&gt;should&lt;/em&gt; read!” But as a complimentary app, or even a tab within a larger site, I think this could be pretty fun.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I’m newly obsessed by TikTok, the social video platform that combines the best parts of Vine and a casino slot machine. Its interface is easy. IT shows me just one thing at a time. And the algorithm powering it is uncannily good at learning my tastes and serving up what I like.</summary></entry><entry><title type="html">Building a web app to rank my favorite Marvel superhero movies, part II</title><link href="http://localhost:4000/2019/05/14/mcu-ninja-ranking-part-two.html" rel="alternate" type="text/html" title="Building a web app to rank my favorite Marvel superhero movies, part II" /><published>2019-05-14T00:00:00-04:00</published><updated>2019-05-14T00:00:00-04:00</updated><id>http://localhost:4000/2019/05/14/mcu-ninja-ranking-part-two</id><content type="html" xml:base="http://localhost:4000/2019/05/14/mcu-ninja-ranking-part-two.html">&lt;p&gt;&lt;em&gt;Catch up: &lt;a href=&quot;http://www.andrewmcgill.me/2019/05/07/mcu-ninja-ranking-part-one.html&quot;&gt;In this post&lt;/a&gt;, I describe how my Marvel fandom compelled me to make an app that allows me to objectively rank my favorite superhero movies. I’ve settled on using the Quicksort algorithm, and have built a command-line proof-of-concept. Now, I just need to build the real thing.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In order for &lt;a href=&quot;http://mcu.ninja&quot;&gt;mcu.ninja&lt;/a&gt; to work, the app had to do a few things at once:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;It needed to present dozens of pairs of movies to the user in sequence.&lt;/strong&gt; Quicksort relies on comparing a &lt;em&gt;test item&lt;/em&gt; to a &lt;em&gt;pivot.&lt;/em&gt; As the algorithm rolled through the Marvel Cinematic Universe, it would show a bunch of 1-1 matchups, like &lt;em&gt;Captain Marvel&lt;/em&gt; vs. &lt;em&gt;The Incredible Hulk.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Picking one movie over the other had to be super simple.&lt;/strong&gt; People needed to quickly vote, and they’re not going to do it if it’s hard.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;What’s more, it has to be super simple even after you do it dozens of times.&lt;/strong&gt; When you’re trying to order a list of 20+ movies, you’re going to run through a &lt;em&gt;lot&lt;/em&gt; of comparisons.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;It has to make the choice easy to understand.&lt;/strong&gt; A lot of superhero movie titles sound the same, and there are many, many sequels. This app had to make &lt;em&gt;Iron Man 3&lt;/em&gt; and &lt;em&gt;Guardians of the Galaxy Vol 2&lt;/em&gt; look distinct.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Not easy!&lt;/p&gt;
+
+&lt;p&gt;But I drew inspiration from another app on the market that’s really good at presenting a bunch of choices quickly: &lt;strong&gt;Tinder.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-swipe-y-solution&quot;&gt;The swipe-y solution&lt;/h2&gt;
+&lt;p&gt;In a way, Tinder has a similar goal. You’re shown someone’s profile and asked to make a decision — are you interested in them or not? And since they’re essentially turning dating into a volume play, they want you to be able to rip through a bunch of options &lt;em&gt;fast.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;To make this happen, Tinder refined swiping. If you like someone, you swipe right. If you’re not interested, you swipe left. You can blaze through dozens of profiles in a few minutes.&lt;/p&gt;
+
+&lt;p&gt;Turns out this mechanic works pretty well for my app, too. First, I show them the pivot movie. I then run a series of other movies past them. Just like Tinder, if they like the test movie better, they swipe right. Otherwise, they swipe left.&lt;/p&gt;
+
+&lt;p&gt;Once the pivot movie has run out of comparisons, we choose another pivot, and the swiping continues.&lt;/p&gt;
+
+&lt;p&gt;Granted, Tinder isn’t asking user to compare &lt;em&gt;two&lt;/em&gt; people and pick their ideal date — that’s where the comparison to mcu.ninja breaks down. But swiping just made sense. It collapses a long list of comparisons into a single series of a few dozen swipes, resulting in a perfectly sorted list.&lt;/p&gt;
+
+&lt;p&gt;Here’s how it looked in practice:&lt;/p&gt;
+
+&lt;video class=&quot;video&quot; style=&quot;max-width: 400px&quot; src=&quot;/assets/mcu-ninja-2/swipe-demonstration.mp4&quot; muted=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot; plays-inline=&quot;&quot;&gt;&lt;/video&gt;
+
+&lt;h2 id=&quot;some-findings-from-user-testing&quot;&gt;Some findings from user testing&lt;/h2&gt;
+&lt;p&gt;I learned a few important things from putting the app in front of people.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Swiping is harder than I thought.&lt;/strong&gt; People sometimes forgot which direction to swipe halfway through a series. To cue them, I added labels to the swipe animation making the comparison clear: “The Incredible Hulk is Worse 👎” and “The Incredible Hulk is better 👍”.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;You need an undo button.&lt;/strong&gt; Making a fast-paced app means people will make mistakes. I ended up storing the entire decision chain in memory — the yes-or-no vote on every movie pair. That way, people could jump back if they realized they swiped the wrong way.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Showing people how many questions they have left is hard.&lt;/strong&gt; The tough thing about Quicksort is that it doesn’t guarantee finding a solution within a set number of sets, making a progress bar tricky. I ended up having &lt;em&gt;two&lt;/em&gt; – one at the bottom of the screen, to show how far along you were in the given comparison set, and another at the top, for how close you were to getting your final list. I’m still not sure it works great.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-it-turned-out-and-next-steps&quot;&gt;How it turned out, and next steps&lt;/h2&gt;
+&lt;p&gt;I really enjoyed seeing my friends use the app and post their lists.&lt;/p&gt;
+
+&lt;p&gt;But it became clear that it’s still not super easy to share your results, even though the app offers a Twitter and SMS share feature. Most people ended up taking screenshots and sharing those. Long-term, I’d love to have the app produce a card image that you could export and send to other MCU fans, or post on social media.&lt;/p&gt;
+
+&lt;p&gt;Also, this is just a demo website/web app. While I don’t think there’s a &lt;em&gt;huge&lt;/em&gt; demand for ranking favorite superheo movies, it might be interesting to convert it to an iOS app at some point.&lt;/p&gt;
+
+&lt;p&gt;But most importantly, I’m interested to see how this list sorting mechanic could be put to other uses. Why stop at MCU movies? I could see a version of this becoming a new quiz format.&lt;/p&gt;
+
+&lt;p&gt;Regardless, it was a lot of fun to make. If you’re reading this post first, here’s my personal list (&lt;em&gt;7/2019: I’ve updated this list to include&lt;/em&gt; Spider-Man: Far From Home.)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Avengers&lt;/li&gt;
+  &lt;li&gt;Iron Man&lt;/li&gt;
+  &lt;li&gt;Guardians of the Galaxy&lt;/li&gt;
+  &lt;li&gt;Thor: Ragnarok&lt;/li&gt;
+  &lt;li&gt;Avengers: Infinity War&lt;/li&gt;
+  &lt;li&gt;Captain America: The Winter Soldier&lt;/li&gt;
+  &lt;li&gt;Captain America: Civil War&lt;/li&gt;
+  &lt;li&gt;Avengers: Endgame&lt;/li&gt;
+  &lt;li&gt;Black Panther&lt;/li&gt;
+  &lt;li&gt;Spider-Man: Homecoming&lt;/li&gt;
+  &lt;li&gt;Spider-Man: Far From Home&lt;/li&gt;
+  &lt;li&gt;Iron Man 3&lt;/li&gt;
+  &lt;li&gt;Captain America: The First Avenger&lt;/li&gt;
+  &lt;li&gt;Captain Marvel&lt;/li&gt;
+  &lt;li&gt;Ant-Man&lt;/li&gt;
+  &lt;li&gt;Avengers: Age of Ultron&lt;/li&gt;
+  &lt;li&gt;Doctor Strange&lt;/li&gt;
+  &lt;li&gt;Ant-Man and the Wasp&lt;/li&gt;
+  &lt;li&gt;Thor&lt;/li&gt;
+  &lt;li&gt;Guardians of the Galaxy Vol. 2&lt;/li&gt;
+  &lt;li&gt;Thor 2&lt;/li&gt;
+  &lt;li&gt;Iron Man 2&lt;/li&gt;
+  &lt;li&gt;The Incredible Hulk&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Catch up: In this post, I describe how my Marvel fandom compelled me to make an app that allows me to objectively rank my favorite superhero movies. I’ve settled on using the Quicksort algorithm, and have built a command-line proof-of-concept. Now, I just need to build the real thing.</summary></entry><entry><title type="html">Building a web app to rank my favorite Marvel superhero movies, part I</title><link href="http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one.html" rel="alternate" type="text/html" title="Building a web app to rank my favorite Marvel superhero movies, part I" /><published>2019-05-07T00:00:00-04:00</published><updated>2019-05-07T00:00:00-04:00</updated><id>http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one</id><content type="html" xml:base="http://localhost:4000/2019/05/07/mcu-ninja-ranking-part-one.html">&lt;p&gt;I love superhero movies. Specifically, Marvel superhero movies. Specifically specifically, Marvel Cinematic Universe movies — Iron Man, Captain America, Thor, and so on. Never thought I’d be that guy, but somehow I’ve seen &lt;em&gt;every single MCU movie&lt;/em&gt; — 22 in total.&lt;/p&gt;
 
 &lt;p&gt;Why? Because they’re super good! There’s a reason they have an average Rotten Tomatoes score of 84%.&lt;/p&gt;
 
@@ -625,109 +738,4 @@ This probably deserves a longer answer, and at some point, I’ll write a standa
 &lt;h2 id=&quot;final-notes&quot;&gt;Final notes&lt;/h2&gt;
 &lt;p&gt;You can obviously set up your IFTTT account to do whatever you want, which is the beauty of this hack. I will note that I had a tough time getting my button to connect to my apartment WiFi until I realized it only can communicate with 2.4 GHz networks. If you’re running into connectivity issues (hint: the button’s LED will flash red three times), try poking around in your router settings.&lt;/p&gt;
 
-&lt;p&gt;Other than that, happy button-pushing!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I’m pretty nuts for Amazon’s internet-of-things button. I’ve already made a Slack doorbell for my office and a push-to-order Sweetgreen button. But both of these projects required a fair amount of programming.</summary></entry><entry><title type="html">Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition</title><link href="http://localhost:4000/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html" rel="alternate" type="text/html" title="Make Every Week, Part 5: A real-life Harry Potter Lumos spell, using speech recognition" /><published>2016-11-22T00:00:00-05:00</published><updated>2016-11-22T00:00:00-05:00</updated><id>http://localhost:4000/2016/11/22/real-life-harry-potter-lumos-spell-snowboy</id><content type="html" xml:base="http://localhost:4000/2016/11/22/real-life-harry-potter-lumos-spell-snowboy.html">&lt;p&gt;I don’t think of myself as a &lt;em&gt;Harry Potter&lt;/em&gt; fan, but I somehow know a crapload of magic spells from the famous book series. &lt;em&gt;Alohomora&lt;/em&gt; was useful for unlocking doors; &lt;em&gt;Expelliarmus&lt;/em&gt; would disarm an opponent of her wand. But one of the simplest was &lt;em&gt;Lumos&lt;/em&gt;, which lit the tip of a wizard’s wand, along with its counterpart &lt;em&gt;Nox&lt;/em&gt;, which extinguished the light.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/lumos_harry_potter.jpg&quot; alt=&quot;Severus Snape uses the Lumos spell.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Speech recognition has always seemed a bit like magic to me, too. But as I poked around &lt;a href=&quot;https://github.com/alexa/alexa-avs-sample-app&quot;&gt;the open-source work&lt;/a&gt; being done using the Amazon Alexa Voice Service platform (which powers the Amazon Echo, Dot, etc.), I found &lt;a href=&quot;https://github.com/Kitt-AI/snowboy&quot;&gt;Snowboy&lt;/a&gt;. It’s a pretty neat “wake-word-as-service” library that’s free for hackers (real apps have to pay money), and uses machine learning to recognize the desired phrase. It’s especially nice because it doesn’t need the internet to work — after you train the algorithm online using your own voice, Snowboy gives you a downloadable file that hooks up with its library offline.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Hmm&lt;/em&gt;, I thought. &lt;em&gt;Could Snowboy help me achieve my dream of becoming an actual wizard?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Voila:&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
-  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Last week needed some Raspberry Pi-powered ACTUAL HARRY POTTER MAGIC. Explainer post coming soon &lt;a href=&quot;https://t.co/u5AK25e3MG&quot;&gt;pic.twitter.com/u5AK25e3MG&lt;/a&gt;— Andrew McGill (@andrewmcgill) &lt;a href=&quot;https://twitter.com/andrewmcgill/status/798237324043816965&quot;&gt;November 14, 2016&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;h2 id=&quot;building-the-lumos-lamp&quot;&gt;Building the Lumos Lamp&lt;/h2&gt;
-&lt;p&gt;The goal was to turn on a lamp (or several) by saying “Lumos!” out loud. Since I’m not comfortable enough with electrical engineering to hardwire a lamp’s power supply directly through my Raspberry Pi, I ended up buying the &lt;a href=&quot;https://www.adafruit.com/product/268&quot;&gt;Powerswitch Tail 2&lt;/a&gt;, essentially an extension cord that can be powered on and off programmatically by a micontroller.&lt;/p&gt;
-
-&lt;p&gt;Here are the materials I used:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Raspberry Pi 2 (Model B in my case) with Raspbian installed&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/gp/product/B00IR8R7WQ/ref=oh_aui_detailpage_o01_s00?ie=UTF8&amp;amp;psc=1&quot;&gt;A USB microphone&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.adafruit.com/product/268&quot;&gt;Powerswitch Tail 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.adafruit.com/products/826&quot;&gt;A bunch of male-female jumper wires&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/AmazonBasics-6-Outlet-Surge-Protector-2-Pack/dp/B014EKQ5AA/ref=zg_bs_10967801_1?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=G27MRDKAWFC2Q66CR6H0&quot;&gt;Generic power strip&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;First, set up the Raspberry Pi.&lt;/strong&gt; (Snowboy has &lt;a href=&quot;http://docs.kitt.ai/snowboy/#quick-start&quot;&gt;some good documentation here.&lt;/a&gt;) Presuming you’ve booted up the Pi and connected it to the internet, plug in your USB microphone. You’ll need to install some audio dependencies from the command line:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-pyaudio python3-pyaudio sox
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;You can check to see if that worked by running &lt;code class=&quot;highlighter-rouge&quot;&gt;rec test.wav&lt;/code&gt;, speaking into the microphone for a few seconds, and then &lt;code class=&quot;highlighter-rouge&quot;&gt;aplay test.wav&lt;/code&gt;. (You may need to do some more fiddling — &lt;a href=&quot;http://docs.kitt.ai/snowboy/#running-on-pi&quot;&gt;troubleshooting advice here&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;At this point, it’s probably best to set up your project folder. I used Node.js to code this project, so we need to initiate NPM and install a &lt;code class=&quot;highlighter-rouge&quot;&gt;snowboy&lt;/code&gt;, which will run our Pi’s speech recognition, &lt;code class=&quot;highlighter-rouge&quot;&gt;onoff&lt;/code&gt;, which handles switching the power source, and &lt;code class=&quot;highlighter-rouge&quot;&gt;node-record-lpcm16&lt;/code&gt;, a Node-specific audio recording library.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm init
-npm install snowboy --save
-npm install onoff --save
-npm install node-record-lpcm16 --save
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Now, train Snowboy to understand your voice.&lt;/strong&gt; I’d do this one a laptop with a built-in microphone, not your Pi. Visit &lt;a href=&quot;https://snowboy.kitt.ai/&quot;&gt;Snowboy’s site&lt;/a&gt; (Firefox seemed to work better for me), make an account and create a new hotword. After you repeat the word three times, Snowboy will give you a &lt;code class=&quot;highlighter-rouge&quot;&gt;.pmdl&lt;/code&gt; file — that’s the key. Transfer it over to your Pi; I emailed it to myself and just downloaded it from the Pi’s web browser. I ended up making two hotwords — “lumos,” to turn the light on, and “nox,” to turn it off.&lt;/p&gt;
-
-&lt;p&gt;Drop the .pmdl file into your project folder, and make &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;, which will contain your main code. &lt;a href=&quot;https://gist.github.com/arm5077/ef498a7e31e4d799431d5ce734898907&quot;&gt;Here’s what I ended up putting together,&lt;/a&gt; initializing a detector and adding two hotword models. The &lt;code class=&quot;highlighter-rouge&quot;&gt;detector.on('hotword')&lt;/code&gt; function fires whenever I say “lumos” or “nox,” so that’s where I’ve stuck the pin logic.&lt;/p&gt;
-
-&lt;p&gt;Speaking of pins…&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Time to wire this together.&lt;/strong&gt; Here’s my setup:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/lumos wiring diagram.JPG&quot; alt=&quot;The wiring setup between the Powerswitch and the Pi.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I got some basic wiring advice from &lt;a href=&quot;https://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control/overview&quot;&gt;this tutorial&lt;/a&gt;, but essentially, the purple wire connects to one of the Pi’s ground pins, and the blue wire connects to pin 15. You’ll see that I unscrewed the Powertail’s casing — the terminals were a bit hard to reach with the male end of the wire otherwise.&lt;/p&gt;
-
-&lt;p&gt;With finished, you’re probably ready to give this a shot! I connected the Powertail to an extension cord that plugged into the wall outlet, and then linked the other end of the Powertail with a regular power strip. I ended up plugging three lights into the strip — my floor lamp, a desk lamp and my architect light.&lt;/p&gt;
-
-&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;node index.js&lt;/code&gt;, you should hear a click as the Powertail switches off. (The red LED indicator stays on, so you know it’s working.) Stand back, and authoritatively say “Lumos!”&lt;/p&gt;
-
-&lt;p&gt;With any luck, the light will switch on — and you’ll officially be a member of the wizarding world.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/ron_fail.gif&quot; alt=&quot;Ron Weasley failing at being a wizard.&quot; /&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I don’t think of myself as a Harry Potter fan, but I somehow know a crapload of magic spells from the famous book series. Alohomora was useful for unlocking doors; Expelliarmus would disarm an opponent of her wand. But one of the simplest was Lumos, which lit the tip of a wizard’s wand, along with its counterpart Nox, which extinguished the light.</summary></entry><entry><title type="html">How to code a virtual Internet of Things device to tempt hackers</title><link href="http://localhost:4000/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet.html" rel="alternate" type="text/html" title="How to code a virtual Internet of Things device to tempt hackers" /><published>2016-11-02T00:00:00-04:00</published><updated>2016-11-02T00:00:00-04:00</updated><id>http://localhost:4000/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet</id><content type="html" xml:base="http://localhost:4000/2016/11/02/making-a-honeypot-to-tempt-the-mirai-botnet.html">&lt;p&gt;Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out &lt;a href=&quot;https://github.com/jgamblin/Mirai-Source-Code&quot;&gt;the worm that recruited the botnet&lt;/a&gt; targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.&lt;/p&gt;
-
-&lt;p&gt;Scanning the internet for open ports, the Mirai worm connected to unsecured servers and ran through a common dictionary of passwords, including &lt;code class=&quot;highlighter-rouge&quot;&gt;xc3511&lt;/code&gt;, which unlocked the webcams. (There’s a good writeup on the mechanics of the bot &lt;a href=&quot;https://www.incapsula.com/blog/malware-analysis-mirai-ddos-botnet.html&quot;&gt;here.&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;Let me first say that &lt;a href=&quot;https://www.wired.com/2016/10/internet-outage-webcam-dvr-botnet/&quot;&gt;this didn’t affect many residential users.&lt;/a&gt; Very few people plug their devices directly into their modem; pretty much everyone filters their traffic through a router, which has ample safeguards. Plus, many of the devices targeted by Mirai were super old.&lt;/p&gt;
-
-&lt;p&gt;All the same, I wondered if this was really a big deal. The internet is huge—there are &lt;em&gt;so many&lt;/em&gt; IPv4 addresses out there. Even if I had been playing fast and loose with security, weren’t the odds astronomically small that a hacker would randomly happen across my server and take notice?&lt;/p&gt;
-
-&lt;p&gt;So I devised an experiment.&lt;/p&gt;
-
-&lt;h2 id=&quot;my-fake-web-toaster&quot;&gt;My fake web toaster&lt;/h2&gt;
-&lt;p&gt;I decided to set up a honeypot—a purposefully unsecured server that would give hackers the illusion of control, but would actually record their keystrokes and IP addresses. I could have used a Raspberry Pi and connected it to my home router (using port forwarding to bypass security), but in the interest of time, I ended up running a virtual server through Amazon’s EC2 service.&lt;/p&gt;
-
-&lt;p&gt;I wrote &lt;a href=&quot;https://github.com/arm5077/mirai-honeypot/blob/master/index.js&quot;&gt;a Node script&lt;/a&gt; that mimicked a Telnet login on port 23, asking for a username and password, and delivering a faux shell prompt. To a hacker’s scanning script, it would look like a real Telnet server. In honor of one of the internet’s &lt;a href=&quot;http://www.livinginternet.com/i/ia_myths_toast.htm&quot;&gt;first connected devices,&lt;/a&gt; I had it masquerade as a web-connected toaster. Here’s what the hacker would have seen when they tried to log in:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/intro-cli.gif&quot; alt=&quot;The fake command line interface.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I set the thing up and stepped away, expecting to wait a while before recording a hacking attempt. Wrong. The first unauthorized login came within an hour, using &lt;code class=&quot;highlighter-rouge&quot;&gt;root:root&lt;/code&gt; as login credentials.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/hack-attempt.gif&quot; alt=&quot;The fake command line interface.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Over the course of the next 12 hours, the server registered around 300 attempted hacks. I wrote about this experiment for &lt;em&gt;The Atlantic&lt;/em&gt; &lt;a href=&quot;https://www.theatlantic.com/technology/archive/2016/10/we-built-a-fake-web-toaster-and-it-was-hacked-in-an-hour/505571/&quot;&gt;here&lt;/a&gt; (and talked about it on &lt;a href=&quot;http://www.npr.org/sections/alltechconsidered/2016/11/01/500253637/an-experiment-shows-how-quickly-the-internet-of-things-can-be-hacked&quot;&gt;&lt;em&gt;All Things Considered&lt;/em&gt;!&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h2 id=&quot;what-does-this-tell-us&quot;&gt;What does this tell us?&lt;/h2&gt;
-&lt;p&gt;I admit that this project is flawed in a few ways:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;It wasn’t a real IoT device.&lt;/strong&gt; This doesn’t bother me quite as much; the Mirai bot doesn’t seem to exploit any device-specific security bugs, so a generic server with an open port fills the role fine. But there’s no doubt that &lt;em&gt;other&lt;/em&gt; worms take advantage of weaknesses inherent to specific IoT gadgets, so it would be interesting to more closely simulate them.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;I didn’t conduct the test over residential wireless.&lt;/strong&gt; I bet hackers closely monitor Amazon’s IP range, looking for unsecured server instances spun up by rookies. If I had run my script through my apartment’s internet connection, I probably would have seen fewer login attempts. That said, the security folks I spoke with agreed any unsecured server would have eventually been breached, probably within a day to a week.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Most consumer IoT devices don’t connect to the internet directly.&lt;/strong&gt; Like I said above, most routers will kill the most obvious routes hackers use to gain control of computers. So the average person hooking up a webcam to their WiFi is probably OK. It would be interesting to simulate the security defects of older routers, and try to get a sense of how many of those exist in the wild.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;IPv6 might solve these problems.&lt;/strong&gt; The new protocol allows for &lt;em&gt;way&lt;/em&gt; more possible addresses—like, 7.9x10&lt;sup&gt;28&lt;/sup&gt;. Assuming addresses were randomly distributed (and I have no idea if they will be, or anything about this protocol beyond what I’ve read on Wikipedia, to be honest), the sheer amount of territory hackers would have to cover might give me the effective anonymity I thought I already had.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I did get a few tweets that linked to this &lt;a href=&quot;https://xkcd.com/350/&quot;&gt;xkcd comic&lt;/a&gt;, the thought being that my experiment is nothing new: Security folks have been setting out unsecured honeypots for years.&lt;/p&gt;
-
-&lt;p&gt;That said, I think this story illustrates a few things that most people didn’t know:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;The Internet isn’t that big (not yet), and it’s packed with hacking scripts.&lt;/strong&gt; Bots scan the IPv4 space frequently enough that nearly every computer that’s not behind a firewall can count on being recorded in less than a day.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The Mirai bot is still out in force.&lt;/strong&gt; Many of the hack attempts used the same sequence of password (and shell commands) outlined in the Mirai botnet’s code. It appears other folks have spun up multiple copies of the bot and are busy recruiting unsuspecting servers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;My toaster experiment isn’t a situation most consumers will face. But it’s an accurate analog to the plight of the kinds of unsecured devices harnessed by the Mirai botnet, and shows how quickly they can be pulled into a hacker’s thrall.&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">Earlier this month, hackers used a massive botnet to spam Dyn, a domain name service provider, and block access to dozens of popular websites. It turns out the worm that recruited the botnet targeted IP-connected devices, including an old brand of webcam popular in warehouses and industrial settings.</summary></entry></feed>
+&lt;p&gt;Other than that, happy button-pushing!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I’m pretty nuts for Amazon’s internet-of-things button. I’ve already made a Slack doorbell for my office and a push-to-order Sweetgreen button. But both of these projects required a fair amount of programming.</summary></entry></feed>

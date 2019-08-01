@@ -128,7 +128,7 @@ ul, ol {
 	width: 100%;
 	margin: 0px auto;
   box-sizing: border-box;
-  padding: 0px 10px;
+  padding: 0px 20px;
 }
 	
 .home {
@@ -279,7 +279,7 @@ h1, h2, .date, .navigation, p {
 			transform: translateX(-50%);
       border: 1px solid #ccc;
 		}
-			
+    	
     blockquote {
       border-left: 10px solid #eee;
       padding: 20px;
@@ -290,7 +290,7 @@ h1, h2, .date, .navigation, p {
     
     video {
       max-width: 700px;
-      margin: auto;
+      margin: 10px auto;
       display: block;
     }
   
@@ -334,10 +334,10 @@ h1, h2, .date, .navigation, p {
 	}
 	
 	.footer {
+    box-sizing: border-box;
 		background-color: #eee;
-		padding-top: 50px;
+		padding: 50px 25px;
 		margin-top: 50px;
-		padding-bottom: 50px;
 	}
 		
 }

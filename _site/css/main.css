@@ -57,7 +57,7 @@ h1, h2, .date, .navigation, p { max-width: 670px; margin-left: auto; margin-righ
 .page .page-body h2 { margin-top: 40px; }
 .page .page-body img { width: 100%; max-width: 700px; margin: 10px 0px; position: relative; left: 50%; transform: translateX(-50%); border: 1px solid #ccc; }
 .page .page-body blockquote { border-left: 10px solid #eee; padding: 20px; max-width: 630px; margin: auto; font-weight: 300; }
-.page .page-body video { max-width: 700px; margin: auto; display: block; }
+.page .page-body video { max-width: 700px; margin: 10px auto; display: block; }
 .page .date { margin-bottom: 5px; margin-top: 3px; top: 3px; }
 .page ul li, .page ol li { margin-bottom: 15px; }
 .page .navigation { margin-bottom: 30px; margin-top: 20px; }

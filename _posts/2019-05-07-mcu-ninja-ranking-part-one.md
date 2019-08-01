@@ -1,5 +1,5 @@
 ---
-title: "Building a web app to rank my favorite Marvel superhero movies, part one"
+title: "Building a web app to rank my favorite Marvel superhero movies, part I"
 layout: post
 desc: "How's a superhero fan supposed to overcome recency bias in rating their favorite movies? Uh, how does complicated math sound?"
 ---

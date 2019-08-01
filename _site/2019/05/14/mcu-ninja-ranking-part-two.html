@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3293083-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-3293083-5');
+  </script>
+  
+	<title>
+		
+			Building a web app to rank my favorite Marvel superhero movies, part II | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="I needed a way to help people blaze through a bunch of yes-or-no decisions very quickly. Turns out there‘s an app that's already figured this out: Tinder." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Building a web app to rank my favorite Marvel superhero movies, part II</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			May
+			  
+			14,
+			2019
+		</div>
+
+		<p><em>Catch up: <a href="http://www.andrewmcgill.me/2019/05/07/mcu-ninja-ranking-part-one.html">In this post</a>, I describe how my Marvel fandom compelled me to make an app that allows me to objectively rank my favorite superhero movies. I’ve settled on using the Quicksort algorithm, and have built a command-line proof-of-concept. Now, I just need to build the real thing.</em></p>
+
+<p>In order for <a href="http://mcu.ninja">mcu.ninja</a> to work, the app had to do a few things at once:</p>
+
+<ul>
+  <li><strong>It needed to present dozens of pairs of movies to the user in sequence.</strong> Quicksort relies on comparing a <em>test item</em> to a <em>pivot.</em> As the algorithm rolled through the Marvel Cinematic Universe, it would show a bunch of 1-1 matchups, like <em>Captain Marvel</em> vs. <em>The Incredible Hulk.</em></li>
+  <li><strong>Picking one movie over the other had to be super simple.</strong> People needed to quickly vote, and they’re not going to do it if it’s hard.</li>
+  <li><strong>What’s more, it has to be super simple even after you do it dozens of times.</strong> When you’re trying to order a list of 20+ movies, you’re going to run through a <em>lot</em> of comparisons.</li>
+  <li><strong>It has to make the choice easy to understand.</strong> A lot of superhero movie titles sound the same, and there are many, many sequels. This app had to make <em>Iron Man 3</em> and <em>Guardians of the Galaxy Vol 2</em> look distinct.</li>
+</ul>
+
+<p>Not easy!</p>
+
+<p>But I drew inspiration from another app on the market that’s really good at presenting a bunch of choices quickly: <strong>Tinder.</strong></p>
+
+<h2 id="the-swipe-y-solution">The swipe-y solution</h2>
+<p>In a way, Tinder has a similar goal. You’re shown someone’s profile and asked to make a decision — are you interested in them or not? And since they’re essentially turning dating into a volume play, they want you to be able to rip through a bunch of options <em>fast.</em></p>
+
+<p>To make this happen, Tinder refined swiping. If you like someone, you swipe right. If you’re not interested, you swipe left. You can blaze through dozens of profiles in a few minutes.</p>
+
+<p>Turns out this mechanic works pretty well for my app, too. First, I show them the pivot movie. I then run a series of other movies past them. Just like Tinder, if they like the test movie better, they swipe right. Otherwise, they swipe left.</p>
+
+<p>Once the pivot movie has run out of comparisons, we choose another pivot, and the swiping continues.</p>
+
+<p>Granted, Tinder isn’t asking user to compare <em>two</em> people and pick their ideal date — that’s where the comparison to mcu.ninja breaks down. But swiping just made sense. It collapses a long list of comparisons into a single series of a few dozen swipes, resulting in a perfectly sorted list.</p>
+
+<p>Here’s how it looked in practice:</p>
+
+<video class="video" style="max-width: 400px" src="/assets/mcu-ninja-2/swipe-demonstration.mp4" muted="" loop="" autoplay="" plays-inline=""></video>
+
+<h2 id="some-findings-from-user-testing">Some findings from user testing</h2>
+<p>I learned a few important things from putting the app in front of people.</p>
+
+<ul>
+  <li><strong>Swiping is harder than I thought.</strong> People sometimes forgot which direction to swipe halfway through a series. To cue them, I added labels to the swipe animation making the comparison clear: “The Incredible Hulk is Worse 👎” and “The Incredible Hulk is better 👍”.</li>
+  <li><strong>You need an undo button.</strong> Making a fast-paced app means people will make mistakes. I ended up storing the entire decision chain in memory — the yes-or-no vote on every movie pair. That way, people could jump back if they realized they swiped the wrong way.</li>
+  <li><strong>Showing people how many questions they have left is hard.</strong> The tough thing about Quicksort is that it doesn’t guarantee finding a solution within a set number of sets, making a progress bar tricky. I ended up having <em>two</em> – one at the bottom of the screen, to show how far along you were in the given comparison set, and another at the top, for how close you were to getting your final list. I’m still not sure it works great.</li>
+</ul>
+
+<h2 id="how-it-turned-out-and-next-steps">How it turned out, and next steps</h2>
+<p>I really enjoyed seeing my friends use the app and post their lists.</p>
+
+<p>But it became clear that it’s still not super easy to share your results, even though the app offers a Twitter and SMS share feature. Most people ended up taking screenshots and sharing those. Long-term, I’d love to have the app produce a card image that you could export and send to other MCU fans, or post on social media.</p>
+
+<p>Also, this is just a demo website/web app. While I don’t think there’s a <em>huge</em> demand for ranking favorite superheo movies, it might be interesting to convert it to an iOS app at some point.</p>
+
+<p>But most importantly, I’m interested to see how this list sorting mechanic could be put to other uses. Why stop at MCU movies? I could see a version of this becoming a new quiz format.</p>
+
+<p>Regardless, it was a lot of fun to make. If you’re reading this post first, here’s my personal list (<em>7/2019: I’ve updated this list to include</em> Spider-Man: Far From Home.)</p>
+
+<ol>
+  <li>The Avengers</li>
+  <li>Iron Man</li>
+  <li>Guardians of the Galaxy</li>
+  <li>Thor: Ragnarok</li>
+  <li>Avengers: Infinity War</li>
+  <li>Captain America: The Winter Soldier</li>
+  <li>Captain America: Civil War</li>
+  <li>Avengers: Endgame</li>
+  <li>Black Panther</li>
+  <li>Spider-Man: Homecoming</li>
+  <li>Spider-Man: Far From Home</li>
+  <li>Iron Man 3</li>
+  <li>Captain America: The First Avenger</li>
+  <li>Captain Marvel</li>
+  <li>Ant-Man</li>
+  <li>Avengers: Age of Ultron</li>
+  <li>Doctor Strange</li>
+  <li>Ant-Man and the Wasp</li>
+  <li>Thor</li>
+  <li>Guardians of the Galaxy Vol. 2</li>
+  <li>Thor 2</li>
+  <li>Iron Man 2</li>
+  <li>The Incredible Hulk</li>
+</ol>
+
+	
+		
+		<div class="navigation">
+			
+			<a class="next" href="/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html">&laquo; Why don’t we have news apps as fun as TikTok?</a>
+			 
+
+			
+			<a class="back" href="/2019/05/07/mcu-ninja-ranking-part-one.html">Building a web app to rank my favorite Marvel superhero movies, part I &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>
