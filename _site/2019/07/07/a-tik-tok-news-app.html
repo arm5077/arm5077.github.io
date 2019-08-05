@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3293083-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-3293083-5');
+  </script>
+  
+	<title>
+		
+			Fine, I tried to make a news app as fun as TikTok | Andrew McGill
+		
+	</title>
+		
+	
+	<meta name="description" content="A proof-of-concept." />
+	
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/css/syntax.css">
+	<script src="https://use.fontawesome.com/42e13a9762.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	
+<body>
+	<div class="content">
+		<div class="page">
+	<div class="page-body">
+		
+		<h2 class="line-below">
+			<div class="block">
+				<a href="/">Andrew McGill</a>
+				<span class="social">
+					<a href="//twitter.com/andrewmcgill" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="//github.com/arm5077" target="blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+					<a href="mailto:arm5077@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+				</span>
+			</div>
+		</h2>
+
+		<h1>Fine, I tried to make a news app as fun as TikTok</h1>
+		
+		
+		<div class="date">
+			 
+			 
+
+			July
+			  
+			7,
+			2019
+		</div>
+
+		<p>So I’ve taken a stab at the TikTok-style news app posited in <a href="http://www.andrewmcgill.me/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html">this previous post.</a></p>
+
+<p>My premise: Most news apps look the same and emphasize browsing when you’re stting with a cup of coffee in the morning. How would I design a news app for in-between moments — standing in line, waiting for the elevator — when I didn’t have a specific thing I was looking for, beyond something interesting to read?</p>
+
+<p>Here’s what I came up with — you can take a look at <a href="https://atlantic-tik-tok.herokuapp.com">https://atlantic-tik-tok.herokuapp.com:</a></p>
+
+<video src="/assets/atlantic-tiktok-images/swipe-demo.mp4" autoplay="" muted="" playsinline="" loop=""></video>
+
+<p>It’s a progressive web app modeled loosely after TikTok, where every swipe up gives you something new. If you’re interested in a story, you can tap it to read it in full.</p>
+
+<p>The app starts by pulling the latest news from The Atlantic. But once you finish swiping through those, it prompts you to “Enter the Wormhole,” pulling the best stories from out archive.</p>
+
+<p>A few notes:</p>
+
+<ul>
+  <li>The app saves the stories it’s already shown, so you never see the same story twice.</li>
+  <li>Right now, archive stories are sourced exclusively from The Atlantic’s Science, Health and Family sections. I’m figuring that once people are caught up with the latest news, they don’t want to see old politics stories. So I’m focusing solely on wonder-and-delight stuff.</li>
+  <li>The little Poseidon illustrations are from the wonderful <a href="https://www.behance.net/andikkawah0f09/">Andika Wahyu.</a> He’s available for commissions!</li>
+</ul>
+
+<p>Since this is a web app, not a native iOS app, you have to manually “install” it by opening the URL in Safari or Chrome and clicking “Add to Home Screen.” You can also just visit it as a website, but I prefer the fullscreen version.</p>
+
+<p>I’m going to sit with it for a bit and see if it fills a hole in my news habits. But there’s definitely already a few things I want to improve.</p>
+
+<ul>
+  <li><strong>It desperately needs a “Save for later” feature.</strong> Sometimes the app gives me a story that looks interesting, but really is just too long for me to read right away. I’d love to be able to bookmark it to read later.</li>
+  <li><strong>I’m not sure the background-screened image works.</strong> I wanted to feature the article art in way that felt dramatic but not distracting, but I’m not sure I’ve hit it here. The cropping often looks funny, and I have to choose a better set of screen gradients. Maybe there’s a smarter way to include the photo in its original aspect ratio, or to target the right spot to center the crop.</li>
+  <li><strong>Offline reading isn’t a thing yet.</strong> While the app caches the stories locally after pulling them from The Atlantic, I need to refactor the app so it knows to pull from local storage when it doesn’t sense an internet connection.</li>
+</ul>
+
+<p>Plenty of room to improve, but it’s a start. <a href="https://atlantic-tik-tok.herokuapp.com/">Give it a shot yourself</a> and <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#097;&#114;&#109;&#053;&#048;&#055;&#055;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">let me know what you think.</a> (And here’s the <a href="https://github.com/arm5077/atlantic-tik-tok">Github repository</a> for the code.)</p>
+
+	
+		
+		<div class="navigation">
+			 
+
+			
+			<a class="back" href="/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html">Why don’t we have news apps as fun as TikTok? &raquo;</a>
+			
+			<div style="clear:both"></div>
+		</div>
+		
+	
+	</div>
+
+	
+
+	<div class="footer">
+		<div class="bio">
+			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a></p>
+		</div>
+	</div>
+
+
+</div>
+
+
+	</div>
+</body>
+
+</html>

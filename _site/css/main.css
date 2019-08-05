@@ -28,7 +28,7 @@ ul, ol { font-size: 20px; line-height: 1.55em; width: 100%; max-width: 670px; ma
 
 .date { display: block; color: #888; font-weight: normal; text-transform: uppercase; position: relative; }
 
-.home, .page-body { width: 100%; margin: 0px auto; box-sizing: border-box; padding: 0px 10px; }
+.home, .page-body { width: 100%; margin: 0px auto; box-sizing: border-box; padding: 0px 20px; }
 
 .home { margin-bottom: 50px; max-width: 670px; }
 .home img { max-width: 100%; margin: 15px auto; }
@@ -64,7 +64,7 @@ h1, h2, .date, .navigation, p { max-width: 670px; margin-left: auto; margin-righ
 .page .navigation a { max-width: 48%; font-size: 20px; text-decoration: underline; }
 .page .navigation a.next { float: left; }
 .page .navigation a.back { float: right; }
-.page .footer { background-color: #eee; padding-top: 50px; margin-top: 50px; padding-bottom: 50px; }
+.page .footer { box-sizing: border-box; background-color: #eee; padding: 50px 25px; margin-top: 50px; }
 
 .footer { border-top: 1px solid #ccc; padding-top: 20px; }
 .footer .icons { width: 100%; text-align: center; margin: auto; font-size: 30px; }

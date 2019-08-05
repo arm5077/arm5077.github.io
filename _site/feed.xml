@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-01T16:37:44-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Why don’t we have news apps as fun as TikTok?</title><link href="http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html" rel="alternate" type="text/html" title="Why don’t we have news apps as fun as TikTok?" /><published>2019-06-15T00:00:00-04:00</published><updated>2019-06-15T00:00:00-04:00</updated><id>http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok</id><content type="html" xml:base="http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html">&lt;p&gt;I’m newly obsessed by TikTok, the social video platform that combines the best parts of Vine and a casino slot machine. Its interface is easy. IT shows me just one thing at a time. And the algorithm powering it is uncannily good at learning my tastes and serving up what I like.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-04T20:13:52-04:00</updated><id>http://localhost:4000//</id><title type="html">Andrew McGill, friendly neighborhood journalist</title><subtitle>I'm a journalist and web developer from Philadelphia who hopes to die happy.</subtitle><author><name>andrewmcgill</name></author><entry><title type="html">Fine, I tried to make a news app as fun as TikTok</title><link href="http://localhost:4000/2019/07/07/a-tik-tok-news-app.html" rel="alternate" type="text/html" title="Fine, I tried to make a news app as fun as TikTok" /><published>2019-07-07T00:00:00-04:00</published><updated>2019-07-07T00:00:00-04:00</updated><id>http://localhost:4000/2019/07/07/a-tik-tok-news-app</id><content type="html" xml:base="http://localhost:4000/2019/07/07/a-tik-tok-news-app.html">&lt;p&gt;So I’ve taken a stab at the TikTok-style news app posited in &lt;a href=&quot;http://www.andrewmcgill.me/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html&quot;&gt;this previous post.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;My premise: Most news apps look the same and emphasize browsing when you’re stting with a cup of coffee in the morning. How would I design a news app for in-between moments — standing in line, waiting for the elevator — when I didn’t have a specific thing I was looking for, beyond something interesting to read?&lt;/p&gt;
+
+&lt;p&gt;Here’s what I came up with — you can take a look at &lt;a href=&quot;https://atlantic-tik-tok.herokuapp.com&quot;&gt;https://atlantic-tik-tok.herokuapp.com:&lt;/a&gt;&lt;/p&gt;
+
+&lt;video src=&quot;/assets/atlantic-tiktok-images/swipe-demo.mp4&quot; autoplay=&quot;&quot; muted=&quot;&quot; playsinline=&quot;&quot; loop=&quot;&quot;&gt;&lt;/video&gt;
+
+&lt;p&gt;It’s a progressive web app modeled loosely after TikTok, where every swipe up gives you something new. If you’re interested in a story, you can tap it to read it in full.&lt;/p&gt;
+
+&lt;p&gt;The app starts by pulling the latest news from The Atlantic. But once you finish swiping through those, it prompts you to “Enter the Wormhole,” pulling the best stories from out archive.&lt;/p&gt;
+
+&lt;p&gt;A few notes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The app saves the stories it’s already shown, so you never see the same story twice.&lt;/li&gt;
+  &lt;li&gt;Right now, archive stories are sourced exclusively from The Atlantic’s Science, Health and Family sections. I’m figuring that once people are caught up with the latest news, they don’t want to see old politics stories. So I’m focusing solely on wonder-and-delight stuff.&lt;/li&gt;
+  &lt;li&gt;The little Poseidon illustrations are from the wonderful &lt;a href=&quot;https://www.behance.net/andikkawah0f09/&quot;&gt;Andika Wahyu.&lt;/a&gt; He’s available for commissions!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since this is a web app, not a native iOS app, you have to manually “install” it by opening the URL in Safari or Chrome and clicking “Add to Home Screen.” You can also just visit it as a website, but I prefer the fullscreen version.&lt;/p&gt;
+
+&lt;p&gt;I’m going to sit with it for a bit and see if it fills a hole in my news habits. But there’s definitely already a few things I want to improve.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;It desperately needs a “Save for later” feature.&lt;/strong&gt; Sometimes the app gives me a story that looks interesting, but really is just too long for me to read right away. I’d love to be able to bookmark it to read later.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I’m not sure the background-screened image works.&lt;/strong&gt; I wanted to feature the article art in way that felt dramatic but not distracting, but I’m not sure I’ve hit it here. The cropping often looks funny, and I have to choose a better set of screen gradients. Maybe there’s a smarter way to include the photo in its original aspect ratio, or to target the right spot to center the crop.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Offline reading isn’t a thing yet.&lt;/strong&gt; While the app caches the stories locally after pulling them from The Atlantic, I need to refactor the app so it knows to pull from local storage when it doesn’t sense an internet connection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Plenty of room to improve, but it’s a start. &lt;a href=&quot;https://atlantic-tik-tok.herokuapp.com/&quot;&gt;Give it a shot yourself&lt;/a&gt; and &lt;a href=&quot;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#116;&amp;#111;:&amp;#097;&amp;#114;&amp;#109;&amp;#053;&amp;#048;&amp;#055;&amp;#055;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&quot;&gt;let me know what you think.&lt;/a&gt; (And here’s the &lt;a href=&quot;https://github.com/arm5077/atlantic-tik-tok&quot;&gt;Github repository&lt;/a&gt; for the code.)&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">So I’ve taken a stab at the TikTok-style news app posited in this previous post.</summary></entry><entry><title type="html">Why don’t we have news apps as fun as TikTok?</title><link href="http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html" rel="alternate" type="text/html" title="Why don’t we have news apps as fun as TikTok?" /><published>2019-06-15T00:00:00-04:00</published><updated>2019-06-15T00:00:00-04:00</updated><id>http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok</id><content type="html" xml:base="http://localhost:4000/2019/06/15/why-dont-we-have-news-apps-like-tik-tok.html">&lt;p&gt;I’m newly obsessed by TikTok, the social video platform that combines the best parts of Vine and a casino slot machine. Its interface is easy. IT shows me just one thing at a time. And the algorithm powering it is uncannily good at learning my tastes and serving up what I like.&lt;/p&gt;
 
 &lt;iframe height=&quot;700&quot; src=&quot;https://www.tiktok.com/embed/6646016679396510981&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; style=&quot;margin: auto; display: block; width: 100%; max-width: 350px&quot;&gt;&lt;/iframe&gt;
 
@@ -586,156 +616,4 @@ This probably deserves a longer answer, and at some point, I’ll write a standa
 
 &lt;p&gt;What’s the long term impact? I don’t know. So far, I haven’t seen The Next Big Atlantic Idea bubble up from a conversation in #serendipity. But that’s not really the point. Getting to know your coworkers better is a worthy goal on its own — and I think SerendipityBot has helped with that.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;If you’d like to look at the code powering SerendipityBot, &lt;a href=&quot;https://github.com/arm5077/sup-slackbot&quot;&gt;it’s available here.&lt;/a&gt; Tldr: It’s a Node app that lives on Heroku and stores user information in a MongoDB database.&lt;/em&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">At any given moment, people are doing some pretty neat stuff at The Atlantic. Just last week, my coworkers:</summary></entry><entry><title type="html">Turning an Amazon IoT button into something actually useful with (almost) no code</title><link href="http://localhost:4000/2016/12/18/turning-an-amazon-iot-button-into-something-useful-with-almost-no-code.html" rel="alternate" type="text/html" title="Turning an Amazon IoT button into something actually useful with (almost) no code" /><published>2016-12-18T00:00:00-05:00</published><updated>2016-12-18T00:00:00-05:00</updated><id>http://localhost:4000/2016/12/18/turning-an-amazon-iot-button-into-something%20useful-with-almost-no-code</id><content type="html" xml:base="http://localhost:4000/2016/12/18/turning-an-amazon-iot-button-into-something-useful-with-almost-no-code.html">&lt;p&gt;I’m pretty nuts for &lt;a href=&quot;https://aws.amazon.com/iotbutton/&quot;&gt;Amazon’s internet-of-things button.&lt;/a&gt; I’ve already made a &lt;a href=&quot;http://www.andrewmcgill.me/2016/07/05/make-every-week-2-slack-doorbell.html&quot;&gt;Slack doorbell&lt;/a&gt; for my office and a &lt;a href=&quot;http://www.andrewmcgill.me/2016/08/19/make-every-week-sweetgreen-salad-button.html&quot;&gt;push-to-order Sweetgreen button.&lt;/a&gt; But both of these projects required a fair amount of programming.&lt;/p&gt;
-
-&lt;p&gt;Why is this button interesting? Gooood question. I mean, you can’t do much with it, besides press it. But:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;It combined a mechanical sensor with built-in WiFi, in a package that costs $20.&lt;/strong&gt; That’s actually pretty incredible. Even the cheapest DIY setup would easily clock in at $30 or more, and would mostly likely be a great deal more bulky.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;It ties into Amazon’s &lt;em&gt;Lambda&lt;/em&gt; service.&lt;/strong&gt; A few years ago, to do anything on the internet, you had to rent a server. They weren’t necessarily &lt;em&gt;expensive&lt;/em&gt; — Amazon’s been in the server game for a decade — but they could be knowledge-intensive. You still had to do all the annoying initializing/maintenance stuff that many coders didn’t care for.&lt;/p&gt;
-
-    &lt;p&gt;Services like Lamda abstract this aaway — you pop in your code, and Amazon worries about the rest.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So it’s a pretty neat little button!&lt;/p&gt;
-
-&lt;h2 id=&quot;that-said&quot;&gt;That said…&lt;/h2&gt;
-
-&lt;p&gt;It’s not terribly useful if you don’t know how to program a computer. Amazon doesn’t hold your hand. You basically get a box to write code in, some weird parameters, and Lambda bids you good luck. For a novice, that’s pretty intimidating.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/lambda_example.gif&quot; alt=&quot;Eeek! My Sweetgreen app, as it appears in Lambda.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;On the other end of the spectrum is &lt;a href=&quot;http://www.ifttt.com&quot;&gt;IFTTT.com&lt;/a&gt;, an automation website that does a really good job of abstracting code into something easier to understand. The site (it stands for &lt;strong&gt;If This, Then That&lt;/strong&gt;) links together completely separate services — Twitter, Hue lightbulbs, thermostats — and allows events from one to trigger actions in another.&lt;/p&gt;
-
-&lt;p&gt;Combinations that sound very complicated — &lt;em&gt;hmm, can I send a&lt;/em&gt; 🙄 &lt;em&gt;tweet whenever I receive an email from my crazy uncle?&lt;/em&gt; — become a matter of clicking and dragging various services together.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/ifttt_example.gif&quot; alt=&quot;Ahhhh. Sweet automation.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If only Amazon’s IoT service could be so intuitive…&lt;/p&gt;
-
-&lt;h2 id=&quot;but-it-can-be&quot;&gt;But it can be!&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;It just takes a bit of boilerplate code,&lt;/strong&gt; thanks to IFTTT’s &lt;a href=&quot;https://ifttt.com/maker&quot;&gt;Maker &lt;/a&gt; extension. Maker is sort of a general-purpose receiver, allowing people to trigger an action by sending a ping from an outside server through a humble POST request. (If you’re not familiar with HTTP protocol, a POST request is one of the four or five simplest messages servers use to talk to each other.)&lt;/p&gt;
-
-&lt;p&gt;Programmatically, sending an HTTP request is super easy — pretty much any server can do it. And since you can write code to send the POST message yourself, it frees you from needing a device that already has a partnership with IFTTT.&lt;/p&gt;
-
-&lt;p&gt;So you could have a motion detector, hooked up to a Raspberry Pi, that tells IFTTT to text you every time someone walks past your desk. Or a water sensor, also connected to a Raspberry Pi, that pings IFTTT every time the cat’s water bowl gets low. In both cases, the Pi would take care of sending the ping.&lt;/p&gt;
-
-&lt;p&gt;In this case, Amazon’s Lambda service will take the place of the Pi (remember, we don’t need servers anymore?), pinging IFTTT every time we press the IoT button. For this demonstration, I’m going to make my button do something simple: &lt;strong&gt;tweet “Man, it’s a hot one” from my Twitter account.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-ifttt&quot;&gt;Setting up IFTTT&lt;/h2&gt;
-
-&lt;p&gt;Let’s do the easy bit first: Making our Twitter IFTTT action.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Head to IFTTT and make a &lt;a href=&quot;https://ifttt.com/create&quot;&gt;new applet.&lt;/a&gt; (You’ll have to sign up for an account if you haven’t already.)&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Click &lt;strong&gt;“+this”&lt;/strong&gt; to make a new trigger. It’ll give a wide array of options, but filter for &lt;strong&gt;“Maker.”&lt;/strong&gt;
-&lt;img src=&quot;/assets/ifttt_maker_option.png&quot; alt=&quot;The Maker option on IFTTT's website.&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose the &lt;strong&gt;“Recieve a web request”&lt;/strong&gt; option. It’ll prompt you to give the trigger a name. I’m calling mine &lt;code class=&quot;highlighter-rouge&quot;&gt;santana-button-pressed&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now, we’ll choose the action: sending a tweet. Click &lt;strong&gt;“+that”&lt;/strong&gt; and filter to Twitter, selecting &lt;strong&gt;“Post a tweet.”&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Write your preferred tweet text. Here’s mine:&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/assets/iot-tweet-text.png&quot; alt=&quot;Man, it's a hot one tweet text&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;After I saved the applet, I had a bit of trouble finding the URL I was supposed to use to send a POST request to Maker. If you click “Maker” in the breadcrumb menu in the upper-left, and then click “Settings” on the main Maker page, you’ll get a URL under “Account info.” Following &lt;em&gt;that&lt;/em&gt; takes you to your credential page. Whew!&lt;/p&gt;
-
-    &lt;p&gt;Now you have the URL you’ll need to POST — a combination of your trigger name and your Maker key. For instance, mine starts &lt;code class=&quot;highlighter-rouge&quot;&gt;https://maker.ifttt.com/trigger/santana-button-pressed/with/key/&lt;/code&gt; (followed by my key). Save this!&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;writing-the-node-code-to-upload-to-lambda&quot;&gt;Writing the Node code to upload to Lambda&lt;/h2&gt;
-
-&lt;p&gt;Now, we have to write a simple script for Lambda that sends a POST request every time the button is pushed. The POST request itself doesn’t even have to contain any information — we’ve already told IFTTT what to tweet.&lt;/p&gt;
-
-&lt;p&gt;Here’s my walk-through in Node. (If you’re not interested, here’s the &lt;a href=&quot;https://github.com/arm5077/ifttt-button/archive/master.zip&quot;&gt;code&lt;/a&gt; you’ll need for the next part, when we upload our code to Lambda.)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Start a new project folder. We’ll use the &lt;strong&gt;requests&lt;/strong&gt; module to send the POST ping, so install that using &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install requests --save&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Make a main file for your code — &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt; works fine.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;All Lambda Node scripts are written as modules, meaning we’ll have to encase our code in a function and include it as a &lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt; property. So let’s start off with this:&lt;/p&gt;
-
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ifttt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-
-    &lt;p&gt;Everything else will go inside here.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now let’s import the &lt;strong&gt;request&lt;/strong&gt; library and make the actual request.&lt;/p&gt;
-
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ifttt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;IFTTT_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Sent ping to IFTTT!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-
-    &lt;p&gt;Pretty simple. We make a POST request to our IFTTT endpoint, throw an error if one returns, and otherwise print that all is well. You’ll note that we don’t actually include the endpoint in the code — we’re telling Node to pull it from an environmental variable, which we’ll specify when we set up Lambda. This is better for security… you don’t wnat your private key floating around on Github.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once you’ve got that written, select all the files (&lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt;, etc.) and compress into a zip archive.&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-iot-button-and-uploading-code-to-lambda&quot;&gt;Setting up IoT button and uploading code to Lambda&lt;/h2&gt;
-
-&lt;p&gt;I’m presuming that you’re staring at a new IoT button in your hand and wondering what to do. Skip ahead if you’ve already done some of these steps.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Log into &lt;a href=&quot;the Amazon Web Service console.&quot;&gt;https://aws.amazon.com&lt;/a&gt; Once there, select the &lt;strong&gt;“AWS IoT”&lt;/strong&gt; service. Clicking &lt;strong&gt;“Connect”&lt;/strong&gt; on the left rail will give you a new spread of menu options, one of which is &lt;strong&gt;“AWS IoT Button.”&lt;/strong&gt;&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/assets/iot-opener.png&quot; alt=&quot;The IoT config opening screen.&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Scroll down and click &lt;strong&gt;“Go to Configuration Wizard.”&lt;/strong&gt; You’ll have to type in your serial number, which is printed on the back of the button. &lt;strong&gt;Make sure you click “Generate certificate and keys” before you move on!&lt;/strong&gt; You’ll be given two files to download, and I don’t know how to get these otherwise. Also note the endpoint and region.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Also make sure you click &lt;strong&gt;“Enable trigger”&lt;/strong&gt; before you click “Next.” Then (finally!) click “Next.”&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;We’re now at the “Configure function” section. Type &lt;code class=&quot;highlighter-rouge&quot;&gt;ifttt&lt;/code&gt; into &lt;strong&gt;Name&lt;/strong&gt;, and write whatever description you’d like. Down at &lt;strong&gt;Lambda function code,&lt;/strong&gt; change “Code entry type” to “Upload a .ZIP file.” You’ll then upload the zip archive we compressed a few steps ago.&lt;/p&gt;
-
-    &lt;p&gt;(Why aren’t we just copying-and-pasting our code? It’s that pesky &lt;strong&gt;requests&lt;/strong&gt; library — the meat of it is included in the &lt;strong&gt;node_modules&lt;/strong&gt; folder, so we need to include everything.)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Make sure you add an environmental variable, named &lt;code class=&quot;highlighter-rouge&quot;&gt;IFTTT_KEY&lt;/code&gt;, that lists the Maker URL you took from IFTTT.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lastly, give the button code a descriptive &lt;strong&gt;role name&lt;/strong&gt; — I did &lt;code class=&quot;highlighter-rouge&quot;&gt;ifttt_button&lt;/code&gt;. Click “Next,” and then “Create function.”&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;OK! Your code &lt;em&gt;should&lt;/em&gt; be uploaded. Only thing left to do is connect your IoT button to your home or office WiFi. Amazon has a &lt;a href=&quot;http://docs.aws.amazon.com/iot/latest/developerguide/configure-iot.html&quot;&gt;pretty good set of directions here,&lt;/a&gt; so I’ll let them explain. Just remember that you’ll need those credentials you downloaded earlier! (And if you missed them, you’ll find your endpoint by clicking “Settngs” at the &lt;a href=&quot;https://console.aws.amazon.com/iot/home?region=us-east-1#/dashboard/help&quot;&gt;AWS IoT console.&lt;/a&gt;)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Give it a shot. Boom!&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
-  &lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Man, it's a hot one— Andrew McGill (@andrewmcgill) &lt;a href=&quot;https://twitter.com/andrewmcgill/status/810657716947587072&quot;&gt;December 19, 2016&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;The button will now do your bidding.&lt;/p&gt;
-
-&lt;h2 id=&quot;final-notes&quot;&gt;Final notes&lt;/h2&gt;
-&lt;p&gt;You can obviously set up your IFTTT account to do whatever you want, which is the beauty of this hack. I will note that I had a tough time getting my button to connect to my apartment WiFi until I realized it only can communicate with 2.4 GHz networks. If you’re running into connectivity issues (hint: the button’s LED will flash red three times), try poking around in your router settings.&lt;/p&gt;
-
-&lt;p&gt;Other than that, happy button-pushing!&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">I’m pretty nuts for Amazon’s internet-of-things button. I’ve already made a Slack doorbell for my office and a push-to-order Sweetgreen button. But both of these projects required a fair amount of programming.</summary></entry></feed>
+&lt;p&gt;&lt;em&gt;If you’d like to look at the code powering SerendipityBot, &lt;a href=&quot;https://github.com/arm5077/sup-slackbot&quot;&gt;it’s available here.&lt;/a&gt; Tldr: It’s a Node app that lives on Heroku and stores user information in a MongoDB database.&lt;/em&gt;&lt;/p&gt;</content><author><name>andrewmcgill</name></author><summary type="html">At any given moment, people are doing some pretty neat stuff at The Atlantic. Just last week, my coworkers:</summary></entry></feed>
