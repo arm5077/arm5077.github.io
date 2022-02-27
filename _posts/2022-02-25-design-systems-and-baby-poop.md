@@ -88,6 +88,6 @@ But the most helpful guidance ended up being the three design principles — con
 
 I could write a whole second blog post about how I designed **Poopsy** and built/de-duped component styles. Suffice it to say it was a lot of fun, and introduced me to Poopsy’s mascot, whom I’m calling Toots:
 
-![A cute blue baby](/assets/baby-poop/Untitled%205.png)
+![A cute blue baby](/assets/baby-poop/toots.png)
 
 If you want to see the whole app, I’ve got an [inVision prototype rigged up.](https://invis.io/UB119WTWQ9AN#/454482736_Onboard-Title_Screen) Accepting pitches from angel investors!
