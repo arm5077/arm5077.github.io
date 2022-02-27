@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="page">
 	<div class="page-body">
-		
+
 		<h2 class="line-below">
 			<div class="block">
 				<a href="/">Andrew McGill</a>
@@ -16,11 +16,11 @@ layout: default
 		</h2>
 
 		<h1>{{ page.title }}</h1>
-		
-		
+
+
 		<div class="date">
-			{% assign d = page.date | date: "%-d" %} 
-			{% assign m = page.date | date: "%B" %} 
+			{% assign d = page.date | date: "%-d" %}
+			{% assign m = page.date | date: "%B" %}
 
 			{% case m %}
 			  {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
@@ -32,12 +32,12 @@ layout: default
 		</div>
 
 		{{page.content | markdownify}}
-	
+
 		{% if page.next.url or page.previous.url %}
 		<div class="navigation">
 			{% if page.next.url %}
 			<a class="next" href="{{page.next.url}}">&laquo; {{page.next.title}}</a>
-			{% endif %} 
+			{% endif %}
 
 			{% if page.previous.url %}
 			<a class="back" href="{{page.previous.url}}">{{page.previous.title}} &raquo;</a>
@@ -45,18 +45,17 @@ layout: default
 			<div style="clear:both"></div>
 		</div>
 		{% endif %}
-	
+
 	</div>
 
-	
+
 
 	<div class="footer">
 		<div class="bio">
 			<p>Hi. I'm <strong>Andrew McGill</strong>, a journalist and developer living in Washington, D.C.</p>
-			<p>I work at <a href="http://www.theatlantic.com" target="blank">The Atlantic,</a> writing and coding for our politics team and the newsroom at large. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a></p>
+			<p>I work at <a href="http://www.theatlantic.com" target="blank">POLITICO,</a> leading the Interactive News team. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a></p>
 		</div>
 	</div>
 
 
 </div>
-

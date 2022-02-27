@@ -10,7 +10,7 @@ title: "journalist and developer"
 			I work at <a href="http://www.politico.com" target="blank">POLITICO,</a> leading the interactive news team. Before, I wrote, coded and built products for The Atlantic. Here's <a href="/assets/resume">where I've been before</a> and <a href="/projects" target="blank">what I'm doing now.</a>
 		</div>
 	</div>
-  
+
   {% assign projects = site.projects | sort:"order" %}
   {% for project in projects %}
   <div class="random-project">
@@ -24,11 +24,11 @@ title: "journalist and developer"
         {% endif %}
       </a>
       <div class="random-project-label">This was fun to make:</div>
-      <a class="description" href="/projects#{{ project.order }}">{{ project.description }}</a>  
+      <a class="description" href="/projects#{{ project.order }}">{{ project.description }}</a>
       <div style="clear: both"></div>
   </div>
   {% endfor %}
-	
+
   <div class="posts">
 
 		<ul>
@@ -36,8 +36,8 @@ title: "journalist and developer"
 		    <li>
 				<h2>
 					<div class="date">
-						{% assign d = post.date | date: "%-d" %} 
-						{% assign m = post.date | date: "%B" %} 
+						{% assign d = post.date | date: "%-d" %}
+						{% assign m = post.date | date: "%B" %}
 
 						{% case m %}
 						  {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
@@ -58,7 +58,7 @@ title: "journalist and developer"
 					{{ post.excerpt }}
 					{% endif %}
 				</div>
-			
+
 			</li>
 		  {% endfor %}
 		</ul>
