@@ -19,7 +19,7 @@ We’re relaunching our election forecast soon (more on that later), and since i
 
 So instead of jumping right in, I decided to take a practice shot — with a poop app.
 
-# Yes, poop
+## Yes, poop
 
 As a new(ish) dad, I am now very interested in baby bowel movements. When my daughter was younger, we used to track every poop with an app that was kind of janky. It always felt rote, something we had to do in case her pediatrician asked us for info.  I always wished the app could give me better direct feedback — ”hey, way too much pooping!”
 
@@ -31,7 +31,7 @@ A few books were really helpful in getting me started:
 - *[Atomic Design](https://atomicdesign.bradfrost.com)* by Brad Frost (a bit heavier on component stuff but still useful overall)
 - inVision’s [Design Systems Handbook](https://www.designbetter.co/design-systems-handbook)
 
-# Defining Poopsy’s priorities
+## Defining Poopsy’s priorities
 
 I pulled most of this first part from *Expressive Design Systems.* Perez-Cruz suggests starting with a purpose statement explaining what you’re trying to accomplish. It’s actually a series of four questions.
 
@@ -52,15 +52,15 @@ Here are Poopsy’s:
 
 Lastly, Perez-Cruz recommends conducting an inventory of your user interface, pulling together similar components and generally bringing order to chaos. Since Poopsy wasn’t real, I instead built user paths that I would later use to design actual screens. Here’s the “flow” (sorry) for adding a new bowel movement:
 
-![Flowchart showing user's progress through logging a new baby poop](baby-poop/Untitled.png)
+![Flowchart showing user's progress through logging a new baby poop](/assets/baby-poop/Untitled.png)
 
-# Typography & color
+## Typography & color
 
 Now I knew I wanted the app’s design to feel confident, simple and mischievous. Cool! Time to put that into practice.
 
 The next decision was my **primary typeface.** The winner was **Sofia,** a rounded sans-serif that felt whimsical and uncomplicated.
 
-![The Poopsy logo in Sofia, with a small poop icon](baby-poop/Untitled%201.png)
+![The Poopsy logo in Sofia, with a small poop icon](/assets/baby-poop/Untitled%201.png)
 
 Most POLITICO projects have two typefaces — a sans-serif for display elements and a serif for body copy. Sofia was a little hard on the eyes in paragraph form, so I stayed in the san-serif lane and picked Proxima Nova, an old standby, for any body text the app might have.
 
@@ -68,19 +68,19 @@ Next, **colors!** InVision’s guide recommends picking 2-3 brand colors in addi
 
 This one was a bit tougher. Here’s a few I considered:
 
-![Three mockups of Poopsy's launch screen, with the rightmost heavily featuring brown](baby-poop/Untitled%202.png)
+![Three mockups of Poopsy's launch screen, with the rightmost heavily featuring brown](/assets/baby-poop/Untitled%202.png)
 
 Somehow, a minty fresh theme felt less mischievous than just plain misplaced. Ultimately, I picked the variant to the right — I mean, it *is* a poop app.
 
 With these two in hand, I had the fundamentals of my visual style nailed down...
 
-![An overview of Poopsy's styles and colors](baby-poop/Untitled%203.png)
+![An overview of Poopsy's styles and colors](/assets/baby-poop/Untitled%203.png)
 
 ...and could start actually working on screens.
 
-![A rendering of two of Poopsy's actual screens](baby-poop/Untitled%204.png)
+![A rendering of two of Poopsy's actual screens](/assets/baby-poop/Untitled%204.png)
 
-# How the system was helpful
+## How the system was helpful
 
 Defining the colors up front forced me to keep things simple. And once I knew my typographical sizes and styles, weighting elements correctly was easy.
 
@@ -88,6 +88,6 @@ But the most helpful guidance ended up being the three design principles — con
 
 I could write a whole second blog post about how I designed **Poopsy** and built/de-duped component styles. Suffice it to say it was a lot of fun, and introduced me to Poopsy’s mascot, whom I’m calling Toots:
 
-![A cute blue baby](baby-poop/Untitled%205.png)
+![A cute blue baby](/assets/baby-poop/Untitled%205.png)
 
 If you want to see the whole app, I’ve got an [inVision prototype rigged up.](https://invis.io/UB119WTWQ9AN#/454482736_Onboard-Title_Screen) Accepting pitches from angel investors!
