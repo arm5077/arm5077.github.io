@@ -3,6 +3,8 @@ title: "What building a prototype baby poop app taught me about design systems"
 layout: post
 desc: "Building a design framework for my team felt daunting. So I started small."
 ---
+(_Just want to see the poop app? Here's the [InVision prototype.]((https://invis.io/UB119WTWQ9AN#/454482736_Onboard-Title_Screen)_)
+
 I lead the Interactive News team at POLITICO, a collection of coders and designers based in the newsroom. Since we don’t have the burdens of a traditional product team — we’re not worrying about [maintaining our article page,](https://building.theatlantic.com/designing-the-story-for-the-readers-we-want-aeba392cd004) for instance — we travel light and approach each project design as a blank slate.
 
 But! As we tackle ever [bigger](https://www.politico.com/2020-election/results/) [stuff](https://www.politico.com/interactives/2022/congressional-redistricting-maps-by-state-and-district/), I’m realizing the importance of defining **design systems** early**,** both for individual projects and the team at large.
