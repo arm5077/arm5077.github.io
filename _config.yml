@@ -1,13 +1,13 @@
 name: "Andrew McGill, friendly neighborhood journalist"
 description: "I'm a journalist and web developer from Philadelphia who hopes to die happy."
 author: andrewmcgill
-url: "http://andrewmcgill.me"
+url: "http://mcgill.cool"
 paginate: 5
 markdown: kramdown
 highlighter: rouge
 collections:
   - projects
-kramdown: 
+kramdown:
   parse_block_html: true
 gems:
   - jekyll-feed
